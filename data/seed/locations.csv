@@ -1,0 +1,9 @@
+id,name,region,latitude,longitude
+LOC-ACC-01,Accra Central,Greater Accra,5.5500, -0.2000
+LOC-KUM-01,Kumasi City Centre,Ashanti,6.6885,-1.6244
+LOC-TAK-01,Takoradi Harbor,Western,4.8931,-1.7554
+LOC-TAM-01,Tamale Metro,Northern,9.4008,-0.8393
+LOC-HO-01,Ho Municipal,Volta,6.6000,0.4700
+LOC-SUN-01,Sunyani Central,Bono,7.3399,-2.3268
+LOC-CAPE-01,Cape Coast,Central,5.1053,-1.2466
+LOC-KOFO-01,Koforidua,Eastern,6.0941,-0.2591

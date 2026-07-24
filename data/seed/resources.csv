@@ -1,0 +1,6 @@
+id,name,type,capacity,cost_per_hour,current_location_id,is_available
+RES-01,Accra Heavy Maintenance Van 1,VEHICLE,10.0,150.00,LOC-ACC-01,true
+RES-02,Kumasi Electrical Response Team,PERSONNEL,5.0,200.00,LOC-KUM-01,true
+RES-03,Takoradi Mobile Crane 50T,EQUIPMENT,50.0,450.00,LOC-TAK-01,true
+RES-04,Tamale Field Engineering Crew,PERSONNEL,8.0,180.00,LOC-TAM-01,true
+RES-05,Accra High Voltage Testing Rig,EQUIPMENT,15.0,300.00,LOC-ACC-01,true

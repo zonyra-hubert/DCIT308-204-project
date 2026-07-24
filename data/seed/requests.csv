@@ -1,0 +1,7 @@
+id,location_id,description,priority_level,budget_required,estimated_duration_hrs,status
+REQ-101,LOC-ACC-01,Substation Transformer Repair,5,15000.00,8.5,PENDING
+REQ-102,LOC-KUM-01,Water Pipe Main Expansion,4,22000.00,14.0,PENDING
+REQ-103,LOC-TAK-01,Harbor Crane Maintenance,3,8500.00,6.0,PENDING
+REQ-104,LOC-TAM-01,Solar Grid Inverter Installation,5,18500.00,10.0,PENDING
+REQ-105,LOC-HO-01,Feeder Road Grading,2,12000.00,12.0,PENDING
+REQ-106,LOC-SUN-01,Hospital Generator Overhaul,5,9500.00,5.0,PENDING
