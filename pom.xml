@@ -7,8 +7,8 @@
     <groupId>com.ghana.optimizer</groupId>
     <artifactId>smart-service-optimizer</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Ghana Smart Service Operations Optimizer</name>
-    <description>Semester Project - Data Structures, Algorithms and Operations Optimization System for Ghana Infrastructure</description>
+    <name>University of Ghana Campus Service Operations Optimizer (UG-CSOO)</name>
+    <description>Semester Project - Data Structures, Algorithms and Operations Optimization System for University of Ghana, Legon Campus</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

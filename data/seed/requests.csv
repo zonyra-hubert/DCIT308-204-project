@@ -1,7 +1,305 @@
 id,location_id,description,priority_level,budget_required,estimated_duration_hrs,status
-REQ-101,LOC-ACC-01,Substation Transformer Repair,5,15000.00,8.5,PENDING
-REQ-102,LOC-KUM-01,Water Pipe Main Expansion,4,22000.00,14.0,PENDING
-REQ-103,LOC-TAK-01,Harbor Crane Maintenance,3,8500.00,6.0,PENDING
-REQ-104,LOC-TAM-01,Solar Grid Inverter Installation,5,18500.00,10.0,PENDING
-REQ-105,LOC-HO-01,Feeder Road Grading,2,12000.00,12.0,PENDING
-REQ-106,LOC-SUN-01,Hospital Generator Overhaul,5,9500.00,5.0,PENDING
+REQ-UG-001,LOC-UG-28,Hostel Water Header Tank Valve Overhaul - Roof 351,5,600.00,3.0,PENDING
+REQ-UG-002,LOC-UG-16,Air Conditioner Servicing - Lab 451,4,260.00,3.0,PENDING
+REQ-UG-003,LOC-UG-16,Balme Library Book & Journal Batch Transfer - Rack 365,3,210.00,1.0,PENDING
+REQ-UG-004,LOC-UG-46,Plumbing Leak Repair - Block 210,3,350.00,3.5,PENDING
+REQ-UG-005,LOC-UG-26,Hostel Water Header Tank Valve Overhaul - Roof 297,4,450.00,3.0,PENDING
+REQ-UG-006,LOC-UG-26,Electrical Circuit Maintenance - Room 108,5,120.00,3.0,PENDING
+REQ-UG-007,LOC-UG-28,Hostel Water Header Tank Valve Overhaul - Roof 366,5,450.00,3.0,PENDING
+REQ-UG-008,LOC-UG-35,Hostel Water Header Tank Valve Overhaul - Roof 475,5,380.00,3.0,PENDING
+REQ-UG-009,LOC-UG-19,Network Switch & Fiber Maintenance - Server Room 145,5,350.00,3.5,PENDING
+REQ-UG-010,LOC-UG-09,Electrical Circuit Maintenance - Room 356,5,300.00,2.5,PENDING
+REQ-UG-011,LOC-UG-28,ICT Projector & Audio Setup - Hall 465,3,150.00,1.0,PENDING
+REQ-UG-012,LOC-UG-05,Air Conditioner Servicing - Lab 444,4,260.00,2.0,PENDING
+REQ-UG-013,LOC-UG-51,ICT Projector & Audio Setup - Hall 229,4,200.00,1.0,PENDING
+REQ-UG-014,LOC-UG-14,Electrical Circuit Maintenance - Room 299,5,250.00,1.5,PENDING
+REQ-UG-015,LOC-UG-45,Air Conditioner Servicing - Lab 234,4,320.00,3.0,PENDING
+REQ-UG-016,LOC-UG-25,Plumbing Leak Repair - Block 127,3,350.00,2.0,PENDING
+REQ-UG-017,LOC-UG-43,Electrical Circuit Maintenance - Room 209,4,190.00,3.0,PENDING
+REQ-UG-018,LOC-UG-40,Plumbing Leak Repair - Block 420,4,280.00,2.0,PENDING
+REQ-UG-019,LOC-UG-39,Air Conditioner Servicing - Lab 319,4,210.00,2.0,PENDING
+REQ-UG-020,LOC-UG-43,Balme Library Book & Journal Batch Transfer - Rack 395,2,210.00,1.0,PENDING
+REQ-UG-021,LOC-UG-08,Plumbing Leak Repair - Block 395,5,350.00,2.0,PENDING
+REQ-UG-022,LOC-UG-45,Network Switch & Fiber Maintenance - Server Room 362,5,500.00,3.5,PENDING
+REQ-UG-023,LOC-UG-40,Balme Library Book & Journal Batch Transfer - Rack 161,2,90.00,2.5,PENDING
+REQ-UG-024,LOC-UG-10,Plumbing Leak Repair - Block 161,4,350.00,2.0,PENDING
+REQ-UG-025,LOC-UG-15,Balme Library Book & Journal Batch Transfer - Rack 294,3,140.00,2.5,PENDING
+REQ-UG-026,LOC-UG-19,Balme Library Book & Journal Batch Transfer - Rack 252,3,140.00,1.0,PENDING
+REQ-UG-027,LOC-UG-39,Hostel Water Header Tank Valve Overhaul - Roof 406,4,450.00,5.0,PENDING
+REQ-UG-028,LOC-UG-35,Air Conditioner Servicing - Lab 451,4,320.00,2.0,PENDING
+REQ-UG-029,LOC-UG-30,Balme Library Book & Journal Batch Transfer - Rack 352,2,210.00,2.5,PENDING
+REQ-UG-030,LOC-UG-47,Electrical Circuit Maintenance - Room 281,4,250.00,2.5,PENDING
+REQ-UG-031,LOC-UG-47,Hostel Water Header Tank Valve Overhaul - Roof 197,4,380.00,5.0,PENDING
+REQ-UG-032,LOC-UG-12,Shuttle Priority Peak Dispatch - Stop 431,5,200.00,4.0,PENDING
+REQ-UG-033,LOC-UG-01,Electrical Circuit Maintenance - Room 270,4,250.00,3.0,PENDING
+REQ-UG-034,LOC-UG-18,Hostel Water Header Tank Valve Overhaul - Roof 310,5,600.00,5.0,PENDING
+REQ-UG-035,LOC-UG-12,Network Switch & Fiber Maintenance - Server Room 149,5,350.00,3.5,PENDING
+REQ-UG-036,LOC-UG-31,Plumbing Leak Repair - Block 369,3,280.00,4.0,PENDING
+REQ-UG-037,LOC-UG-07,Shuttle Priority Peak Dispatch - Stop 103,4,400.00,4.0,PENDING
+REQ-UG-038,LOC-UG-47,Balme Library Book & Journal Batch Transfer - Rack 212,2,140.00,2.5,PENDING
+REQ-UG-039,LOC-UG-25,Air Conditioner Servicing - Lab 298,3,320.00,3.0,PENDING
+REQ-UG-040,LOC-UG-33,ICT Projector & Audio Setup - Hall 125,3,150.00,2.0,PENDING
+REQ-UG-041,LOC-UG-20,Shuttle Priority Peak Dispatch - Stop 243,4,200.00,2.0,PENDING
+REQ-UG-042,LOC-UG-08,Plumbing Leak Repair - Block 146,5,280.00,2.0,PENDING
+REQ-UG-043,LOC-UG-34,Hostel Water Header Tank Valve Overhaul - Roof 376,4,450.00,3.0,PENDING
+REQ-UG-044,LOC-UG-04,Hostel Water Header Tank Valve Overhaul - Roof 262,4,600.00,5.0,PENDING
+REQ-UG-045,LOC-UG-10,Shuttle Priority Peak Dispatch - Stop 107,5,200.00,2.0,PENDING
+REQ-UG-046,LOC-UG-01,Air Conditioner Servicing - Lab 373,4,320.00,2.0,PENDING
+REQ-UG-047,LOC-UG-05,Hostel Water Header Tank Valve Overhaul - Roof 276,5,600.00,5.0,PENDING
+REQ-UG-048,LOC-UG-45,Network Switch & Fiber Maintenance - Server Room 318,5,180.00,3.5,PENDING
+REQ-UG-049,LOC-UG-42,ICT Projector & Audio Setup - Hall 115,3,200.00,2.0,PENDING
+REQ-UG-050,LOC-UG-26,Network Switch & Fiber Maintenance - Server Room 314,5,500.00,1.5,PENDING
+REQ-UG-051,LOC-UG-15,Hostel Water Header Tank Valve Overhaul - Roof 258,5,380.00,3.0,PENDING
+REQ-UG-052,LOC-UG-34,Plumbing Leak Repair - Block 465,5,150.00,1.5,PENDING
+REQ-UG-053,LOC-UG-42,Hostel Water Header Tank Valve Overhaul - Roof 380,4,450.00,5.0,PENDING
+REQ-UG-054,LOC-UG-42,Electrical Circuit Maintenance - Room 437,5,250.00,1.5,PENDING
+REQ-UG-055,LOC-UG-48,Hostel Water Header Tank Valve Overhaul - Roof 307,5,450.00,3.0,PENDING
+REQ-UG-056,LOC-UG-18,Plumbing Leak Repair - Block 103,4,180.00,1.5,PENDING
+REQ-UG-057,LOC-UG-24,Plumbing Leak Repair - Block 238,5,350.00,4.0,PENDING
+REQ-UG-058,LOC-UG-05,Electrical Circuit Maintenance - Room 254,4,250.00,1.5,PENDING
+REQ-UG-059,LOC-UG-30,Hostel Water Header Tank Valve Overhaul - Roof 478,4,600.00,5.0,PENDING
+REQ-UG-060,LOC-UG-06,Electrical Circuit Maintenance - Room 360,4,250.00,3.0,PENDING
+REQ-UG-061,LOC-UG-28,Network Switch & Fiber Maintenance - Server Room 110,5,180.00,1.5,PENDING
+REQ-UG-062,LOC-UG-31,Shuttle Priority Peak Dispatch - Stop 108,4,200.00,2.0,PENDING
+REQ-UG-063,LOC-UG-29,Electrical Circuit Maintenance - Room 112,5,300.00,2.5,PENDING
+REQ-UG-064,LOC-UG-08,ICT Projector & Audio Setup - Hall 345,3,80.00,2.0,PENDING
+REQ-UG-065,LOC-UG-45,Electrical Circuit Maintenance - Room 137,4,250.00,2.5,PENDING
+REQ-UG-066,LOC-UG-40,Shuttle Priority Peak Dispatch - Stop 412,5,200.00,2.0,PENDING
+REQ-UG-067,LOC-UG-11,Network Switch & Fiber Maintenance - Server Room 228,5,350.00,3.5,PENDING
+REQ-UG-068,LOC-UG-25,Network Switch & Fiber Maintenance - Server Room 127,5,180.00,1.5,PENDING
+REQ-UG-069,LOC-UG-52,Hostel Water Header Tank Valve Overhaul - Roof 385,5,380.00,5.0,PENDING
+REQ-UG-070,LOC-UG-30,Air Conditioner Servicing - Lab 158,4,210.00,2.0,PENDING
+REQ-UG-071,LOC-UG-46,Network Switch & Fiber Maintenance - Server Room 401,5,350.00,3.5,PENDING
+REQ-UG-072,LOC-UG-16,Balme Library Book & Journal Batch Transfer - Rack 225,2,140.00,1.0,PENDING
+REQ-UG-073,LOC-UG-18,Air Conditioner Servicing - Lab 319,3,210.00,3.0,PENDING
+REQ-UG-074,LOC-UG-02,ICT Projector & Audio Setup - Hall 244,5,200.00,1.0,PENDING
+REQ-UG-075,LOC-UG-47,Balme Library Book & Journal Batch Transfer - Rack 310,3,90.00,1.0,PENDING
+REQ-UG-076,LOC-UG-29,Hostel Water Header Tank Valve Overhaul - Roof 360,5,450.00,3.0,PENDING
+REQ-UG-077,LOC-UG-43,Electrical Circuit Maintenance - Room 177,5,190.00,3.0,PENDING
+REQ-UG-078,LOC-UG-42,Electrical Circuit Maintenance - Room 254,5,300.00,3.0,PENDING
+REQ-UG-079,LOC-UG-50,Hostel Water Header Tank Valve Overhaul - Roof 289,4,600.00,3.0,PENDING
+REQ-UG-080,LOC-UG-45,Balme Library Book & Journal Batch Transfer - Rack 316,3,90.00,2.5,PENDING
+REQ-UG-081,LOC-UG-47,Balme Library Book & Journal Batch Transfer - Rack 217,2,90.00,1.0,PENDING
+REQ-UG-082,LOC-UG-45,ICT Projector & Audio Setup - Hall 323,3,150.00,1.0,PENDING
+REQ-UG-083,LOC-UG-02,ICT Projector & Audio Setup - Hall 393,4,80.00,2.0,PENDING
+REQ-UG-084,LOC-UG-26,Network Switch & Fiber Maintenance - Server Room 225,5,180.00,3.5,PENDING
+REQ-UG-085,LOC-UG-45,Plumbing Leak Repair - Block 348,4,150.00,3.5,PENDING
+REQ-UG-086,LOC-UG-07,ICT Projector & Audio Setup - Hall 294,5,200.00,2.0,PENDING
+REQ-UG-087,LOC-UG-28,Electrical Circuit Maintenance - Room 489,4,300.00,3.0,PENDING
+REQ-UG-088,LOC-UG-50,Network Switch & Fiber Maintenance - Server Room 172,5,350.00,1.5,PENDING
+REQ-UG-089,LOC-UG-10,Shuttle Priority Peak Dispatch - Stop 418,5,200.00,4.0,PENDING
+REQ-UG-090,LOC-UG-06,Plumbing Leak Repair - Block 122,3,180.00,2.0,PENDING
+REQ-UG-091,LOC-UG-52,Plumbing Leak Repair - Block 467,3,350.00,4.0,PENDING
+REQ-UG-092,LOC-UG-43,Balme Library Book & Journal Batch Transfer - Rack 342,2,90.00,1.0,PENDING
+REQ-UG-093,LOC-UG-14,Air Conditioner Servicing - Lab 239,4,210.00,3.0,PENDING
+REQ-UG-094,LOC-UG-07,Air Conditioner Servicing - Lab 366,3,260.00,2.0,PENDING
+REQ-UG-095,LOC-UG-38,Air Conditioner Servicing - Lab 441,4,260.00,2.0,PENDING
+REQ-UG-096,LOC-UG-47,Electrical Circuit Maintenance - Room 472,4,250.00,2.5,PENDING
+REQ-UG-097,LOC-UG-26,Plumbing Leak Repair - Block 351,3,180.00,4.0,PENDING
+REQ-UG-098,LOC-UG-33,Air Conditioner Servicing - Lab 345,4,260.00,2.0,PENDING
+REQ-UG-099,LOC-UG-13,Air Conditioner Servicing - Lab 179,4,260.00,2.0,PENDING
+REQ-UG-100,LOC-UG-52,Balme Library Book & Journal Batch Transfer - Rack 163,3,90.00,2.5,PENDING
+REQ-UG-101,LOC-UG-24,Electrical Circuit Maintenance - Room 252,5,120.00,2.5,PENDING
+REQ-UG-102,LOC-UG-35,Plumbing Leak Repair - Block 479,3,280.00,3.5,PENDING
+REQ-UG-103,LOC-UG-20,Hostel Water Header Tank Valve Overhaul - Roof 241,4,600.00,3.0,PENDING
+REQ-UG-104,LOC-UG-45,Shuttle Priority Peak Dispatch - Stop 306,4,200.00,4.0,PENDING
+REQ-UG-105,LOC-UG-42,Electrical Circuit Maintenance - Room 217,5,120.00,2.5,PENDING
+REQ-UG-106,LOC-UG-02,Hostel Water Header Tank Valve Overhaul - Roof 349,5,380.00,5.0,PENDING
+REQ-UG-107,LOC-UG-02,Shuttle Priority Peak Dispatch - Stop 492,5,400.00,2.0,PENDING
+REQ-UG-108,LOC-UG-24,Network Switch & Fiber Maintenance - Server Room 279,5,500.00,3.5,PENDING
+REQ-UG-109,LOC-UG-11,Air Conditioner Servicing - Lab 281,4,320.00,2.0,PENDING
+REQ-UG-110,LOC-UG-40,Balme Library Book & Journal Batch Transfer - Rack 218,3,90.00,2.5,PENDING
+REQ-UG-111,LOC-UG-39,Network Switch & Fiber Maintenance - Server Room 275,5,180.00,3.5,PENDING
+REQ-UG-112,LOC-UG-51,Electrical Circuit Maintenance - Room 386,5,190.00,3.0,PENDING
+REQ-UG-113,LOC-UG-13,Balme Library Book & Journal Batch Transfer - Rack 426,2,90.00,2.5,PENDING
+REQ-UG-114,LOC-UG-30,Electrical Circuit Maintenance - Room 153,5,120.00,2.5,PENDING
+REQ-UG-115,LOC-UG-17,Hostel Water Header Tank Valve Overhaul - Roof 231,5,450.00,3.0,PENDING
+REQ-UG-116,LOC-UG-24,Hostel Water Header Tank Valve Overhaul - Roof 416,5,380.00,5.0,PENDING
+REQ-UG-117,LOC-UG-07,Hostel Water Header Tank Valve Overhaul - Roof 207,5,600.00,5.0,PENDING
+REQ-UG-118,LOC-UG-02,ICT Projector & Audio Setup - Hall 409,5,150.00,1.0,PENDING
+REQ-UG-119,LOC-UG-05,Air Conditioner Servicing - Lab 236,4,320.00,2.0,PENDING
+REQ-UG-120,LOC-UG-06,Network Switch & Fiber Maintenance - Server Room 398,5,350.00,3.5,PENDING
+REQ-UG-121,LOC-UG-19,Network Switch & Fiber Maintenance - Server Room 302,5,180.00,1.5,PENDING
+REQ-UG-122,LOC-UG-16,Network Switch & Fiber Maintenance - Server Room 310,5,350.00,3.5,PENDING
+REQ-UG-123,LOC-UG-17,ICT Projector & Audio Setup - Hall 316,3,150.00,2.0,PENDING
+REQ-UG-124,LOC-UG-01,Network Switch & Fiber Maintenance - Server Room 141,5,180.00,1.5,PENDING
+REQ-UG-125,LOC-UG-07,Network Switch & Fiber Maintenance - Server Room 205,5,500.00,1.5,PENDING
+REQ-UG-126,LOC-UG-24,ICT Projector & Audio Setup - Hall 484,4,150.00,1.0,PENDING
+REQ-UG-127,LOC-UG-23,ICT Projector & Audio Setup - Hall 117,4,80.00,1.0,PENDING
+REQ-UG-128,LOC-UG-06,Hostel Water Header Tank Valve Overhaul - Roof 389,5,380.00,5.0,PENDING
+REQ-UG-129,LOC-UG-10,Air Conditioner Servicing - Lab 337,4,320.00,2.0,PENDING
+REQ-UG-130,LOC-UG-36,Network Switch & Fiber Maintenance - Server Room 449,5,180.00,1.5,PENDING
+REQ-UG-131,LOC-UG-49,Hostel Water Header Tank Valve Overhaul - Roof 211,5,600.00,5.0,PENDING
+REQ-UG-132,LOC-UG-04,Air Conditioner Servicing - Lab 182,4,320.00,3.0,PENDING
+REQ-UG-133,LOC-UG-49,Balme Library Book & Journal Batch Transfer - Rack 224,2,140.00,2.5,PENDING
+REQ-UG-134,LOC-UG-28,Balme Library Book & Journal Batch Transfer - Rack 357,2,90.00,2.5,PENDING
+REQ-UG-135,LOC-UG-10,Hostel Water Header Tank Valve Overhaul - Roof 496,4,450.00,3.0,PENDING
+REQ-UG-136,LOC-UG-34,Balme Library Book & Journal Batch Transfer - Rack 373,3,210.00,2.5,PENDING
+REQ-UG-137,LOC-UG-35,Network Switch & Fiber Maintenance - Server Room 170,5,350.00,3.5,PENDING
+REQ-UG-138,LOC-UG-15,Air Conditioner Servicing - Lab 446,3,210.00,2.0,PENDING
+REQ-UG-139,LOC-UG-26,Network Switch & Fiber Maintenance - Server Room 294,5,500.00,1.5,PENDING
+REQ-UG-140,LOC-UG-28,Plumbing Leak Repair - Block 207,3,220.00,4.0,PENDING
+REQ-UG-141,LOC-UG-31,ICT Projector & Audio Setup - Hall 187,4,200.00,1.0,PENDING
+REQ-UG-142,LOC-UG-19,Plumbing Leak Repair - Block 243,3,350.00,1.5,PENDING
+REQ-UG-143,LOC-UG-14,ICT Projector & Audio Setup - Hall 141,5,80.00,1.0,PENDING
+REQ-UG-144,LOC-UG-33,Air Conditioner Servicing - Lab 421,3,320.00,2.0,PENDING
+REQ-UG-145,LOC-UG-24,Network Switch & Fiber Maintenance - Server Room 424,5,350.00,3.5,PENDING
+REQ-UG-146,LOC-UG-46,Shuttle Priority Peak Dispatch - Stop 432,4,400.00,4.0,PENDING
+REQ-UG-147,LOC-UG-05,Hostel Water Header Tank Valve Overhaul - Roof 384,5,380.00,5.0,PENDING
+REQ-UG-148,LOC-UG-43,Balme Library Book & Journal Batch Transfer - Rack 476,2,210.00,2.5,PENDING
+REQ-UG-149,LOC-UG-25,Hostel Water Header Tank Valve Overhaul - Roof 354,5,450.00,5.0,PENDING
+REQ-UG-150,LOC-UG-25,Hostel Water Header Tank Valve Overhaul - Roof 214,5,450.00,5.0,PENDING
+REQ-UG-151,LOC-UG-38,Balme Library Book & Journal Batch Transfer - Rack 154,2,90.00,1.0,PENDING
+REQ-UG-152,LOC-UG-25,Hostel Water Header Tank Valve Overhaul - Roof 446,4,450.00,5.0,PENDING
+REQ-UG-153,LOC-UG-30,Air Conditioner Servicing - Lab 480,3,260.00,2.0,PENDING
+REQ-UG-154,LOC-UG-26,Shuttle Priority Peak Dispatch - Stop 211,4,400.00,4.0,PENDING
+REQ-UG-155,LOC-UG-29,ICT Projector & Audio Setup - Hall 434,3,200.00,1.0,PENDING
+REQ-UG-156,LOC-UG-12,Shuttle Priority Peak Dispatch - Stop 432,4,400.00,2.0,PENDING
+REQ-UG-157,LOC-UG-46,ICT Projector & Audio Setup - Hall 168,3,80.00,2.0,PENDING
+REQ-UG-158,LOC-UG-13,Hostel Water Header Tank Valve Overhaul - Roof 431,4,450.00,5.0,PENDING
+REQ-UG-159,LOC-UG-07,Shuttle Priority Peak Dispatch - Stop 367,5,200.00,2.0,PENDING
+REQ-UG-160,LOC-UG-20,Hostel Water Header Tank Valve Overhaul - Roof 167,5,450.00,3.0,PENDING
+REQ-UG-161,LOC-UG-23,Network Switch & Fiber Maintenance - Server Room 217,5,500.00,3.5,PENDING
+REQ-UG-162,LOC-UG-30,Shuttle Priority Peak Dispatch - Stop 479,4,200.00,2.0,PENDING
+REQ-UG-163,LOC-UG-39,Electrical Circuit Maintenance - Room 201,5,300.00,3.0,PENDING
+REQ-UG-164,LOC-UG-03,Electrical Circuit Maintenance - Room 154,4,190.00,3.0,PENDING
+REQ-UG-165,LOC-UG-34,Electrical Circuit Maintenance - Room 496,5,190.00,1.5,PENDING
+REQ-UG-166,LOC-UG-26,Balme Library Book & Journal Batch Transfer - Rack 436,2,140.00,2.5,PENDING
+REQ-UG-167,LOC-UG-36,Plumbing Leak Repair - Block 341,3,280.00,4.0,PENDING
+REQ-UG-168,LOC-UG-51,Shuttle Priority Peak Dispatch - Stop 112,5,200.00,4.0,PENDING
+REQ-UG-169,LOC-UG-39,ICT Projector & Audio Setup - Hall 341,3,200.00,1.0,PENDING
+REQ-UG-170,LOC-UG-46,Balme Library Book & Journal Batch Transfer - Rack 359,2,210.00,2.5,PENDING
+REQ-UG-171,LOC-UG-26,Electrical Circuit Maintenance - Room 249,5,190.00,3.0,PENDING
+REQ-UG-172,LOC-UG-18,Air Conditioner Servicing - Lab 477,4,320.00,3.0,PENDING
+REQ-UG-173,LOC-UG-34,Hostel Water Header Tank Valve Overhaul - Roof 146,4,600.00,3.0,PENDING
+REQ-UG-174,LOC-UG-35,Electrical Circuit Maintenance - Room 459,4,250.00,1.5,PENDING
+REQ-UG-175,LOC-UG-01,Air Conditioner Servicing - Lab 106,3,210.00,3.0,PENDING
+REQ-UG-176,LOC-UG-33,Shuttle Priority Peak Dispatch - Stop 448,5,200.00,4.0,PENDING
+REQ-UG-177,LOC-UG-39,Plumbing Leak Repair - Block 404,5,180.00,1.5,PENDING
+REQ-UG-178,LOC-UG-15,Plumbing Leak Repair - Block 255,4,220.00,2.0,PENDING
+REQ-UG-179,LOC-UG-36,Air Conditioner Servicing - Lab 301,3,260.00,3.0,PENDING
+REQ-UG-180,LOC-UG-26,Electrical Circuit Maintenance - Room 357,5,300.00,2.5,PENDING
+REQ-UG-181,LOC-UG-34,Shuttle Priority Peak Dispatch - Stop 380,5,400.00,2.0,PENDING
+REQ-UG-182,LOC-UG-49,Electrical Circuit Maintenance - Room 154,5,190.00,1.5,PENDING
+REQ-UG-183,LOC-UG-07,Air Conditioner Servicing - Lab 203,3,320.00,2.0,PENDING
+REQ-UG-184,LOC-UG-34,Network Switch & Fiber Maintenance - Server Room 231,5,180.00,3.5,PENDING
+REQ-UG-185,LOC-UG-27,Shuttle Priority Peak Dispatch - Stop 274,4,200.00,4.0,PENDING
+REQ-UG-186,LOC-UG-14,Air Conditioner Servicing - Lab 200,3,320.00,3.0,PENDING
+REQ-UG-187,LOC-UG-22,Network Switch & Fiber Maintenance - Server Room 442,5,350.00,3.5,PENDING
+REQ-UG-188,LOC-UG-01,Balme Library Book & Journal Batch Transfer - Rack 429,3,210.00,2.5,PENDING
+REQ-UG-189,LOC-UG-26,ICT Projector & Audio Setup - Hall 117,4,150.00,1.0,PENDING
+REQ-UG-190,LOC-UG-15,Plumbing Leak Repair - Block 222,5,150.00,3.5,PENDING
+REQ-UG-191,LOC-UG-45,Plumbing Leak Repair - Block 120,3,280.00,4.0,PENDING
+REQ-UG-192,LOC-UG-01,ICT Projector & Audio Setup - Hall 327,5,200.00,1.0,PENDING
+REQ-UG-193,LOC-UG-37,Balme Library Book & Journal Batch Transfer - Rack 358,2,140.00,2.5,PENDING
+REQ-UG-194,LOC-UG-14,Shuttle Priority Peak Dispatch - Stop 439,4,200.00,2.0,PENDING
+REQ-UG-195,LOC-UG-28,Network Switch & Fiber Maintenance - Server Room 121,5,500.00,3.5,PENDING
+REQ-UG-196,LOC-UG-31,Hostel Water Header Tank Valve Overhaul - Roof 251,4,380.00,5.0,PENDING
+REQ-UG-197,LOC-UG-26,Electrical Circuit Maintenance - Room 480,5,120.00,3.0,PENDING
+REQ-UG-198,LOC-UG-32,Balme Library Book & Journal Batch Transfer - Rack 192,2,210.00,2.5,PENDING
+REQ-UG-199,LOC-UG-37,Network Switch & Fiber Maintenance - Server Room 167,5,180.00,3.5,PENDING
+REQ-UG-200,LOC-UG-38,Balme Library Book & Journal Batch Transfer - Rack 159,2,210.00,1.0,PENDING
+REQ-UG-201,LOC-UG-29,ICT Projector & Audio Setup - Hall 269,4,80.00,2.0,PENDING
+REQ-UG-202,LOC-UG-11,Air Conditioner Servicing - Lab 384,3,210.00,2.0,PENDING
+REQ-UG-203,LOC-UG-07,Electrical Circuit Maintenance - Room 181,5,300.00,1.5,PENDING
+REQ-UG-204,LOC-UG-39,Plumbing Leak Repair - Block 145,3,220.00,2.0,PENDING
+REQ-UG-205,LOC-UG-10,Air Conditioner Servicing - Lab 289,4,260.00,2.0,PENDING
+REQ-UG-206,LOC-UG-36,Hostel Water Header Tank Valve Overhaul - Roof 165,4,380.00,5.0,PENDING
+REQ-UG-207,LOC-UG-28,Plumbing Leak Repair - Block 374,4,180.00,3.5,PENDING
+REQ-UG-208,LOC-UG-52,Network Switch & Fiber Maintenance - Server Room 438,5,350.00,3.5,PENDING
+REQ-UG-209,LOC-UG-45,Shuttle Priority Peak Dispatch - Stop 241,4,400.00,4.0,PENDING
+REQ-UG-210,LOC-UG-20,Electrical Circuit Maintenance - Room 426,4,250.00,2.5,PENDING
+REQ-UG-211,LOC-UG-42,Balme Library Book & Journal Batch Transfer - Rack 353,2,90.00,2.5,PENDING
+REQ-UG-212,LOC-UG-15,Network Switch & Fiber Maintenance - Server Room 147,5,350.00,1.5,PENDING
+REQ-UG-213,LOC-UG-17,Network Switch & Fiber Maintenance - Server Room 302,5,500.00,3.5,PENDING
+REQ-UG-214,LOC-UG-22,Hostel Water Header Tank Valve Overhaul - Roof 460,4,380.00,5.0,PENDING
+REQ-UG-215,LOC-UG-28,ICT Projector & Audio Setup - Hall 294,5,200.00,1.0,PENDING
+REQ-UG-216,LOC-UG-13,Hostel Water Header Tank Valve Overhaul - Roof 404,4,600.00,3.0,PENDING
+REQ-UG-217,LOC-UG-22,Plumbing Leak Repair - Block 349,5,150.00,1.5,PENDING
+REQ-UG-218,LOC-UG-37,Network Switch & Fiber Maintenance - Server Room 232,5,350.00,1.5,PENDING
+REQ-UG-219,LOC-UG-36,ICT Projector & Audio Setup - Hall 369,3,200.00,2.0,PENDING
+REQ-UG-220,LOC-UG-18,Shuttle Priority Peak Dispatch - Stop 266,5,200.00,4.0,PENDING
+REQ-UG-221,LOC-UG-04,Balme Library Book & Journal Batch Transfer - Rack 243,3,140.00,1.0,PENDING
+REQ-UG-222,LOC-UG-08,Balme Library Book & Journal Batch Transfer - Rack 101,3,90.00,1.0,PENDING
+REQ-UG-223,LOC-UG-28,Hostel Water Header Tank Valve Overhaul - Roof 136,4,380.00,3.0,PENDING
+REQ-UG-224,LOC-UG-22,Balme Library Book & Journal Batch Transfer - Rack 132,2,140.00,2.5,PENDING
+REQ-UG-225,LOC-UG-49,Balme Library Book & Journal Batch Transfer - Rack 410,2,90.00,2.5,PENDING
+REQ-UG-226,LOC-UG-40,ICT Projector & Audio Setup - Hall 283,5,200.00,1.0,PENDING
+REQ-UG-227,LOC-UG-32,Network Switch & Fiber Maintenance - Server Room 244,5,500.00,1.5,PENDING
+REQ-UG-228,LOC-UG-30,Plumbing Leak Repair - Block 443,3,280.00,3.5,PENDING
+REQ-UG-229,LOC-UG-06,Shuttle Priority Peak Dispatch - Stop 268,4,200.00,2.0,PENDING
+REQ-UG-230,LOC-UG-24,Network Switch & Fiber Maintenance - Server Room 302,5,180.00,1.5,PENDING
+REQ-UG-231,LOC-UG-20,Shuttle Priority Peak Dispatch - Stop 367,5,200.00,2.0,PENDING
+REQ-UG-232,LOC-UG-42,Balme Library Book & Journal Batch Transfer - Rack 326,3,90.00,2.5,PENDING
+REQ-UG-233,LOC-UG-12,Hostel Water Header Tank Valve Overhaul - Roof 255,5,600.00,3.0,PENDING
+REQ-UG-234,LOC-UG-26,Balme Library Book & Journal Batch Transfer - Rack 475,3,90.00,1.0,PENDING
+REQ-UG-235,LOC-UG-24,ICT Projector & Audio Setup - Hall 346,4,80.00,1.0,PENDING
+REQ-UG-236,LOC-UG-17,Balme Library Book & Journal Batch Transfer - Rack 393,3,140.00,1.0,PENDING
+REQ-UG-237,LOC-UG-46,Network Switch & Fiber Maintenance - Server Room 311,5,500.00,3.5,PENDING
+REQ-UG-238,LOC-UG-23,ICT Projector & Audio Setup - Hall 319,4,200.00,1.0,PENDING
+REQ-UG-239,LOC-UG-10,Hostel Water Header Tank Valve Overhaul - Roof 105,4,600.00,5.0,PENDING
+REQ-UG-240,LOC-UG-32,Air Conditioner Servicing - Lab 311,3,260.00,3.0,PENDING
+REQ-UG-241,LOC-UG-44,Plumbing Leak Repair - Block 386,4,280.00,1.5,PENDING
+REQ-UG-242,LOC-UG-23,Balme Library Book & Journal Batch Transfer - Rack 321,2,90.00,2.5,PENDING
+REQ-UG-243,LOC-UG-37,Electrical Circuit Maintenance - Room 127,5,250.00,3.0,PENDING
+REQ-UG-244,LOC-UG-49,Plumbing Leak Repair - Block 430,5,220.00,4.0,PENDING
+REQ-UG-245,LOC-UG-25,Hostel Water Header Tank Valve Overhaul - Roof 354,5,380.00,3.0,PENDING
+REQ-UG-246,LOC-UG-06,Air Conditioner Servicing - Lab 308,4,260.00,2.0,PENDING
+REQ-UG-247,LOC-UG-46,Air Conditioner Servicing - Lab 187,4,260.00,3.0,PENDING
+REQ-UG-248,LOC-UG-08,ICT Projector & Audio Setup - Hall 404,3,80.00,2.0,PENDING
+REQ-UG-249,LOC-UG-34,Balme Library Book & Journal Batch Transfer - Rack 204,2,210.00,1.0,PENDING
+REQ-UG-250,LOC-UG-50,Balme Library Book & Journal Batch Transfer - Rack 255,2,90.00,2.5,PENDING
+REQ-UG-251,LOC-UG-47,Shuttle Priority Peak Dispatch - Stop 495,5,200.00,2.0,PENDING
+REQ-UG-252,LOC-UG-32,Air Conditioner Servicing - Lab 348,4,260.00,2.0,PENDING
+REQ-UG-253,LOC-UG-16,Network Switch & Fiber Maintenance - Server Room 140,5,180.00,1.5,PENDING
+REQ-UG-254,LOC-UG-16,ICT Projector & Audio Setup - Hall 370,5,80.00,1.0,PENDING
+REQ-UG-255,LOC-UG-42,Balme Library Book & Journal Batch Transfer - Rack 183,2,90.00,2.5,PENDING
+REQ-UG-256,LOC-UG-33,Electrical Circuit Maintenance - Room 183,4,250.00,1.5,PENDING
+REQ-UG-257,LOC-UG-22,Shuttle Priority Peak Dispatch - Stop 110,5,400.00,4.0,PENDING
+REQ-UG-258,LOC-UG-26,Network Switch & Fiber Maintenance - Server Room 265,5,500.00,3.5,PENDING
+REQ-UG-259,LOC-UG-50,Balme Library Book & Journal Batch Transfer - Rack 327,3,140.00,2.5,PENDING
+REQ-UG-260,LOC-UG-20,Hostel Water Header Tank Valve Overhaul - Roof 161,4,600.00,3.0,PENDING
+REQ-UG-261,LOC-UG-44,Network Switch & Fiber Maintenance - Server Room 307,5,350.00,3.5,PENDING
+REQ-UG-262,LOC-UG-21,Shuttle Priority Peak Dispatch - Stop 126,5,200.00,2.0,PENDING
+REQ-UG-263,LOC-UG-41,Shuttle Priority Peak Dispatch - Stop 168,5,400.00,2.0,PENDING
+REQ-UG-264,LOC-UG-25,Plumbing Leak Repair - Block 129,3,280.00,2.0,PENDING
+REQ-UG-265,LOC-UG-27,Network Switch & Fiber Maintenance - Server Room 387,5,500.00,3.5,PENDING
+REQ-UG-266,LOC-UG-05,ICT Projector & Audio Setup - Hall 398,5,200.00,2.0,PENDING
+REQ-UG-267,LOC-UG-44,Electrical Circuit Maintenance - Room 144,4,120.00,3.0,PENDING
+REQ-UG-268,LOC-UG-22,ICT Projector & Audio Setup - Hall 178,5,150.00,2.0,PENDING
+REQ-UG-269,LOC-UG-10,Network Switch & Fiber Maintenance - Server Room 151,5,500.00,1.5,PENDING
+REQ-UG-270,LOC-UG-29,Air Conditioner Servicing - Lab 321,4,260.00,2.0,PENDING
+REQ-UG-271,LOC-UG-36,Shuttle Priority Peak Dispatch - Stop 297,4,400.00,2.0,PENDING
+REQ-UG-272,LOC-UG-30,ICT Projector & Audio Setup - Hall 376,5,80.00,2.0,PENDING
+REQ-UG-273,LOC-UG-30,Hostel Water Header Tank Valve Overhaul - Roof 310,5,380.00,3.0,PENDING
+REQ-UG-274,LOC-UG-47,Plumbing Leak Repair - Block 269,3,350.00,2.0,PENDING
+REQ-UG-275,LOC-UG-15,Plumbing Leak Repair - Block 354,4,150.00,2.0,PENDING
+REQ-UG-276,LOC-UG-04,Plumbing Leak Repair - Block 150,5,280.00,3.5,PENDING
+REQ-UG-277,LOC-UG-25,Balme Library Book & Journal Batch Transfer - Rack 170,2,140.00,2.5,PENDING
+REQ-UG-278,LOC-UG-10,Electrical Circuit Maintenance - Room 185,4,300.00,3.0,PENDING
+REQ-UG-279,LOC-UG-39,Plumbing Leak Repair - Block 262,5,280.00,2.0,PENDING
+REQ-UG-280,LOC-UG-49,Hostel Water Header Tank Valve Overhaul - Roof 153,5,450.00,3.0,PENDING
+REQ-UG-281,LOC-UG-09,Plumbing Leak Repair - Block 216,4,350.00,2.0,DISPATCHED
+REQ-UG-282,LOC-UG-11,ICT Projector & Audio Setup - Hall 144,5,150.00,1.0,DISPATCHED
+REQ-UG-283,LOC-UG-49,Network Switch & Fiber Maintenance - Server Room 157,5,350.00,1.5,DISPATCHED
+REQ-UG-284,LOC-UG-12,Air Conditioner Servicing - Lab 454,3,260.00,2.0,DISPATCHED
+REQ-UG-285,LOC-UG-35,Hostel Water Header Tank Valve Overhaul - Roof 148,4,380.00,5.0,DISPATCHED
+REQ-UG-286,LOC-UG-27,Electrical Circuit Maintenance - Room 313,5,190.00,1.5,DISPATCHED
+REQ-UG-287,LOC-UG-40,Air Conditioner Servicing - Lab 174,3,320.00,3.0,DISPATCHED
+REQ-UG-288,LOC-UG-33,Hostel Water Header Tank Valve Overhaul - Roof 413,4,450.00,3.0,DISPATCHED
+REQ-UG-289,LOC-UG-46,Shuttle Priority Peak Dispatch - Stop 215,5,200.00,4.0,DISPATCHED
+REQ-UG-290,LOC-UG-22,Electrical Circuit Maintenance - Room 254,4,120.00,3.0,DISPATCHED
+REQ-UG-291,LOC-UG-04,Balme Library Book & Journal Batch Transfer - Rack 317,3,90.00,1.0,DISPATCHED
+REQ-UG-292,LOC-UG-52,Network Switch & Fiber Maintenance - Server Room 417,5,500.00,3.5,DISPATCHED
+REQ-UG-293,LOC-UG-48,Electrical Circuit Maintenance - Room 170,4,120.00,2.5,DISPATCHED
+REQ-UG-294,LOC-UG-10,Plumbing Leak Repair - Block 155,4,150.00,3.5,DISPATCHED
+REQ-UG-295,LOC-UG-31,ICT Projector & Audio Setup - Hall 164,4,150.00,1.0,DISPATCHED
+REQ-UG-296,LOC-UG-18,Air Conditioner Servicing - Lab 372,4,210.00,2.0,COMPLETED
+REQ-UG-297,LOC-UG-03,Air Conditioner Servicing - Lab 437,4,320.00,2.0,COMPLETED
+REQ-UG-298,LOC-UG-29,ICT Projector & Audio Setup - Hall 313,4,200.00,2.0,COMPLETED
+REQ-UG-299,LOC-UG-38,Balme Library Book & Journal Batch Transfer - Rack 271,2,90.00,1.0,COMPLETED
+REQ-UG-300,LOC-UG-19,Electrical Circuit Maintenance - Room 141,4,250.00,2.5,COMPLETED
+REQ-UG-301,LOC-UG-32,Shuttle Priority Peak Dispatch - Stop 200,5,400.00,4.0,COMPLETED
+REQ-UG-302,LOC-UG-43,Network Switch & Fiber Maintenance - Server Room 158,5,180.00,1.5,COMPLETED
+REQ-UG-303,LOC-UG-25,Network Switch & Fiber Maintenance - Server Room 245,5,350.00,3.5,COMPLETED
+REQ-UG-304,LOC-UG-38,Hostel Water Header Tank Valve Overhaul - Roof 333,4,450.00,3.0,COMPLETED

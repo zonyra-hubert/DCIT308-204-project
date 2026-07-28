@@ -1,228 +1,187 @@
-# 🇬🇭 Ghana Smart Service Operations Optimizer
+# 🏛️ University of Ghana Campus Service Operations Optimizer (UG-CSOO)
 
-An enterprise-grade Java console application and empirical algorithm laboratory designed to model, route, schedule, and optimize public service operations, utility maintenance, and resource allocation across Ghana's national road and infrastructure network.
-
----
-
-## 📌 Project Architecture & Tech Stack
-
-* **Core Language & Runtime:** Java (JDK 17+)
-* **Database & Persistence:** JDBC with SQLite / MySQL / PostgreSQL support
-* **Testing Framework:** JUnit 5 (Jupiter) with 40+ Unit Tests
-* **Core Rule:** **Zero Java Collections Framework (`java.util.ArrayList`, `HashMap`, `PriorityQueue`, etc.) for core logic.** All data structures are implemented custom from scratch using raw arrays and node pointers.
+An enterprise-grade Java console application and empirical algorithm laboratory designed to model, route, schedule, and optimize campus service operations, facility maintenance, shuttle dispatches, and IT support allocation across the **University of Ghana (UG), Legon Campus** road and pedestrian network.
 
 ---
 
-## 📂 Project Directory Structure
+## 📌 1. System Overview & Problem Statement
+
+### Operational Context: UG Legon Campus
+The **University of Ghana, Legon Campus** operates as a bustling academic micro-city spanning over 13 square kilometers. Daily campus operations involve handling hundreds of facilities maintenance tickets across traditional and diaspora student hostels, managing peak shuttle schedules, servicing department IT infrastructure, and transferring library archives.
+
+The **UG-CSOO** system provides automated, algorithmic decision support for campus logistics. It utilizes custom-built data structures (without relying on standard `java.util` collection frameworks) to solve shortest path routing, priority maintenance scheduling, resource allocation under strict budget constraints, and real-time operational auditing.
+
+---
+
+## ⚙️ 2. Explicit System Parameters & Operational Constraints
+
+| Parameter Name | Value | Description & Technical Application |
+| :--- | :--- | :--- |
+| **Parameter 1: Road Penalty Weight** | `43` | Weight factor applied to deteriorated campus road segments (e.g., speed bumps, pothole delays, pedestrian-heavy zones on Annie Jiagge & Guggisberg Ave). Used in Dijkstra/BFS routing cost calculations (`edge_weight = distance_m + 43 * (5.0 - condition_score)`). |
+| **Parameter 2: Custom Hash Table Capacity** | `547` | Initial prime capacity for the custom hash map index (`CustomHashTable`) used for $O(1)$ lookups of active campus service tickets by ticket ID. |
+| **Parameter 3: Operational Budget Constraint** | `GHS 1,089.00` | Budget limit applied to the 0/1 Knapsack optimization solver for batch maintenance allocation per shift/crew. |
+
+---
+
+## 📂 3. Real-World Domain & Entity Mappings
+
+### 📍 Locations (50+ Campus Nodes)
+- **Traditional Hostels:** Akuafo Hall (`LOC-UG-06`), Volta Hall (`LOC-UG-07`), Legon Hall (`LOC-UG-08`), Commonwealth Hall (`LOC-UG-09`), Mensah Sarbah Hall (`LOC-UG-10`), K.A. Busia Hall (`LOC-UG-45`).
+- **Diaspora & Private Hostels:** Jean Nelson Aka Hall (`LOC-UG-11`), Hilla Limann Hall (`LOC-UG-12`), Alexander Kwapong Hall (`LOC-UG-13`), Elizabeth Sey Hall (`LOC-UG-14`), Jubilee Hall (`LOC-UG-15`), Pentagon Hostels (`LOC-UG-39` to `LOC-UG-41`), TF Hostel (`LOC-UG-42`).
+- **Academic Departments:** Computer Science (`LOC-UG-02`), Mathematics (`LOC-UG-03`), Physics (`LOC-UG-04`), Chemistry (`LOC-UG-05`), Statistics (`LOC-UG-33`), Economics (`LOC-UG-35`), Business School (`LOC-UG-26`), School of Law (`LOC-UG-27`), School of Engineering (`LOC-UG-28`).
+- **Key Landmarks & Hubs:** Balme Library (`LOC-UG-01`), Central Canteen (`LOC-UG-19`), CC Halls (`LOC-UG-20`), Great Hall (`LOC-UG-16`), ISSER (`LOC-UG-17`), Night Market (`LOC-UG-18`), Banking Square (`LOC-UG-48`), UGCS IT Hub (`LOC-UG-44`), Works & Maintenance (`LOC-UG-43`), UG Health Centre (`LOC-UG-32`).
+- **Shuttle Transit Stops:** Main Gate Stop (`LOC-UG-21`), Diaspora Terminal (`LOC-UG-22`), Balme Library Stop (`LOC-UG-23`), Sarbah Field Stop (`LOC-UG-46`), Commonwealth Gate Stop (`LOC-UG-47`).
+
+### 🛣️ Roads / Edges (100+ Campus Segments)
+- **Named Avenues & Roads:** Annie Jiagge Road, J.S. Annan Road, Guggisberg Avenue, University Avenue, Extension Roads, and Hostel Connecting Paths.
+- **Edge Metrics:** Measured distance in meters ($m$), travel time in minutes, road condition rating ($1.0 - 5.0$), and penalty factor ($43$).
+
+### 🎟️ Service Requests (300+ Active Records)
+- **Hostel Maintenance Tickets:** Plumbing leaks in Akuafo/Volta Hall blocks, electrical circuit faults at Sarbah/Commonwealth Halls, water tank valve overhauls.
+- **ICT Infrastructure Dispatches:** Projector and network switch repairs in N-Block, JQB, and CS Computer Labs.
+- **Campus Shuttle Priority Dispatches:** Peak hour shuttle queue overrides at Main Gate and Diaspora Terminals.
+- **Library Logistics:** Balme Library archive book transfers to ISSER and Department libraries.
+
+### 🚜 Operational Resources (30+ Units)
+- **Maintenance Crews & Teams:** Legon Central Plumbing Teams, Electrical Response Squads, Facilities Repair Crews.
+- **IT Support Officers:** UGCS Infrastructure & AV Technicians.
+- **Transit & Utility Vehicles:** 30-Seater Campus Shuttles, Library Courier Vans, Physical Development Utility Pickups, 15-Ton Hydraulic Crane.
+
+---
+
+## 🗄️ 4. Database Schema Outline
 
 ```
 DCIT308-204-project/
-├── pom.xml                                  # Maven build & dependency configuration
-├── README.md                                # Project documentation & directory guide
-├── .gitignore                               # Git ignore rules
 ├── data/
-│   ├── seed/                                # Seed CSV datasets for bootstrapping system
-│   │   ├── locations.csv                    # Major Ghanaian cities & GPS coordinates
-│   │   ├── roads.csv                        # Inter-city highway network & road quality
-│   │   ├── requests.csv                     # Municipal service requests & priority levels
-│   │   └── resources.csv                    # Field maintenance crews, trucks & equipment
+│   ├── ghana_optimizer.db                   # SQLite Database File
+│   ├── seed/                                # Seed CSV Datasets
+│   │   ├── locations.csv                    # 52 Campus Locations
+│   │   ├── roads.csv                        # 105 Campus Road Segments (Penalty: 43)
+│   │   ├── requests.csv                     # 300+ Campus Service Tickets
+│   │   └── resources.csv                    # 32 Campus Resources & Vehicles
 │   └── sql/
-│       ├── schema.sql                       # Database DDL for entity tables
-│       └── seed_data.sql                    # SQL insert bootstrap scripts
-├── exports/
-│   ├── reports/                             # Exported operational summary reports
-│   └── benchmark_results/                 # Exported empirical lab metrics (CSV & logs)
-└── src/
-    ├── main/
-    │   ├── java/
-    │   │   └── com/
-    │   │       └── ghana/
-    │   │           └── optimizer/
-    │   │               ├── Main.java                        # Main application launcher
-    │   │               ├── config/
-    │   │               │   └── DatabaseConfig.java          # JDBC database connection setup
-    │   │               │
-    │   │               ├── model/                           # Domain Entities
-    │   │               │   ├── Location.java                # Graph node (City/Station)
-    │   │               │   ├── Road.java                    # Graph edge (Highway/Road link)
-    │   │               │   ├── ServiceRequest.java          # Utility maintenance request
-    │   │               │   ├── Resource.java                # Service team/vehicle resource
-    │   │               │   ├── AlgorithmRun.java            # Empirical benchmark run log
-    │   │               │   └── AuditEvent.java              # Undo/Redo operation audit record
-    │   │               │
-    │   │               ├── ds/                              # Custom Data Structures (Zero Built-in Collections)
-    │   │               │   ├── list/
-    │   │               │   │   ├── DynamicArray.java        # Resizable array implementation
-    │   │               │   │   ├── SinglyLinkedList.java    # Custom singly-linked list with Iterator
-    │   │               │   │   └── DoublyLinkedList.java    # Custom doubly-linked list with Iterator
-    │   │               │   ├── stack/
-    │   │               │   │   └── CustomStack.java         # LIFO stack for undo/redo audit logs
-    │   │               │   ├── queue/
-    │   │               │   │   ├── FifoQueue.java           # Standard FIFO queue
-    │   │               │   │   ├── CircularQueue.java       # Ring-buffer circular queue
-    │   │               │   │   └── CustomDeque.java         # Double-ended queue for emergency dispatch
-    │   │               │   ├── heap/
-    │   │               │   │   └── BinaryHeapPriorityQueue.java # Priority queue dispatch heap
-    │   │               │   ├── hash/
-    │   │               │   │   ├── CustomHashTable.java     # Chaining/probing hash map
-    │   │               │   │   └── CollisionMetrics.java    # Hash collision & load factor tracker
-    │   │               │   ├── tree/
-    │   │               │   │   ├── BinarySearchTree.java    # Unbalanced BST indexing
-    │   │               │   │   └── RedBlackTree.java        # Self-balancing BST / B-Tree
-    │   │               │   ├── disjoint/
-    │   │               │   │   └── DisjointSetUnion.java    # Path Compression & Union by Rank
-    │   │               │   └── graph/
-    │   │               │       ├── GraphAdjacencyList.java   # Sparse graph representation
-    │   │               │       └── GraphAdjacencyMatrix.java # Dense graph representation
-    │   │               │
-    │   │               ├── algorithm/                       # Algorithms & Routing Layer
-    │   │               │   ├── search/
-    │   │               │   │   ├── LinearSearch.java        # O(N) array search
-    │   │               │   │   └── BinarySearch.java        # O(log N) sorted search
-    │   │               │   ├── sort/
-    │   │               │   │   ├── SelectionSort.java       # O(N^2) selection sort
-    │   │               │   │   ├── InsertionSort.java       # O(N^2) insertion sort
-    │   │               │   │   ├── MergeSort.java           # O(N log N) stable sort
-    │   │               │   │   └── QuickSort.java           # O(N log N) in-place sort
-    │   │               │   ├── scheduling/
-    │   │               │   │   ├── FifoScheduler.java       # FCFS request dispatcher
-    │   │               │   │   ├── PriorityScheduler.java   # Heap priority-based dispatcher
-    │   │               │   │   └── UrgentDequeScheduler.java# Deque front-insertion override
-    │   │               │   ├── graph/
-    │   │               │   │   ├── BreadthFirstSearch.java  # BFS graph traversal
-    │   │               │   │   ├── DepthFirstSearch.java    # DFS graph traversal & cycles
-    │   │               │   │   ├── DijkstraAlgorithm.java   # Shortest path routing
-    │   │               │   │   ├── PrimAlgorithm.java       # MST (Adjacency Matrix)
-    │   │               │   │   └── KruskalAlgorithm.java    # MST (Disjoint Set)
-    │   │               │   └── optimization/
-    │   │               │       ├── GreedyResourceAllocator.java # Greedy allocation & counterexample trace
-    │   │               │       └── KnapsackBudgetOptimizer.java # 0/1 Dynamic Programming solver
-    │   │               │
-    │   │               ├── storage/                         # Storage & Persistence Layer
-    │   │               │   ├── db/
-    │   │               │   │   └── ConnectionManager.java   # JDBC SQLite/MySQL connection pool
-    │   │               │   ├── dao/                         # Data Access Objects (CRUD)
-    │   │               │   │   ├── LocationDao.java
-    │   │               │   │   ├── RoadDao.java
-    │   │               │   │   ├── ServiceRequestDao.java
-    │   │               │   │   ├── ResourceDao.java
-    │   │               │   │   ├── AlgorithmRunDao.java
-    │   │               │   │   └── AuditEventDao.java
-    │   │               │   └── csv/
-    │   │               │       └── CsvSeedReader.java       # Seed data parser
-    │   │               │
-    │   │               ├── benchmark/                       # Empirical Experimentation Lab
-    │   │               │   ├── Benchmarker.java             # Execution time (ns) & Memory (KB) metric engine
-    │   │               │   ├── BenchmarkResult.java         # Metric data container
-    │   │               │   └── BenchmarkExporter.java       # CSV & Database logger for test runs
-    │   │               │
-    │   │               └── ui/                              # Application & UI Layer
-    │   │                   ├── ConsoleMenu.java             # Interactive CLI menu handler
-    │   │                   ├── CliHandler.java              # CLI command-line arguments router
-    │   │                   └── views/
-    │   │                       ├── DispatchView.java        # Service request & dispatch terminal view
-    │   │                       ├── RoutingView.java         # Graph routing & MST terminal view
-    │   │                       └── BenchmarkView.java       # Empirical lab runner & viewer
-    │   └── resources/
-    │       ├── application.properties                   # Configuration file
-    │       └── db/
-    │           └── schema.sql                           # Database DDL schema file
-    │
-    └── test/                                                # Testing & Benchmarking Layer
-        └── java/
-            └── com/
-                └── ghana/
-                    └── optimizer/
-                        ├── ds/                              # Unit tests for custom data structures
-                        │   ├── DynamicArrayTest.java
-                        │   ├── LinkedListTest.java
-                        │   ├── CustomStackTest.java
-                        │   ├── QueueAndDequeTest.java
-                        │   ├── BinaryHeapTest.java
-                        │   ├── CustomHashTableTest.java
-                        │   ├── BinarySearchTreeTest.java
-                        │   ├── RedBlackTreeTest.java
-                        │   ├── DisjointSetTest.java
-                        │   └── GraphTest.java
-                        ├── algorithm/                       # Unit tests for algorithms & optimization
-                        │   ├── SearchingTest.java
-                        │   ├── SortingTest.java
-                        │   ├── SchedulingEngineTest.java
-                        │   ├── GraphAlgorithmsTest.java
-                        │   └── OptimizationEngineTest.java
-                        ├── storage/                         # Unit tests for DAOs & DB access
-                        │   └── DaoTest.java
-                        └── benchmark/                       # Unit tests for benchmarking lab
-                            └── BenchmarkerTest.java
+│       ├── schema.sql                       # Database DDL Table Definitions
+│       └── seed_data.sql                    # SQL Seed Scripts
+```
+
+### Table Definitions (`data/sql/schema.sql`)
+1. `locations`: `(id, name, region, latitude, longitude)`
+2. `roads`: `(id, source_location_id, target_location_id, distance_m, travel_time_mins, condition_score, penalty_weight DEFAULT 43.0)`
+3. `service_requests`: `(id, location_id, description, priority_level, budget_required, estimated_duration_hrs, status)`
+4. `resources`: `(id, name, type, capacity, cost_per_hour, current_location_id, is_available)`
+5. `algorithm_runs`: `(id, algorithm_name, dataset_size, execution_time_ns, memory_used_kb, hash_capacity DEFAULT 547, budget_limit DEFAULT 1089.0, parameters_json, executed_at)`
+6. `audit_events`: `(id, action_type, entity_name, entity_id, details, timestamp)`
+
+---
+
+## 💻 5. Algorithm Scenarios & Pseudocode Snippets
+
+### A. Graph Shortest Path Routing (Dijkstra Algorithm)
+*Scenario:* Dispatching a plumbing repair truck from Physical Development (`LOC-UG-43`) to Commonwealth Hall (`LOC-UG-09`) via Annie Jiagge Road with road penalty factor $43$.
+
+```java
+// Pseudocode: Dijkstra Shortest Path with Road Penalty Weight 43
+public double calculateCampusRouteCost(Road edge) {
+    double baseDistanceMeters = edge.getDistanceMeters();
+    double conditionScore = edge.getConditionScore(); // Scale 1.0 to 5.0
+    double penaltyWeight = 43.0; // System Parameter 1
+    
+    // Deteriorated paths add penalty weight of 43 * (5.0 - condition)
+    double effectiveWeight = baseDistanceMeters + penaltyWeight * (5.0 - conditionScore);
+    return effectiveWeight;
+}
+```
+
+### B. Custom Hash Table Indexing (`CustomHashTable`)
+*Scenario:* Storing and querying 300+ campus service tickets in $O(1)$ expected time using an initial prime capacity of $547$.
+
+```java
+// Pseudocode: Custom Hash Table Indexing for UG Service Tickets
+public class CustomHashTable<K, V> {
+    private static final int INITIAL_CAPACITY = 547; // System Parameter 2 (Prime Capacity)
+    private HashNode<K, V>[] buckets;
+
+    public CustomHashTable() {
+        this.buckets = new HashNode[INITIAL_CAPACITY];
+    }
+
+    private int getBucketIndex(K key) {
+        int hashCode = key.hashCode();
+        int index = Math.abs(hashCode) % INITIAL_CAPACITY;
+        return index;
+    }
+}
+```
+
+### C. 0/1 Knapsack Budget Optimization Solver
+*Scenario:* Selecting the set of hostel plumbing and electrical tickets that maximizes total priority value without exceeding the shift budget of **GHS 1,089.00**.
+
+```java
+// Pseudocode: Dynamic Programming 0/1 Knapsack Budget Optimizer
+public DynamicArray<ServiceRequest> optimizeMaintenanceBudget(ServiceRequest[] requests) {
+    int budgetLimitGHS = 1089; // System Parameter 3 (GHS 1,089)
+    int n = requests.length;
+    int[][] dp = new int[n + 1][budgetLimitGHS + 1];
+
+    for (int i = 1; i <= n; i++) {
+        int cost = (int) Math.ceil(requests[i - 1].getBudgetRequired());
+        int priorityValue = requests[i - 1].getPriorityLevel();
+
+        for (int w = 0; w <= budgetLimitGHS; w++) {
+            if (cost <= w) {
+                dp[i][w] = Math.max(dp[i - 1][w], dp[i - 1][w - cost] + priorityValue);
+            } else {
+                dp[i][w] = dp[i - 1][w];
+            }
+        }
+    }
+    return backtrackSelectedRequests(dp, requests, budgetLimitGHS);
+}
 ```
 
 ---
 
-## 📑 Detailed Architectural Package Guide
+## 🖥️ 6. Console Mocks & Terminal Verification
 
-### 1. Domain Models (`com.ghana.optimizer.model`)
-* `Location`: Node entity representing Ghanaian cities/hubs with GPS coordinates.
-* `Road`: Edge entity connecting locations with distance, travel time, and quality score.
-* `ServiceRequest`: Customer maintenance request with priority level (1–5), budget required, and status.
-* `Resource`: Operational asset (personnel crew, heavy vehicle, machinery) with hourly rate and location.
-* `AlgorithmRun`: Performance tracking entity recording algorithm execution time (ns) and memory overhead (KB).
-* `AuditEvent`: Operation audit record used for multi-level undo/redo operations.
+Running the application (`java -cp ... com.ghana.optimizer.Main`):
 
-### 2. Custom Data Structures (`com.ghana.optimizer.ds`)
-Implemented completely without Java Collections (`java.util.*`):
-* **`list`**: Dynamic resizable arrays, singly linked lists, and doubly linked lists with custom `Iterator` implementations.
-* **`stack`**: LIFO Stack supporting the system-wide Audit/Undo event log.
-* **`queue`**: FIFO Queue, Circular Queue (ring buffer), and Deque for priority and urgent dispatch overrides.
-* **`heap`**: Min/Max Binary Heap powering priority-driven request dispatching.
-* **`hash`**: Custom Hash Table tracking collisions, probing counts, and dynamic load factor re-hashing metrics.
-* **`tree`**: Binary Search Tree (BST) and Red-Black Tree for logarithmic indexing and fast searches.
-* **`disjoint`**: Disjoint Set Union (DSU) featuring **Path Compression** and **Union by Rank**.
-* **`graph`**: Adjacency Matrix and Adjacency List representations of Ghana's road network.
-
-### 3. Algorithms & Optimization Engine (`com.ghana.optimizer.algorithm`)
-* **Searching & Sorting**: Linear Search, Binary Search, Selection Sort, Insertion Sort, Merge Sort, and Quick Sort.
-* **Scheduling Engine**: FIFO Dispatcher, Priority Heap Dispatcher, and Urgent Deque Override Handler.
-* **Graph Engine**: BFS, DFS, Dijkstra Shortest Path, Prim MST, and Kruskal MST.
-* **Optimization Engine**: 
-  * `GreedyResourceAllocator`: Greedy allocation logic accompanied by a counterexample trace highlighting greedy limitations.
-  * `KnapsackBudgetOptimizer`: 0/1 Dynamic Programming solver maximizing project utility under constrained municipal budgets.
-
-### 4. Storage & Persistence (`com.ghana.optimizer.storage`)
-* **`db/ConnectionManager`**: Handles JDBC connection lifecycle and database driver initialization.
-* **`dao/*`**: Data Access Objects executing CRUD operations for all entities using standard JDBC `PreparedStatement`.
-* **`csv/CsvSeedReader`**: Parses seed CSV files (`data/seed/*.csv`) to bootstrap database tables and memory graphs.
-
-### 5. Empirical Benchmarking Lab (`com.ghana.optimizer.benchmark`)
-* **`Benchmarker`**: Automated benchmarking lab testing data structure & algorithm operations across input sizes ($N = 100 \dots 50,000$). Measures execution time ($\text{ns}$) and memory usage ($\text{KB}$).
-* **`BenchmarkExporter`**: Logs empirical experimentation results into CSV files under `exports/benchmark_results/` and persists metrics to the `algorithm_runs` database table.
-
-### 6. Interactive CLI & UI Layer (`com.ghana.optimizer.ui`)
-* **`ConsoleMenu`**: Menu-driven interactive terminal application allowing users to view map networks, dispatch service teams, run graph routing algorithms, trigger optimization solvers, and launch benchmarking experiments.
+```text
+==========================================================================
+  University of Ghana Campus Service Operations Optimizer (UG-CSOO)  
+  Operational Domain: UG Legon Campus, Accra, Ghana                       
+==========================================================================
+System Parameters Initialized:
+  - Parameter 1 (Road Penalty Weight): 43.0
+  - Parameter 2 (Custom Hash Table Capacity): 547
+  - Parameter 3 (Budget Constraint): GHS 1089.0
+--------------------------------------------------------------------------
+[DB STATUS] Connecting to SQLite Database...
+  -> Campus Nodes/Locations Loaded: 52
+  -> Campus Road Segments Loaded: 105
+  -> Active Service Requests Loaded: 304
+  -> Campus Maintenance/IT Resources Loaded: 32
+--------------------------------------------------------------------------
+UG-CSOO System Engine Initialized Successfully.
+```
 
 ---
 
-## 🛠️ How to Build and Run
+## 🛠️ 7. Build and Execution Instructions
 
-### Prerequisites
-* Java Development Kit (JDK 17 or higher)
-* Apache Maven 3.8+
-
-### 1. Compile the Project
+### 1. Initialize SQLite Database from Terminal
 ```bash
-mvn clean compile
+sqlite3 data/ghana_optimizer.db < data/sql/schema.sql
+sqlite3 data/ghana_optimizer.db < data/sql/seed_data.sql
 ```
 
-### 2. Run All Unit Tests (40+ Tests)
+### 2. Compile Java Source Code
 ```bash
-mvn test
+mkdir -p bin
+javac -cp "/home/hubert/.m2/repository/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar:/home/hubert/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar" -d bin src/main/java/com/ghana/optimizer/config/DatabaseConfig.java src/main/java/com/ghana/optimizer/storage/db/ConnectionManager.java src/main/java/com/ghana/optimizer/Main.java
 ```
 
-### 3. Build & Package Executable JAR
+### 3. Run System Launcher
 ```bash
-mvn package
-```
-
-### 4. Run the Application
-```bash
-java -jar target/smart-service-optimizer-1.0.0-SNAPSHOT.jar
+java -cp "bin:src/main/resources:/home/hubert/.m2/repository/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar:/home/hubert/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar" com.ghana.optimizer.Main
 ```
