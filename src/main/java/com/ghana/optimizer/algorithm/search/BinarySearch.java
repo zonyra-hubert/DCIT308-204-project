@@ -1,5 +1,4 @@
-package search;
-
+package com.ghana.optimizer.algorithm.search;
 /**
  * Binary search over a sorted array. Validates the sorted precondition
  * before searching, since binary search silently gives wrong answers

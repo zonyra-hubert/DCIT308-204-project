@@ -1,5 +1,6 @@
-package search;
+package com.ghana.optimizer.algorithm;
 
+import com.ghana.optimizer.algorithm.search.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
