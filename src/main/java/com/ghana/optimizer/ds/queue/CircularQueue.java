@@ -1,3 +1,5 @@
+package com.ghana.optimizer.ds.queue;
+
 public class CircularQueue<T> {
     private T[] data;
     private int front;
