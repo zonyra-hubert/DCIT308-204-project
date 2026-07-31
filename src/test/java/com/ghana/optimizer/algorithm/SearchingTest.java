@@ -1,5 +1,6 @@
 package com.ghana.optimizer.algorithm;
 
+import com.ghana.optimizer.algorithm.search.BinarySearch;
 import com.ghana.optimizer.algorithm.search.LinearSearch;
 import com.ghana.optimizer.ds.list.DynamicArray;
 import com.ghana.optimizer.model.ServiceRequest;
@@ -114,6 +115,38 @@ class SearchingTest {
         assertEquals(10, early);
         assertEquals(90, late);
         assertTrue(late > early, "Comparisons should grow with the target's position, evidencing O(n) behavior");
+    }
+
+    // ---------------- binarySearch ----------------
+
+    @Test
+    void binarySearch_findsExistingElement_inSortedArray() {
+        int[] array = {1, 3, 5, 7, 9, 11};
+
+        int index = BinarySearch.search(array, 7);
+
+        assertEquals(3, index);
+    }
+
+    @Test
+    void binarySearch_returnsMinusOne_whenElementIsMissing() {
+        int[] array = {1, 3, 5, 7, 9, 11};
+
+        int index = BinarySearch.search(array, 4);
+
+        assertEquals(-1, index);
+    }
+
+    @Test
+    void binarySearch_rejectsUnsortedInput() {
+        int[] array = {5, 1, 9, 3};
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> BinarySearch.search(array, 9)
+        );
+
+        assertEquals("BinarySearch requires the array to be sorted in ascending order", exception.getMessage());
     }
 
     // ---------------- linearSearchByCategory ----------------
