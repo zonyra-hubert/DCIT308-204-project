@@ -21,7 +21,7 @@ public class ServiceRequest {
     public ServiceRequest() { }
 
     public ServiceRequest(int requestId, int sourceId, Integer destinationId, String category,
-                          int urgency, String timeSubmitted, String deadline, String status) {
+                        int urgency, String timeSubmitted, String deadline, String status) {
         this.requestId = requestId;
         this.sourceId = sourceId;
         this.destinationId = destinationId;
@@ -60,5 +60,15 @@ public class ServiceRequest {
     public String toString() {
         return "ServiceRequest{id=" + requestId + ", category='" + category
                 + "', urgency=" + urgency + ", status='" + status + "'}";
+    }
+
+    public int getPriorityLevel() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPriorityLevel'");
+    }
+
+    public Object getLocationId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLocationId'");
     }
 }
