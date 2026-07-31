@@ -1,0 +1,33 @@
+id,name,type,capacity,cost_per_hour,current_location_id,is_available
+RES-UG-01,Legon Central Plumbing Rapid Response Team 1,PERSONNEL,5.0,85.00,LOC-UG-43,true
+RES-UG-02,Legon Central Plumbing Rapid Response Team 2,PERSONNEL,5.0,85.00,LOC-UG-43,true
+RES-UG-03,Akuafo & Volta Hostel Maintenance Unit,PERSONNEL,6.0,75.00,LOC-UG-06,true
+RES-UG-04,Commonwealth & Legon Hall Works Crew,PERSONNEL,8.0,90.00,LOC-UG-09,true
+RES-UG-05,Diaspora Halls Facilities Repair Team A,PERSONNEL,6.0,80.00,LOC-UG-11,true
+RES-UG-06,Diaspora Halls Facilities Repair Team B,PERSONNEL,6.0,80.00,LOC-UG-12,true
+RES-UG-07,UGCS IT Infrastructure Support Team 1,PERSONNEL,4.0,120.00,LOC-UG-44,true
+RES-UG-08,UGCS IT Infrastructure Support Team 2,PERSONNEL,4.0,120.00,LOC-UG-44,true
+RES-UG-09,UGCS AV & Lecture Hall Technicians,PERSONNEL,5.0,95.00,LOC-UG-24,true
+RES-UG-10,Physical Development Heavy Electrical Squad,PERSONNEL,10.0,150.00,LOC-UG-43,true
+RES-UG-11,UG Campus Shuttle Bus 01 (30-Seater),VEHICLE,30.0,110.00,LOC-UG-21,true
+RES-UG-12,UG Campus Shuttle Bus 02 (30-Seater),VEHICLE,30.0,110.00,LOC-UG-21,true
+RES-UG-13,UG Campus Shuttle Bus 03 (30-Seater),VEHICLE,30.0,110.00,LOC-UG-22,true
+RES-UG-14,UG Campus Shuttle Bus 04 (30-Seater),VEHICLE,30.0,110.00,LOC-UG-22,true
+RES-UG-15,UG Campus Shuttle Bus 05 (Express),VEHICLE,25.0,125.00,LOC-UG-23,true
+RES-UG-16,UG Campus Shuttle Bus 06 (Express),VEHICLE,25.0,125.00,LOC-UG-47,true
+RES-UG-17,Balme Library Document Courier Van,VEHICLE,15.0,70.00,LOC-UG-01,true
+RES-UG-18,Works & Physical Dev Utility Truck 1,VEHICLE,20.0,130.00,LOC-UG-43,true
+RES-UG-19,Works & Physical Dev Utility Truck 2,VEHICLE,20.0,130.00,LOC-UG-43,true
+RES-UG-20,Campus General Maintenance Pick-up 01,VEHICLE,12.0,90.00,LOC-UG-18,true
+RES-UG-21,Campus General Maintenance Pick-up 02,VEHICLE,12.0,90.00,LOC-UG-26,true
+RES-UG-22,UG Mobile Hydraulic Lift Crane (15-Ton),EQUIPMENT,15.0,350.00,LOC-UG-43,true
+RES-UG-23,Substation Generator Maintenance Trailer,EQUIPMENT,10.0,280.00,LOC-UG-31,true
+RES-UG-24,UG High-Pressure Sewer Jetting Machine,EQUIPMENT,8.0,220.00,LOC-UG-43,true
+RES-UG-25,UG Fiber Splicing & Optical Testing Rig,EQUIPMENT,5.0,200.00,LOC-UG-44,true
+RES-UG-26,Emergency High-Voltage Transformer Rig,EQUIPMENT,12.0,400.00,LOC-UG-31,true
+RES-UG-27,Balme Library Mobile Archive Cart 1,EQUIPMENT,4.0,40.00,LOC-UG-01,true
+RES-UG-28,Balme Library Mobile Archive Cart 2,EQUIPMENT,4.0,40.00,LOC-UG-01,true
+RES-UG-29,UG Fire & Safety Utility Pump Unit,EQUIPMENT,10.0,250.00,LOC-UG-31,true
+RES-UG-30,Medical Centre Mobile Health Support Unit,VEHICLE,15.0,160.00,LOC-UG-32,true
+RES-UG-31,Pentagon & TF Hostel Area Repair Van,VEHICLE,15.0,95.00,LOC-UG-39,true
+RES-UG-32,Postgraduate Halls Facilities Response Truck,VEHICLE,18.0,105.00,LOC-UG-15,true
