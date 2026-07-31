@@ -1,0 +1,53 @@
+id,name,region,latitude,longitude
+LOC-UG-01,Balme Library,Legon Main Campus,5.6505,-0.1872
+LOC-UG-02,Department of Computer Science,Mathematical Sciences Sub-Cell,5.6530,-0.1865
+LOC-UG-03,Department of Mathematics,Mathematical Sciences Sub-Cell,5.6528,-0.1860
+LOC-UG-04,Department of Physics,Physical Sciences Complex,5.6522,-0.1855
+LOC-UG-05,Department of Chemistry,Physical Sciences Complex,5.6520,-0.1850
+LOC-UG-06,Akuafo Hall,Traditional Halls Zone,5.6490,-0.1880
+LOC-UG-07,Volta Hall,Traditional Halls Zone,5.6485,-0.1868
+LOC-UG-08,Legon Hall,Traditional Halls Zone,5.6498,-0.1860
+LOC-UG-09,Commonwealth Hall,Vandal City Zone,5.6540,-0.1888
+LOC-UG-10,Mensah Sarbah Hall,Traditional Halls Zone,5.6475,-0.1895
+LOC-UG-11,Jean Nelson Aka Hall,Diaspora Halls Zone,5.6420,-0.1840
+LOC-UG-12,Hilla Limann Hall,Diaspora Halls Zone,5.6415,-0.1830
+LOC-UG-13,Alexander Kwapong Hall,Diaspora Halls Zone,5.6410,-0.1845
+LOC-UG-14,Elizabeth Sey Hall,Diaspora Halls Zone,5.6425,-0.1850
+LOC-UG-15,Jubilee Hall,Postgraduate Zone,5.6460,-0.1835
+LOC-UG-16,Great Hall,University Heights,5.6550,-0.1880
+LOC-UG-17,ISSER (Institute of Statistical Research),Social Sciences Quad,5.6515,-0.1890
+LOC-UG-18,Night Market,South Campus Hub,5.6440,-0.1875
+LOC-UG-19,Central Canteen,Main Campus Core,5.6500,-0.1860
+LOC-UG-20,CC Halls (Central Cafeteria),Main Campus Core,5.6502,-0.1862
+LOC-UG-21,Main Gate Shuttle Stop,Campus Entrance,5.6400,-0.1890
+LOC-UG-22,Diaspora Shuttle Terminal,Diaspora Hub,5.6418,-0.1838
+LOC-UG-23,Balme Library Shuttle Stop,Central Transit,5.6507,-0.1870
+LOC-UG-24,N-Block Lecture Theatre,Academic Quad,5.6525,-0.1870
+LOC-UG-25,JQB (Jones Quartey Building),Academic Quad,5.6512,-0.1852
+LOC-UG-26,UGBS (UG Business School),Business Quad,5.6535,-0.1840
+LOC-UG-27,School of Law,Law Complex,5.6538,-0.1830
+LOC-UG-28,School of Engineering,Applied Sciences Complex,5.6545,-0.1820
+LOC-UG-29,UG Sports Stadium,Sports Complex,5.6465,-0.1810
+LOC-UG-30,Legon Botanical Gardens,North Campus,5.6600,-0.1850
+LOC-UG-31,UG Fire Station,Safety & Utilities,5.6435,-0.1895
+LOC-UG-32,UG Hospital / Health Centre,Medical Zone,5.6450,-0.1910
+LOC-UG-33,Department of Statistics,Mathematical Sciences Sub-Cell,5.6532,-0.1858
+LOC-UG-34,Department of Psychology,Social Sciences Quad,5.6518,-0.1895
+LOC-UG-35,Department of Economics,Social Sciences Quad,5.6510,-0.1885
+LOC-UG-36,School of Performing Arts,Arts Quad,5.6495,-0.1845
+LOC-UG-37,International House,Global Student Hub,5.6480,-0.1840
+LOC-UG-38,VALCO Trust Hostel,Graduate Zone,5.6470,-0.1825
+LOC-UG-39,Pentagon Hostel (Block A),Private Student Zone,5.6405,-0.1815
+LOC-UG-40,Pentagon Hostel (Block B),Private Student Zone,5.6403,-0.1810
+LOC-UG-41,Pentagon Hostel (Block C),Private Student Zone,5.6400,-0.1805
+LOC-UG-42,TF Hostel (Evandy),Private Student Zone,5.6395,-0.1820
+LOC-UG-43,UG Physical Development Directorate,Works & Maintenance,5.6445,-0.1900
+LOC-UG-44,UG Computing Services (UGCS),IT Hub,5.6515,-0.1865
+LOC-UG-45,K.A. Busia Hall,Traditional Halls Zone,5.6488,-0.1875
+LOC-UG-46,Sarbah Field Shuttle Stop,Transit Hub,5.6472,-0.1890
+LOC-UG-47,Commonwealth Hall Gate Stop,North Transit,5.6542,-0.1885
+LOC-UG-48,Banking Square,Commercial Hub,5.6455,-0.1880
+LOC-UG-49,Post Office & Telecom Hub,Services Hub,5.6460,-0.1885
+LOC-UG-50,Legon Hall Annex,Traditional Halls Zone,5.6495,-0.1855
+LOC-UG-51,Noguchi Memorial Institute,Medical Research Complex,5.6430,-0.1930
+LOC-UG-52,School of Nursing,Health Sciences Zone,5.6442,-0.1920
