@@ -1,3 +1,5 @@
+package com.ghana.optimizer.algorithm.search;
+
 import java.util.Random;
 
 public class JumpSearch {
