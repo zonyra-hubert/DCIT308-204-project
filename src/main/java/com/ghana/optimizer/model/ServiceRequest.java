@@ -63,12 +63,10 @@ public class ServiceRequest {
     }
 
     public int getPriorityLevel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPriorityLevel'");
+        return urgency;
     }
 
     public Object getLocationId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLocationId'");
+        return sourceId;
     }
 }

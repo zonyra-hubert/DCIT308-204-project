@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * count is checked by capturing what each method prints to the
  * console (both methods print "... after N comparison(s)").
  */
-class SearchingTest {
+public class SearchingTest {
 
     private final ByteArrayOutputStream capturedOutput = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;

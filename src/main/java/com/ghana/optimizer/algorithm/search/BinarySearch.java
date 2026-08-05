@@ -1,57 +1,138 @@
 package com.ghana.optimizer.algorithm.search;
+
+import java.util.Comparator;
+
 /**
- * Binary search over a sorted array. Validates the sorted precondition
- * before searching, since binary search silently gives wrong answers
- * on unsorted input rather than failing loudly - O(log n) time.
+ * Generic Binary Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
+ * Operates over sorted arrays using generic types (T extends Comparable<T> or custom Comparator<T>).
+ *
+ * All variable names are written in full as required by Zonyra Hubert.
  */
 public final class BinarySearch {
 
     private BinarySearch() {
-        // utility class - no instances
+        // Utility class - private constructor prevents instantiation
     }
 
     /**
-     * @param array the array to search - must already be sorted ascending
-     * @param target the value to find
-     * @return the index of a matching element, or -1 if not found
-     * @throws IllegalArgumentException if array is null or not sorted ascending
+     * Generic binary search using natural ordering (Comparable).
+     *
+     * @param searchArray Sorted array of elements to search through.
+     * @param targetElement Value being searched for.
+     * @param <T> Element type implementing Comparable.
+     * @return Index of matching element, or -1 if target is not found.
      */
-    public static int search(int[] array, int target) {
-        if (array == null) {
-            throw new IllegalArgumentException("array must not be null");
+    public static <T extends Comparable<T>> int search(T[] searchArray, T targetElement) {
+        return search(searchArray, targetElement, Comparator.naturalOrder());
+    }
+
+    /**
+     * Generic binary search using a custom Comparator.
+     *
+     * @param searchArray Sorted array of elements to search through.
+     * @param targetElement Value being searched for.
+     * @param elementComparator Comparator defining element ordering.
+     * @param <T> Element type.
+     * @return Index of matching element, or -1 if target is not found.
+     */
+    public static <T> int search(T[] searchArray, T targetElement, Comparator<T> elementComparator) {
+        if (searchArray == null) {
+            throw new IllegalArgumentException("searchArray must not be null");
         }
-        if (!isSortedAscending(array)) {
-            throw new IllegalArgumentException(
-                "BinarySearch requires the array to be sorted in ascending order");
+        if (targetElement == null) {
+            throw new IllegalArgumentException("targetElement must not be null");
+        }
+        if (elementComparator == null) {
+            throw new IllegalArgumentException("elementComparator must not be null");
+        }
+        if (!isSortedAscending(searchArray, elementComparator)) {
+            throw new IllegalArgumentException("BinarySearch requires the array to be sorted in ascending order");
         }
 
-        int low = 0;
-        int high = array.length - 1;
+        int lowerBoundaryIndex = 0;
+        int upperBoundaryIndex = searchArray.length - 1;
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2; // avoids overflow vs (low + high) / 2
-            if (array[mid] == target) {
-                return mid;
-            } else if (array[mid] < target) {
-                low = mid + 1;
+        while (lowerBoundaryIndex <= upperBoundaryIndex) {
+            int middleBoundaryIndex = lowerBoundaryIndex + (upperBoundaryIndex - lowerBoundaryIndex) / 2;
+            T currentElement = searchArray[middleBoundaryIndex];
+            int comparisonResult = elementComparator.compare(currentElement, targetElement);
+
+            if (comparisonResult == 0) {
+                return middleBoundaryIndex;
+            } else if (comparisonResult < 0) {
+                lowerBoundaryIndex = middleBoundaryIndex + 1;
             } else {
-                high = mid - 1;
+                upperBoundaryIndex = middleBoundaryIndex - 1;
             }
         }
         return -1;
     }
 
     /**
-     * Checks whether {@code array} is sorted in non-decreasing order.
-     * Public so callers can validate up front and handle the "not
-     * sorted" case themselves instead of catching an exception.
+     * Primitive int[] overload for backward compatibility.
      */
-    public static boolean isSortedAscending(int[] array) {
-        if (array == null) {
+    public static int search(int[] primitiveArray, int targetValue) {
+        if (primitiveArray == null) {
             throw new IllegalArgumentException("array must not be null");
         }
-        for (int i = 1; i < array.length; i++) {
-            if (array[i - 1] > array[i]) {
+        if (!isSortedAscending(primitiveArray)) {
+            throw new IllegalArgumentException("BinarySearch requires the array to be sorted in ascending order");
+        }
+
+        int lowerBoundaryIndex = 0;
+        int upperBoundaryIndex = primitiveArray.length - 1;
+
+        while (lowerBoundaryIndex <= upperBoundaryIndex) {
+            int middleBoundaryIndex = lowerBoundaryIndex + (upperBoundaryIndex - lowerBoundaryIndex) / 2;
+            int currentValue = primitiveArray[middleBoundaryIndex];
+
+            if (currentValue == targetValue) {
+                return middleBoundaryIndex;
+            } else if (currentValue < targetValue) {
+                lowerBoundaryIndex = middleBoundaryIndex + 1;
+            } else {
+                upperBoundaryIndex = middleBoundaryIndex - 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Verifies if a generic array is sorted in ascending order using natural ordering.
+     */
+    public static <T extends Comparable<T>> boolean isSortedAscending(T[] searchArray) {
+        return isSortedAscending(searchArray, Comparator.naturalOrder());
+    }
+
+    /**
+     * Verifies if a generic array is sorted in ascending order using a custom Comparator.
+     */
+    public static <T> boolean isSortedAscending(T[] searchArray, Comparator<T> elementComparator) {
+        if (searchArray == null) {
+            throw new IllegalArgumentException("searchArray must not be null");
+        }
+        if (elementComparator == null) {
+            throw new IllegalArgumentException("elementComparator must not be null");
+        }
+        for (int elementIndex = 1; elementIndex < searchArray.length; elementIndex++) {
+            T previousElement = searchArray[elementIndex - 1];
+            T currentElement = searchArray[elementIndex];
+            if (elementComparator.compare(previousElement, currentElement) > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Verifies if a primitive int array is sorted in ascending order.
+     */
+    public static boolean isSortedAscending(int[] primitiveArray) {
+        if (primitiveArray == null) {
+            throw new IllegalArgumentException("array must not be null");
+        }
+        for (int elementIndex = 1; elementIndex < primitiveArray.length; elementIndex++) {
+            if (primitiveArray[elementIndex - 1] > primitiveArray[elementIndex]) {
                 return false;
             }
         }

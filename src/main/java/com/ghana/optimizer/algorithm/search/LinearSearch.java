@@ -3,87 +3,133 @@ package com.ghana.optimizer.algorithm.search;
 import com.ghana.optimizer.ds.list.DynamicArray;
 import com.ghana.optimizer.model.ServiceRequest;
 
+import java.util.function.Function;
+
 /**
- * Linear Search (Core) — Wisdom Nunakpor (@wnunakpor001)
+ * Generic Linear Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
+ * Implements linear search operations over generic DynamicArray datasets.
  *
- * Implements linearSearchById() and linearSearchByCategory() from scratch
- * over a DynamicArray of ServiceRequest objects. No built-in search
- * (Collections.binarySearch, stream().filter(), etc.) is used anywhere
- * in this class — every element is inspected by hand in a loop.
+ * All variable names are written in full as required by Zonyra Hubert.
  */
-
-
-
 public class LinearSearch {
 
     /**
-     * Searches for a single ServiceRequest by its unique requestId.
-     * requestId is unique (it's the database's primary key), so this
-     * stops and returns the moment it finds a match — that early exit
-     * is exactly what keeps the best case O(1).
+     * Generic linear search for a target element in a DynamicArray.
+     * Stops at the first match.
      *
-     * @param data     the unsorted collection of service requests to scan
-     * @param targetId the requestId being searched for
-     * @return the matching ServiceRequest, or null if none was found
+     * @param datasetArray Collection of elements to search through.
+     * @param targetElement Value being searched for.
+     * @param <T> Element type.
+     * @return Index of matching element, or -1 if not found.
      */
+    public static <T> int search(DynamicArray<T> datasetArray, T targetElement) {
+        if (datasetArray == null) {
+            throw new IllegalArgumentException("datasetArray must not be null");
+        }
+        int comparisonsCount = 0;
 
+        for (int elementIndex = 0; elementIndex < datasetArray.size(); elementIndex++) {
+            comparisonsCount++;
+            T currentElement = datasetArray.get(elementIndex);
+
+            if (currentElement == targetElement || (currentElement != null && currentElement.equals(targetElement))) {
+                System.out.println("LinearSearch.search: found target at index " + elementIndex
+                        + " after " + comparisonsCount + " comparison(s)");
+                return elementIndex;
+            }
+        }
+        return -1;
+    }
 
     /**
-     * -------------------------------------------------------------------
-     *                  LinearSearch Method By ID
-     ---------------------------------------------------------------------
+     * Generic linear search matching an extracted property value.
+     * Returns the first element matching the property value.
+     *
+     * @param datasetArray Collection of elements to scan.
+     * @param propertyExtractorFunction Function to extract property from element.
+     * @param targetPropertyValue Value of the property to match.
+     * @param <T> Element type.
+     * @param <V> Property value type.
+     * @return First matching element, or null if not found.
      */
-    public static ServiceRequest linearSearchById(DynamicArray<ServiceRequest> data, int targetId) {
-        int comparisons = 0;
+    public static <T, V> T searchByProperty(DynamicArray<T> datasetArray,
+                                             Function<T, V> propertyExtractorFunction,
+                                             V targetPropertyValue) {
+        if (datasetArray == null) {
+            throw new IllegalArgumentException("datasetArray must not be null");
+        }
+        if (propertyExtractorFunction == null) {
+            throw new IllegalArgumentException("propertyExtractorFunction must not be null");
+        }
+        int comparisonsCount = 0;
 
-        for (int i = 0; i < data.size(); i++) {
-            comparisons++; // one comparison per element inspected
-            ServiceRequest current = data.get(i);
+        for (int elementIndex = 0; elementIndex < datasetArray.size(); elementIndex++) {
+            comparisonsCount++;
+            T currentElement = datasetArray.get(elementIndex);
+            V extractedPropertyValue = propertyExtractorFunction.apply(currentElement);
 
-            if (current.getRequestId() == targetId) {
-                System.out.println("linearSearchById: found id=" + targetId
-                        + " at index " + i + " after " + comparisons + " comparison(s)");
-                return current; // early exit — id is unique, no need to keep scanning
+            if (extractedPropertyValue == targetPropertyValue ||
+                    (extractedPropertyValue != null && extractedPropertyValue.equals(targetPropertyValue))) {
+                System.out.println("searchByProperty: found match at index " + elementIndex
+                        + " after " + comparisonsCount + " comparison(s)");
+                return currentElement;
             }
         }
 
-        System.out.println("linearSearchById: id=" + targetId + " not found after "
-                + comparisons + " comparison(s)");
+        System.out.println("searchByProperty: target property value not found after "
+                + comparisonsCount + " comparison(s)");
         return null;
     }
 
-
     /**
-     * -------------------------------------------------------------------
-     *                 LinearSearch Method By Category
-     ---------------------------------------------------------------------
-
-     * Searches for ALL ServiceRequests matching a given category. Unlike
-     * requestId, category is NOT unique — many requests can share
-     * "maintenance", "IT", "shuttle", etc. — so this method can never
-     * stop early; it must inspect every element exactly once no matter
-     * how many matches it already found. That makes it always O(n),
-     * even in the best case — a direct contrast with linearSearchById.
+     * Generic linear search collecting all elements matching an extracted property value.
      *
-     * @param data the unsorted collection of service requests to scan
-     * @param targetCategory the category being searched for (exact match)
-     * @return a DynamicArray of every matching ServiceRequest (empty if none found)
+     * @param datasetArray Collection of elements to scan.
+     * @param propertyExtractorFunction Function to extract property from element.
+     * @param targetPropertyValue Value of the property to match.
+     * @param <T> Element type.
+     * @param <V> Property value type.
+     * @return DynamicArray containing all matching elements.
      */
-    public static DynamicArray<ServiceRequest> linearSearchByCategory(DynamicArray<ServiceRequest> data, String targetCategory) {
-        int comparisons = 0;
-        DynamicArray<ServiceRequest> matches = new DynamicArray<>();
+    public static <T, V> DynamicArray<T> searchAllByProperty(DynamicArray<T> datasetArray,
+                                                              Function<T, V> propertyExtractorFunction,
+                                                              V targetPropertyValue) {
+        if (datasetArray == null) {
+            throw new IllegalArgumentException("datasetArray must not be null");
+        }
+        if (propertyExtractorFunction == null) {
+            throw new IllegalArgumentException("propertyExtractorFunction must not be null");
+        }
+        int comparisonsCount = 0;
+        DynamicArray<T> matchingElementsList = new DynamicArray<>();
 
-        for (int i = 0; i < data.size(); i++) {
-            comparisons++; // one comparison per element inspected
-            ServiceRequest current = data.get(i);
+        for (int elementIndex = 0; elementIndex < datasetArray.size(); elementIndex++) {
+            comparisonsCount++;
+            T currentElement = datasetArray.get(elementIndex);
+            V extractedPropertyValue = propertyExtractorFunction.apply(currentElement);
 
-            if (current.getCategory().equals(targetCategory)) {
-                matches.insert(current); // no early exit — category isn't unique
+            if (extractedPropertyValue == targetPropertyValue ||
+                    (extractedPropertyValue != null && extractedPropertyValue.equals(targetPropertyValue))) {
+                matchingElementsList.insert(currentElement);
             }
         }
 
-        System.out.println("linearSearchByCategory: found " + matches.size()
-                + " match(es) for '" + targetCategory + "' after " + comparisons + " comparison(s)");
-        return matches;
+        System.out.println("searchAllByProperty: found " + matchingElementsList.size()
+                + " match(es) after " + comparisonsCount + " comparison(s)");
+        return matchingElementsList;
+    }
+
+    /**
+     * Domain method: Searches for a single ServiceRequest by unique requestId.
+     */
+    public static ServiceRequest linearSearchById(DynamicArray<ServiceRequest> datasetArray, int targetRequestId) {
+        return searchByProperty(datasetArray, ServiceRequest::getRequestId, targetRequestId);
+    }
+
+    /**
+     * Domain method: Searches for all ServiceRequests matching a given category.
+     */
+    public static DynamicArray<ServiceRequest> linearSearchByCategory(DynamicArray<ServiceRequest> datasetArray, String targetCategory) {
+        return searchAllByProperty(datasetArray, ServiceRequest::getCategory, targetCategory);
     }
 }

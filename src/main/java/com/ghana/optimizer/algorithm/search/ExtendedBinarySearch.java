@@ -1,145 +1,139 @@
 package com.ghana.optimizer.algorithm.search;
 
-import java.util.Comparator;
-
 import com.ghana.optimizer.model.ServiceRequest;
 
+import java.util.Comparator;
+
+/**
+ * Generic Extended Binary Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
+ * Validates preconditions via SortedPreconditionValidator and performs O(log n) binary search over generic arrays.
+ *
+ * All variable names are written in full as required by Zonyra Hubert.
+ */
 public final class ExtendedBinarySearch {
+
     private ExtendedBinarySearch() {
-        // utility class - no instances
+        // Utility class - private constructor prevents instantiation
     }
 
     /**
-     * @param array the array to search - must already be sorted ascending
-     * @param target the value to find
-     * @return the index of a matching element, or -1 if not found
-     * @throws IllegalArgumentException if array is null or not sorted ascending
+     * Generic binary search using natural ordering.
      */
-    public static int search(int[] array, int target) {
-        if (array == null) {
-            throw new IllegalArgumentException("array must not be null");
-        }
-        if (!isSortedAscending(array)) {
-            throw new IllegalArgumentException(
-                "BinarySearch requires the array to be sorted in ascending order");
-        }
+    public static <T extends Comparable<T>> int search(T[] searchArray, T targetElement) {
+        return search(searchArray, targetElement, Comparator.naturalOrder());
+    }
 
-        int low = 0;
-        int high = array.length - 1;
+    /**
+     * Generic binary search using custom comparator.
+     */
+    public static <T> int search(T[] searchArray, T targetElement, Comparator<T> elementComparator) {
+        if (searchArray == null) {
+            throw new IllegalArgumentException("searchArray must not be null");
+        }
+        if (targetElement == null) {
+            throw new IllegalArgumentException("targetElement must not be null");
+        }
+        if (elementComparator == null) {
+            throw new IllegalArgumentException("elementComparator must not be null");
+        }
+        SortedPreconditionValidator.validate(searchArray, elementComparator);
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2; // avoids overflow vs (low + high) / 2
-            if (array[mid] == target) {
-                return mid;
-            } else if (array[mid] < target) {
-                low = mid + 1;
+        int lowerBoundaryIndex = 0;
+        int upperBoundaryIndex = searchArray.length - 1;
+
+        while (lowerBoundaryIndex <= upperBoundaryIndex) {
+            int middleBoundaryIndex = lowerBoundaryIndex + (upperBoundaryIndex - lowerBoundaryIndex) / 2;
+            T currentElement = searchArray[middleBoundaryIndex];
+            int comparisonResult = elementComparator.compare(currentElement, targetElement);
+
+            if (comparisonResult == 0) {
+                return middleBoundaryIndex;
+            } else if (comparisonResult < 0) {
+                lowerBoundaryIndex = middleBoundaryIndex + 1;
             } else {
-                high = mid - 1;
+                upperBoundaryIndex = middleBoundaryIndex - 1;
             }
         }
         return -1;
     }
 
     /**
-     * Checks whether {@code array} is sorted in non-decreasing order.
-     * Public so callers can validate up front and handle the "not
-     * sorted" case themselves instead of catching an exception.
+     * Primitive int[] overload for backward compatibility.
      */
-    public static boolean isSortedAscending(int[] array) {
-        if (array == null) {
-            throw new IllegalArgumentException("array must not be null");
-        }
-        for (int i = 1; i < array.length; i++) {
-            if (array[i - 1] > array[i]) {
-                return false;
-            }
-        }
-        return true;
+    public static int search(int[] primitiveArray, int targetValue) {
+        return BinarySearch.search(primitiveArray, targetValue);
     }
 
-    /** Comparator used by both request-based binary search variants below. */
+    /**
+     * Verifies if a primitive array is sorted in ascending order.
+     */
+    public static boolean isSortedAscending(int[] primitiveArray) {
+        return BinarySearch.isSortedAscending(primitiveArray);
+    }
+
     private static final Comparator<ServiceRequest> BY_PRIORITY_LEVEL =
-        Comparator.comparingInt(ServiceRequest::getPriorityLevel);
+            Comparator.comparingInt(ServiceRequest::getPriorityLevel);
 
     private static final Comparator<ServiceRequest> BY_LOCATION_ID =
-        Comparator.<ServiceRequest, String>comparing(
-            (ServiceRequest request) -> (String) request.getLocationId(),
-            Comparator.nullsFirst(String::compareTo));
+            Comparator.comparing(
+                    (ServiceRequest requestItem) -> String.valueOf(requestItem.getLocationId()),
+                    Comparator.nullsFirst(String::compareTo));
 
     /**
-     * Binary search over requests sorted by {@code priorityLevel}.
-     * Validates the sorted precondition first via
-     * {@link SortedPreconditionValidator}, throwing a precise error
-     * (pinpointing exactly which pair is out of order) if it fails.
-     *
-     * @return index of a matching request, or -1 if not found
-     * @throws IllegalArgumentException if requests is null or not sorted by priority level
+     * Binary search over requests sorted by priority level.
      */
-    public static int searchByPriorityLevel(ServiceRequest[] requests, int priorityLevel) {
-        if (requests == null) {
+    public static int searchByPriorityLevel(ServiceRequest[] requestArray, int priorityLevel) {
+        if (requestArray == null) {
             throw new IllegalArgumentException("requests must not be null");
         }
-        SortedPreconditionValidator.validate(requests, BY_PRIORITY_LEVEL);
+        SortedPreconditionValidator.validate(requestArray, BY_PRIORITY_LEVEL);
 
-        int low = 0;
-        int high = requests.length - 1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            int level = requests[mid].getPriorityLevel();
-            if (level == priorityLevel) {
-                return mid;
-            } else if (level < priorityLevel) {
-                low = mid + 1;
+        int lowerBoundaryIndex = 0;
+        int upperBoundaryIndex = requestArray.length - 1;
+
+        while (lowerBoundaryIndex <= upperBoundaryIndex) {
+            int middleBoundaryIndex = lowerBoundaryIndex + (upperBoundaryIndex - lowerBoundaryIndex) / 2;
+            int currentPriorityLevel = requestArray[middleBoundaryIndex].getPriorityLevel();
+
+            if (currentPriorityLevel == priorityLevel) {
+                return middleBoundaryIndex;
+            } else if (currentPriorityLevel < priorityLevel) {
+                lowerBoundaryIndex = middleBoundaryIndex + 1;
             } else {
-                high = mid - 1;
+                upperBoundaryIndex = middleBoundaryIndex - 1;
             }
         }
         return -1;
     }
 
     /**
-     * Binary search over requests sorted by {@code locationId}.
-     * Validates the sorted precondition first via
-     * {@link SortedPreconditionValidator}, throwing a precise error
-     * (pinpointing exactly which pair is out of order) if it fails.
-     *
-     * @return index of a matching request, or -1 if not found
-     * @throws IllegalArgumentException if requests/locationId is null, or requests not sorted by location id
+     * Binary search over requests sorted by locationId.
      */
-    public static int searchByLocationId(ServiceRequest[] requests, String locationId) {
-        if (requests == null) {
+    public static int searchByLocationId(ServiceRequest[] requestArray, String targetLocationId) {
+        if (requestArray == null) {
             throw new IllegalArgumentException("requests must not be null");
         }
-        if (locationId == null) {
+        if (targetLocationId == null) {
             throw new IllegalArgumentException("locationId must not be null");
         }
-        SortedPreconditionValidator.validate(requests, BY_LOCATION_ID);
+        SortedPreconditionValidator.validate(requestArray, BY_LOCATION_ID);
 
-        int low = 0;
-        int high = requests.length - 1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            int cmp = compareLocationId(requests[mid].getLocationId(), locationId);
-            if (cmp == 0) {
-                return mid;
-            } else if (cmp < 0) {
-                low = mid + 1;
+        int lowerBoundaryIndex = 0;
+        int upperBoundaryIndex = requestArray.length - 1;
+
+        while (lowerBoundaryIndex <= upperBoundaryIndex) {
+            int middleBoundaryIndex = lowerBoundaryIndex + (upperBoundaryIndex - lowerBoundaryIndex) / 2;
+            String currentLocationId = String.valueOf(requestArray[middleBoundaryIndex].getLocationId());
+            int comparisonResult = currentLocationId.compareTo(targetLocationId);
+
+            if (comparisonResult == 0) {
+                return middleBoundaryIndex;
+            } else if (comparisonResult < 0) {
+                lowerBoundaryIndex = middleBoundaryIndex + 1;
             } else {
-                high = mid - 1;
+                upperBoundaryIndex = middleBoundaryIndex - 1;
             }
         }
         return -1;
     }
-
-    private static int compareLocationId(Object a, String b) {
-        if (a == null && b == null) {
-            return 0;
-        }
-        {
-            return -1;
-        }
-    }
 }
-
-    
-
