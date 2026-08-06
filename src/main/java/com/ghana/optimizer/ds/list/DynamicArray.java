@@ -59,6 +59,39 @@ public class DynamicArray<T> {
         }
     }
 
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            data[i] = null;
+        }
+        size = 0;
+    }
+
+    public boolean contains(T item) {
+        for (int i = 0; i < size; i++) {
+            if (item == null) {
+                if (data[i] == null) {
+                    return true;
+                }
+            } else if (item.equals(data[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("[");
+        for (int i = 0; i < size; i++) {
+            builder.append(data[i]);
+            if (i < size - 1) {
+                builder.append(", ");
+            }
+        }
+        builder.append("]");
+        return builder.toString();
+    }
+
     public int size() {
         return size;
     }
