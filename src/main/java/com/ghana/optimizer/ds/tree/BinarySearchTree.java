@@ -1,7 +1,8 @@
 package com.ghana.optimizer.ds.tree;
 
 import java.util.NoSuchElementException;
-import com.ghana.optimizer.ds.list.DynamicArray;
+import com.ghana.optimizer.ds.DynamicArray;
+
 
 public class BinarySearchTree<K extends Comparable<K>, V> {
 
@@ -49,29 +50,32 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
     }
 
     public V search(K key) {
-        if (key == null) throw new IllegalArgumentException("key must not be null");
-        Node<K, V> node = getNode(key);
-        return node == null ? null : node.value;
-    }
-
-    public boolean contains(K key) {
-        if (key == null) throw new IllegalArgumentException("key must not be null");
-        return getNode(key) != null;
-    }
-
-    private Node<K, V> getNode(K key) {
         Node<K, V> cur = root;
         while (cur != null) {
             int cmp = key.compareTo(cur.key);
-            if (cmp == 0) return cur;
+            if (cmp == 0) return cur.value;
             cur = (cmp < 0) ? cur.left : cur.right;
         }
         return null;
     }
 
+    public boolean contains(K key) {
+        return search(key) != null || containsNullSentinel(key);
+    }
+
+    private boolean containsNullSentinel(K key) {
+        // handles the (rare) case a caller genuinely stored a null value for the key
+        Node<K, V> cur = root;
+        while (cur != null) {
+            int cmp = key.compareTo(cur.key);
+            if (cmp == 0) return true;
+            cur = (cmp < 0) ? cur.left : cur.right;
+        }
+        return false;
+    }
+
     public void remove(K key) {
-        if (key == null) throw new IllegalArgumentException("key must not be null");
-        if (getNode(key) == null) throw new NoSuchElementException("key not found: " + key);
+        if (!containsNullSentinel(key)) throw new NoSuchElementException("key not found: " + key);
         root = remove(root, key);
     }
 
@@ -83,17 +87,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
         } else if (cmp > 0) {
             node.right = remove(node.right, key);
         } else {
-            if (node.left == null) {
-                size--;
-                return node.right;
-            }
-            if (node.right == null) {
-                size--;
-                return node.left;
-            }
+            size--;
+            if (node.left == null) return node.right;
+            if (node.right == null) return node.left;
             Node<K, V> successor = minNode(node.right);
             node.key = successor.key;
             node.value = successor.value;
+            size++; // undo the decrement above; the actual removal happens in the recursive call below
             node.right = remove(node.right, successor.key);
         }
         return node;
@@ -114,7 +114,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
     private void inorder(Node<K, V> node, DynamicArray<K> result) {
         if (node == null) return;
         inorder(node.left, result);
-        result.insert(node.key);
+        result.add(node.key);
         inorder(node.right, result);
     }
 
