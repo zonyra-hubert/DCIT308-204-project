@@ -3,6 +3,7 @@ package com.ghana.optimizer;
 import com.ghana.optimizer.algorithm.GenericSearchAlgorithmTest;
 import com.ghana.optimizer.algorithm.SearchingTest;
 import com.ghana.optimizer.ds.BinaryHeapTest;
+import com.ghana.optimizer.ds.BTreeTest;
 import com.ghana.optimizer.ds.CustomHashTableTest;
 import com.ghana.optimizer.ds.PriorityQueueTest;
 
@@ -28,6 +29,7 @@ public class TestRunner {
                 BinaryHeapTest.class,
                 CustomHashTableTest.class,
                 PriorityQueueTest.class,
+                BTreeTest.class,
                 GenericSearchAlgorithmTest.class,
                 SearchingTest.class
         };

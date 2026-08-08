@@ -1,4 +1,4 @@
-package com.ghana.optimizer.algorithms.search;
+package com.ghana.optimizer.algorithm.search;
 
 /**
  * Interpolation Search
