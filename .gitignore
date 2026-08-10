@@ -1,41 +1,9 @@
-# Target & Build Output Directories
 target/
+bin/
 *.class
-*.jar
-*.war
-*.ear
-
-# IDE & Editor Project Files
+.DS_Store
 .idea/
 *.iml
 .settings/
-.project
 .classpath
-.vscode/
-*.swp
-*~
-
-# Operating System Files
-.DS_Store
-.DS_Store?
-ehthumbs.db
-Thumbs.db
-
-# Database Files (Local SQLite runtime databases)
-*.db
-*.sqlite
-*.sqlite3
-
-# Benchmark & Export Artifacts (Ignore generated outputs, keep directory structure)
-exports/benchmark_results/*.csv
-exports/reports/*.pdf
-exports/reports/*.txt
-!exports/benchmark_results/.gitkeep
-!exports/reports/.gitkeep
-
-# Log Files
-*.log
-logs/
-
-# Maven wrapper files (Optional if not using mvnw)
-.mvn/
+.project
