@@ -24,6 +24,17 @@ public class DynamicArray<T> {
         size++;
     }
 
+    public void add(T item) {
+        insert(item);
+    }
+
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            data[i] = null;
+        }
+        size = 0;
+    }
+
     @SuppressWarnings("unchecked")
     public T get(int index) {
         checkBounds(index);

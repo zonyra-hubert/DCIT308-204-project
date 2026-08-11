@@ -1,4 +1,4 @@
-package com.ghana.optimizer.graph;
+package com.ghana.optimizer.ds.graph;
 
 public class VertexIndex {
 
@@ -12,22 +12,18 @@ public class VertexIndex {
      * Returns the array index of a vertex.
      */
     public int indexOf(Vertex vertex) {
-
         if (vertex == null) {
             return -1;
         }
 
         for (int i = 0; i < vertices.length; i++) {
-
             if (vertices[i] == null) {
                 continue;
             }
-
             if (vertices[i].getId().equals(vertex.getId())) {
                 return i;
             }
         }
-
         return -1;
     }
 
@@ -35,19 +31,17 @@ public class VertexIndex {
      * Returns the array index using vertex ID.
      */
     public int indexOf(String vertexId) {
-
+        if (vertexId == null) {
+            return -1;
+        }
         for (int i = 0; i < vertices.length; i++) {
-
             if (vertices[i] == null) {
                 continue;
             }
-
             if (vertices[i].getId().equals(vertexId)) {
                 return i;
             }
         }
-
         return -1;
     }
 }
-

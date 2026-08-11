@@ -1,7 +1,7 @@
 package com.ghana.optimizer.ds.tree;
 
 import java.util.NoSuchElementException;
-import com.ghana.optimizer.ds.DynamicArray;
+import com.ghana.optimizer.ds.list.DynamicArray;
 
 
 public class BinarySearchTree<K extends Comparable<K>, V> {

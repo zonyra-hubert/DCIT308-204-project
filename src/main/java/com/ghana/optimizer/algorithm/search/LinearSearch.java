@@ -33,8 +33,19 @@ public class LinearSearch {
             T currentElement = datasetArray.get(elementIndex);
 
             if (currentElement == targetElement || (currentElement != null && currentElement.equals(targetElement))) {
-                System.out.println("LinearSearch.search: found target at index " + elementIndex
-                        + " after " + comparisonsCount + " comparison(s)");
+                return elementIndex;
+            }
+        }
+        return -1;
+    }
+
+    public static <T> int search(T[] datasetArray, T targetElement) {
+        if (datasetArray == null) {
+            throw new IllegalArgumentException("datasetArray must not be null");
+        }
+        for (int elementIndex = 0; elementIndex < datasetArray.length; elementIndex++) {
+            T currentElement = datasetArray[elementIndex];
+            if (currentElement == targetElement || (currentElement != null && currentElement.equals(targetElement))) {
                 return elementIndex;
             }
         }

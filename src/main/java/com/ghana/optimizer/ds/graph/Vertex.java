@@ -1,6 +1,6 @@
-package com.ghana.optimizer.graph;
+package com.ghana.optimizer.ds.graph;
 
- public class Vertex {
+public class Vertex {
 
     private final String id;
     private final String name;

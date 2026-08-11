@@ -81,8 +81,61 @@ public class SelectionSort {
                 .append(System.lineSeparator());
 
         String result = trace.toString();
-        System.out.println(result);
+        if (n <= 20) {
+            System.out.println(result);
+        }
         return result;
+    }
+
+    public static String selectionSort(DynamicArray<ServiceRequest> data, boolean printTrace) {
+        int n = data.size();
+        int comparisons = 0;
+        int swaps = 0;
+
+        StringBuilder trace = new StringBuilder();
+        if (printTrace) {
+            trace.append(String.format("%-4s %-8s %-14s %-18s %-18s %-8s%n",
+                    "Pass", "Fill@i", "SelectedIdx", "Id@i (before)", "Id@Selected (before)", "Swapped?"));
+            trace.append("-".repeat(78)).append(System.lineSeparator());
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            int selectedIndex = i;
+
+            for (int j = i + 1; j < n; j++) {
+                comparisons++;
+                if (data.get(j).getUrgency() > data.get(selectedIndex).getUrgency()) {
+                    selectedIndex = j;
+                }
+            }
+
+            int idAtI = data.get(i).getRequestId();
+            int idAtSelected = data.get(selectedIndex).getRequestId();
+            boolean swapped = selectedIndex != i;
+
+            if (swapped) {
+                swap(data, i, selectedIndex);
+                swaps++;
+            }
+
+            if (printTrace) {
+                trace.append(String.format("%-4d %-8d %-14d %-18d %-18d %-8s%n",
+                        i, i, selectedIndex, idAtI, idAtSelected, swapped ? "YES" : "no"));
+            }
+        }
+
+        if (printTrace) {
+            trace.append("-".repeat(78)).append(System.lineSeparator());
+            trace.append("Total comparisons: ").append(comparisons)
+                    .append(" (expected n(n-1)/2 = ").append(n * (n - 1) / 2).append(")")
+                    .append(System.lineSeparator());
+            trace.append("Total swaps: ").append(swaps).append(" (max possible: ").append(n - 1).append(")")
+                    .append(System.lineSeparator());
+            String result = trace.toString();
+            System.out.println(result);
+            return result;
+        }
+        return trace.toString();
     }
 
     private static void swap(DynamicArray<ServiceRequest> data, int i, int j) {

@@ -1,9 +1,9 @@
-package com.ghana.optimizer.ds.tree;
+package com.ghana.optimizer.ds.disjoint;
 
 /**
  * Custom disjoint-set (union-find) over integer elements 0..n-1, with union by rank
  * and path compression. Elements are expected to be pre-mapped from domain IDs
- * (e.g. locationId "L001") to a dense integer index by the caller (e.g. via CustomMap),
+ * (e.g. locationId "LOC-UG-01") to a dense integer index by the caller (e.g. via CustomHashTable),
  * since union-find classically operates over array indices for O(1) array access.
  *
  * This is the structure Kruskal's MST algorithm uses to detect cycles
@@ -71,4 +71,3 @@ public class DisjointSet {
         return numSets;
     }
 }
-

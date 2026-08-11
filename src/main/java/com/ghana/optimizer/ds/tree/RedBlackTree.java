@@ -1,5 +1,6 @@
-
 package com.ghana.optimizer.ds.tree;
+
+import com.ghana.optimizer.ds.list.DynamicArray;
 
 public class RedBlackTree<K extends Comparable<K>, V> {
 

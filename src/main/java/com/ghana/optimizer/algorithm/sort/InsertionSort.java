@@ -89,7 +89,61 @@ public class InsertionSort {
         trace.append("Total shifts: ").append(shifts).append(System.lineSeparator());
 
         String result = trace.toString();
-        System.out.println(result);
+        if (n <= 20) {
+            System.out.println(result);
+        }
         return result;
+    }
+
+    public static String insertionSort(DynamicArray<ServiceRequest> data, boolean printTrace) {
+        int n = data.size();
+        int comparisons = 0;
+        int shifts = 0;
+
+        StringBuilder trace = new StringBuilder();
+        if (printTrace) {
+            trace.append(String.format("%-4s %-10s %-14s %-10s %-10s%n",
+                    "Pass", "Key ID", "Key Urgency", "Shifts", "Inserted At"));
+            trace.append("-".repeat(56)).append(System.lineSeparator());
+        }
+
+        for (int i = 1; i < n; i++) {
+            ServiceRequest key = data.get(i);
+            int keyUrgency = key.getUrgency();
+            int keyId = key.getRequestId();
+            int j = i - 1;
+            int passShifts = 0;
+
+            while (j >= 0) {
+                comparisons++;
+                if (data.get(j).getUrgency() < keyUrgency) {
+                    data.set(j + 1, data.get(j));
+                    j--;
+                    passShifts++;
+                } else {
+                    break;
+                }
+            }
+            data.set(j + 1, key);
+            shifts += passShifts;
+
+            if (printTrace) {
+                trace.append(String.format("%-4d %-10d %-14d %-10d %-10d%n",
+                        i, keyId, keyUrgency, passShifts, j + 1));
+            }
+        }
+
+        if (printTrace) {
+            trace.append("-".repeat(56)).append(System.lineSeparator());
+            trace.append("Total comparisons: ").append(comparisons)
+                    .append(" (best case n-1 = ").append(n - 1)
+                    .append(", worst case n(n-1)/2 = ").append(n * (n - 1) / 2).append(")")
+                    .append(System.lineSeparator());
+            trace.append("Total shifts: ").append(shifts).append(System.lineSeparator());
+            String result = trace.toString();
+            System.out.println(result);
+            return result;
+        }
+        return trace.toString();
     }
 }

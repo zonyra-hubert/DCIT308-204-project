@@ -1,6 +1,6 @@
-package com.ghana.optimizer.graph.list;
+package com.ghana.optimizer.ds.graph.list;
 
-import com.ghana.optimizer.graph.Edge;
+import com.ghana.optimizer.ds.graph.Edge;
 
 /**
  * Represents one node in an adjacency list.
@@ -8,7 +8,6 @@ import com.ghana.optimizer.graph.Edge;
 public class ListNode {
 
     private Edge edge;
-
     private ListNode next;
 
     public ListNode(Edge edge) {

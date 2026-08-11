@@ -1,4 +1,4 @@
-package com.ghana.optimizer.graph;
+package com.ghana.optimizer.ds.graph;
 
 public abstract class Graph {
 
@@ -48,15 +48,11 @@ public abstract class Graph {
      * Finds a vertex by its ID.
      */
     public Vertex findVertexById(String id) {
-
         for (int i = 0; i < vertexCount; i++) {
-
-            if (vertices[i].getId().equals(id)) {
+            if (vertices[i] != null && vertices[i].getId().equals(id)) {
                 return vertices[i];
             }
         }
-
         return null;
     }
 }
-

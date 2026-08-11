@@ -1,4 +1,4 @@
-package com.ghana.optimizer.graph;
+package com.ghana.optimizer.ds.graph;
 
 public class Edge {
 
@@ -51,22 +51,22 @@ public class Edge {
     }
 
     /**
-     * Weight that future Dijkstra implementation will use.
+     * Effective weight using the formula:
+     * effectiveWeight = distanceMeters + penaltyWeight * (5.0 - conditionScore)
      */
     public double getEffectiveWeight() {
-
-        return distanceMeters +
-                penaltyWeight * (5.0 - conditionScore);
+        return distanceMeters + penaltyWeight * (5.0 - conditionScore);
     }
 
     @Override
     public String toString() {
-
         return source.getName()
                 + " -> "
                 + destination.getName()
                 + " ("
                 + distanceMeters
-                + "m)";
+                + "m, effCost="
+                + String.format("%.1f", getEffectiveWeight())
+                + ")";
     }
 }
