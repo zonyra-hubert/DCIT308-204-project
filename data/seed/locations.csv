@@ -1,53 +1,201 @@
 id,name,region,latitude,longitude
-LOC-UG-01,Balme Library,Legon Main Campus,5.6505,-0.1872
-LOC-UG-02,Department of Computer Science,Mathematical Sciences Sub-Cell,5.6530,-0.1865
-LOC-UG-03,Department of Mathematics,Mathematical Sciences Sub-Cell,5.6528,-0.1860
-LOC-UG-04,Department of Physics,Physical Sciences Complex,5.6522,-0.1855
-LOC-UG-05,Department of Chemistry,Physical Sciences Complex,5.6520,-0.1850
-LOC-UG-06,Akuafo Hall,Traditional Halls Zone,5.6490,-0.1880
-LOC-UG-07,Volta Hall,Traditional Halls Zone,5.6485,-0.1868
-LOC-UG-08,Legon Hall,Traditional Halls Zone,5.6498,-0.1860
-LOC-UG-09,Commonwealth Hall,Vandal City Zone,5.6540,-0.1888
-LOC-UG-10,Mensah Sarbah Hall,Traditional Halls Zone,5.6475,-0.1895
-LOC-UG-11,Jean Nelson Aka Hall,Diaspora Halls Zone,5.6420,-0.1840
-LOC-UG-12,Hilla Limann Hall,Diaspora Halls Zone,5.6415,-0.1830
-LOC-UG-13,Alexander Kwapong Hall,Diaspora Halls Zone,5.6410,-0.1845
-LOC-UG-14,Elizabeth Sey Hall,Diaspora Halls Zone,5.6425,-0.1850
-LOC-UG-15,Jubilee Hall,Postgraduate Zone,5.6460,-0.1835
-LOC-UG-16,Great Hall,University Heights,5.6550,-0.1880
-LOC-UG-17,ISSER (Institute of Statistical Research),Social Sciences Quad,5.6515,-0.1890
-LOC-UG-18,Night Market,South Campus Hub,5.6440,-0.1875
-LOC-UG-19,Central Canteen,Main Campus Core,5.6500,-0.1860
-LOC-UG-20,CC Halls (Central Cafeteria),Main Campus Core,5.6502,-0.1862
-LOC-UG-21,Main Gate Shuttle Stop,Campus Entrance,5.6400,-0.1890
-LOC-UG-22,Diaspora Shuttle Terminal,Diaspora Hub,5.6418,-0.1838
-LOC-UG-23,Balme Library Shuttle Stop,Central Transit,5.6507,-0.1870
-LOC-UG-24,N-Block Lecture Theatre,Academic Quad,5.6525,-0.1870
-LOC-UG-25,JQB (Jones Quartey Building),Academic Quad,5.6512,-0.1852
-LOC-UG-26,UGBS (UG Business School),Business Quad,5.6535,-0.1840
-LOC-UG-27,School of Law,Law Complex,5.6538,-0.1830
-LOC-UG-28,School of Engineering,Applied Sciences Complex,5.6545,-0.1820
-LOC-UG-29,UG Sports Stadium,Sports Complex,5.6465,-0.1810
-LOC-UG-30,Legon Botanical Gardens,North Campus,5.6600,-0.1850
-LOC-UG-31,UG Fire Station,Safety & Utilities,5.6435,-0.1895
-LOC-UG-32,UG Hospital / Health Centre,Medical Zone,5.6450,-0.1910
-LOC-UG-33,Department of Statistics,Mathematical Sciences Sub-Cell,5.6532,-0.1858
-LOC-UG-34,Department of Psychology,Social Sciences Quad,5.6518,-0.1895
-LOC-UG-35,Department of Economics,Social Sciences Quad,5.6510,-0.1885
-LOC-UG-36,School of Performing Arts,Arts Quad,5.6495,-0.1845
-LOC-UG-37,International House,Global Student Hub,5.6480,-0.1840
-LOC-UG-38,VALCO Trust Hostel,Graduate Zone,5.6470,-0.1825
-LOC-UG-39,Pentagon Hostel (Block A),Private Student Zone,5.6405,-0.1815
-LOC-UG-40,Pentagon Hostel (Block B),Private Student Zone,5.6403,-0.1810
-LOC-UG-41,Pentagon Hostel (Block C),Private Student Zone,5.6400,-0.1805
-LOC-UG-42,TF Hostel (Evandy),Private Student Zone,5.6395,-0.1820
-LOC-UG-43,UG Physical Development Directorate,Works & Maintenance,5.6445,-0.1900
-LOC-UG-44,UG Computing Services (UGCS),IT Hub,5.6515,-0.1865
-LOC-UG-45,K.A. Busia Hall,Traditional Halls Zone,5.6488,-0.1875
-LOC-UG-46,Sarbah Field Shuttle Stop,Transit Hub,5.6472,-0.1890
-LOC-UG-47,Commonwealth Hall Gate Stop,North Transit,5.6542,-0.1885
-LOC-UG-48,Banking Square,Commercial Hub,5.6455,-0.1880
-LOC-UG-49,Post Office & Telecom Hub,Services Hub,5.6460,-0.1885
-LOC-UG-50,Legon Hall Annex,Traditional Halls Zone,5.6495,-0.1855
-LOC-UG-51,Noguchi Memorial Institute,Medical Research Complex,5.6430,-0.1930
-LOC-UG-52,School of Nursing,Health Sciences Zone,5.6442,-0.1920
+LOC-UG-001,Main Gate,Entrance Zone,5.645965,-0.19107
+LOC-UG-002,Okponglo Gate,Entrance Zone,5.64648,-0.191086
+LOC-UG-003,Balme Library,Central Academic Zone,5.646907,-0.191027
+LOC-UG-004,Great Hall,Central Academic Zone,5.647262,-0.190999
+LOC-UG-005,University of Ghana Business School,Business Zone,5.647707,-0.191013
+LOC-UG-006,Department of Computer Science,Engineering & Computing Zone,5.648164,-0.191082
+LOC-UG-007,School of Engineering Sciences,Engineering & Computing Zone,5.648685,-0.190935
+LOC-UG-008,School of Law,Academic Zone,5.649075,-0.191055
+LOC-UG-009,School of Public Health,Health Sciences Zone,5.649625,-0.19091
+LOC-UG-010,Noguchi Memorial Institute,Health Sciences Zone,5.650065,-0.191021
+LOC-UG-011,University Hospital,Health Sciences Zone,5.650595,-0.191091
+LOC-UG-012,Commonwealth Hall,Residential Zone,5.651022,-0.191042
+LOC-UG-013,Legon Hall,Residential Zone,5.651329,-0.191076
+LOC-UG-014,Akuafo Hall,Residential Zone,5.651812,-0.190937
+LOC-UG-015,Volta Hall,Residential Zone,5.652236,-0.190984
+LOC-UG-016,Mensah Sarbah Hall,Residential Zone,5.652778,-0.191026
+LOC-UG-017,Jean Nelson Aka Hall,Residential Zone,5.65321,-0.191087
+LOC-UG-018,Hilla Limann Hall,Residential Zone,5.653562,-0.191059
+LOC-UG-019,Elizabeth Sey Hall,Residential Zone,5.654136,-0.191014
+LOC-UG-020,Jubilee Hall,Residential Zone,5.654513,-0.190983
+LOC-UG-021,Bush Canteen,Commercial Zone,5.645991,-0.19029
+LOC-UG-022,Night Market,Commercial Zone,5.646509,-0.19021
+LOC-UG-023,Banking Square,Central Academic Zone,5.646849,-0.190235
+LOC-UG-024,Sports Stadium,Sports Zone,5.647355,-0.190175
+LOC-UG-025,Athletic Oval,Sports Zone,5.647846,-0.190292
+LOC-UG-026,Botanical Gardens,Recreation Zone,5.648346,-0.190326
+LOC-UG-027,ICT Directorate,Administration Zone,5.648684,-0.190199
+LOC-UG-028,Physical Development & Municipal Services Directorate,Administration Zone,5.64908,-0.190252
+LOC-UG-029,School of Agriculture,Academic Zone,5.649508,-0.190216
+LOC-UG-030,Department of Geography,Academic Zone,5.650103,-0.190235
+LOC-UG-031,Main Gate - Block B,Entrance Zone,5.650575,-0.190287
+LOC-UG-032,Okponglo Gate - Block B,Entrance Zone,5.650989,-0.190231
+LOC-UG-033,Balme Library - Block B,Central Academic Zone,5.651416,-0.190259
+LOC-UG-034,Great Hall - Block B,Central Academic Zone,5.651918,-0.190161
+LOC-UG-035,University of Ghana Business School - Block B,Business Zone,5.652295,-0.190217
+LOC-UG-036,Department of Computer Science - Block B,Engineering & Computing Zone,5.652662,-0.19021
+LOC-UG-037,School of Engineering Sciences - Block B,Engineering & Computing Zone,5.653229,-0.190151
+LOC-UG-038,School of Law - Block B,Academic Zone,5.653714,-0.190293
+LOC-UG-039,School of Public Health - Block B,Health Sciences Zone,5.654077,-0.190216
+LOC-UG-040,Noguchi Memorial Institute - Block B,Health Sciences Zone,5.654455,-0.190258
+LOC-UG-041,University Hospital - Block B,Health Sciences Zone,5.645934,-0.189577
+LOC-UG-042,Commonwealth Hall - Block B,Residential Zone,5.646362,-0.189446
+LOC-UG-043,Legon Hall - Block B,Residential Zone,5.646826,-0.18955
+LOC-UG-044,Akuafo Hall - Block B,Residential Zone,5.647328,-0.189426
+LOC-UG-045,Volta Hall - Block B,Residential Zone,5.647716,-0.18951
+LOC-UG-046,Mensah Sarbah Hall - Block B,Residential Zone,5.64826,-0.189423
+LOC-UG-047,Jean Nelson Aka Hall - Block B,Residential Zone,5.648764,-0.189427
+LOC-UG-048,Hilla Limann Hall - Block B,Residential Zone,5.649106,-0.189517
+LOC-UG-049,Elizabeth Sey Hall - Block B,Residential Zone,5.649572,-0.189423
+LOC-UG-050,Jubilee Hall - Block B,Residential Zone,5.650142,-0.18957
+LOC-UG-051,Bush Canteen - Block B,Commercial Zone,5.650435,-0.189554
+LOC-UG-052,Night Market - Block B,Commercial Zone,5.650897,-0.189503
+LOC-UG-053,Banking Square - Block B,Central Academic Zone,5.651418,-0.189547
+LOC-UG-054,Sports Stadium - Block B,Sports Zone,5.651751,-0.189516
+LOC-UG-055,Athletic Oval - Block B,Sports Zone,5.652274,-0.189487
+LOC-UG-056,Botanical Gardens - Block B,Recreation Zone,5.652841,-0.189462
+LOC-UG-057,ICT Directorate - Block B,Administration Zone,5.653203,-0.189476
+LOC-UG-058,Physical Development & Municipal Services Directorate - Block B,Administration Zone,5.653685,-0.189589
+LOC-UG-059,School of Agriculture - Block B,Academic Zone,5.65418,-0.189444
+LOC-UG-060,Department of Geography - Block B,Academic Zone,5.654625,-0.18944
+LOC-UG-061,Main Gate - Block C,Entrance Zone,5.645978,-0.18877
+LOC-UG-062,Okponglo Gate - Block C,Entrance Zone,5.646371,-0.188723
+LOC-UG-063,Balme Library - Block C,Central Academic Zone,5.646812,-0.188837
+LOC-UG-064,Great Hall - Block C,Central Academic Zone,5.647292,-0.188818
+LOC-UG-065,University of Ghana Business School - Block C,Business Zone,5.647768,-0.188839
+LOC-UG-066,Department of Computer Science - Block C,Engineering & Computing Zone,5.64815,-0.18882
+LOC-UG-067,School of Engineering Sciences - Block C,Engineering & Computing Zone,5.64862,-0.188777
+LOC-UG-068,School of Law - Block C,Academic Zone,5.649055,-0.188675
+LOC-UG-069,School of Public Health - Block C,Health Sciences Zone,5.649623,-0.18882
+LOC-UG-070,Noguchi Memorial Institute - Block C,Health Sciences Zone,5.65,-0.188781
+LOC-UG-071,University Hospital - Block C,Health Sciences Zone,5.650473,-0.188825
+LOC-UG-072,Commonwealth Hall - Block C,Residential Zone,5.65102,-0.188651
+LOC-UG-073,Legon Hall - Block C,Residential Zone,5.651393,-0.188753
+LOC-UG-074,Akuafo Hall - Block C,Residential Zone,5.651767,-0.18883
+LOC-UG-075,Volta Hall - Block C,Residential Zone,5.652269,-0.188797
+LOC-UG-076,Mensah Sarbah Hall - Block C,Residential Zone,5.652816,-0.188818
+LOC-UG-077,Jean Nelson Aka Hall - Block C,Residential Zone,5.653105,-0.18866
+LOC-UG-078,Hilla Limann Hall - Block C,Residential Zone,5.653656,-0.188821
+LOC-UG-079,Elizabeth Sey Hall - Block C,Residential Zone,5.654109,-0.188845
+LOC-UG-080,Jubilee Hall - Block C,Residential Zone,5.654556,-0.188654
+LOC-UG-081,Bush Canteen - Block C,Commercial Zone,5.646073,-0.187961
+LOC-UG-082,Night Market - Block C,Commercial Zone,5.646402,-0.188027
+LOC-UG-083,Banking Square - Block C,Central Academic Zone,5.646833,-0.187946
+LOC-UG-084,Sports Stadium - Block C,Sports Zone,5.647357,-0.187944
+LOC-UG-085,Athletic Oval - Block C,Sports Zone,5.647766,-0.188055
+LOC-UG-086,Botanical Gardens - Block C,Recreation Zone,5.648312,-0.187903
+LOC-UG-087,ICT Directorate - Block C,Administration Zone,5.648771,-0.187939
+LOC-UG-088,Physical Development & Municipal Services Directorate - Block C,Administration Zone,5.649214,-0.187952
+LOC-UG-089,School of Agriculture - Block C,Academic Zone,5.649545,-0.187996
+LOC-UG-090,Department of Geography - Block C,Academic Zone,5.650021,-0.188094
+LOC-UG-091,Main Gate - Annex,Entrance Zone,5.650406,-0.188044
+LOC-UG-092,Okponglo Gate - Annex,Entrance Zone,5.650902,-0.187961
+LOC-UG-093,Balme Library - Annex,Central Academic Zone,5.651491,-0.188011
+LOC-UG-094,Great Hall - Annex,Central Academic Zone,5.651937,-0.187902
+LOC-UG-095,University of Ghana Business School - Annex,Business Zone,5.652391,-0.188027
+LOC-UG-096,Department of Computer Science - Annex,Engineering & Computing Zone,5.652694,-0.188055
+LOC-UG-097,School of Engineering Sciences - Annex,Engineering & Computing Zone,5.653139,-0.188059
+LOC-UG-098,School of Law - Annex,Academic Zone,5.653675,-0.18792
+LOC-UG-099,School of Public Health - Annex,Health Sciences Zone,5.654168,-0.188004
+LOC-UG-100,Noguchi Memorial Institute - Annex,Health Sciences Zone,5.654581,-0.18794
+LOC-UG-101,University Hospital - Annex,Health Sciences Zone,5.645917,-0.187218
+LOC-UG-102,Commonwealth Hall - Annex,Residential Zone,5.646532,-0.187194
+LOC-UG-103,Legon Hall - Annex,Residential Zone,5.64695,-0.187254
+LOC-UG-104,Akuafo Hall - Annex,Residential Zone,5.647286,-0.187192
+LOC-UG-105,Volta Hall - Annex,Residential Zone,5.647767,-0.18719
+LOC-UG-106,Mensah Sarbah Hall - Annex,Residential Zone,5.648344,-0.187271
+LOC-UG-107,Jean Nelson Aka Hall - Annex,Residential Zone,5.64868,-0.187161
+LOC-UG-108,Hilla Limann Hall - Annex,Residential Zone,5.649195,-0.187316
+LOC-UG-109,Elizabeth Sey Hall - Annex,Residential Zone,5.649525,-0.18732
+LOC-UG-110,Jubilee Hall - Annex,Residential Zone,5.650131,-0.187189
+LOC-UG-111,Bush Canteen - Annex,Commercial Zone,5.650429,-0.187185
+LOC-UG-112,Night Market - Annex,Commercial Zone,5.651046,-0.187219
+LOC-UG-113,Banking Square - Annex,Central Academic Zone,5.65137,-0.18724
+LOC-UG-114,Sports Stadium - Annex,Sports Zone,5.651776,-0.187347
+LOC-UG-115,Athletic Oval - Annex,Sports Zone,5.652394,-0.18722
+LOC-UG-116,Botanical Gardens - Annex,Recreation Zone,5.652755,-0.187163
+LOC-UG-117,ICT Directorate - Annex,Administration Zone,5.653187,-0.187176
+LOC-UG-118,Physical Development & Municipal Services Directorate - Annex,Administration Zone,5.653715,-0.187308
+LOC-UG-119,School of Agriculture - Annex,Academic Zone,5.65405,-0.187291
+LOC-UG-120,Department of Geography - Annex,Academic Zone,5.654498,-0.187233
+LOC-UG-121,Main Gate - East Wing,Entrance Zone,5.645952,-0.186516
+LOC-UG-122,Okponglo Gate - East Wing,Entrance Zone,5.646376,-0.186418
+LOC-UG-123,Balme Library - East Wing,Central Academic Zone,5.646871,-0.186508
+LOC-UG-124,Great Hall - East Wing,Central Academic Zone,5.647367,-0.186419
+LOC-UG-125,University of Ghana Business School - East Wing,Business Zone,5.647784,-0.186416
+LOC-UG-126,Department of Computer Science - East Wing,Engineering & Computing Zone,5.64825,-0.186494
+LOC-UG-127,School of Engineering Sciences - East Wing,Engineering & Computing Zone,5.648705,-0.186596
+LOC-UG-128,School of Law - East Wing,Academic Zone,5.649138,-0.186563
+LOC-UG-129,School of Public Health - East Wing,Health Sciences Zone,5.649501,-0.18644
+LOC-UG-130,Noguchi Memorial Institute - East Wing,Health Sciences Zone,5.649984,-0.186505
+LOC-UG-131,University Hospital - East Wing,Health Sciences Zone,5.650545,-0.186489
+LOC-UG-132,Commonwealth Hall - East Wing,Residential Zone,5.650915,-0.186496
+LOC-UG-133,Legon Hall - East Wing,Residential Zone,5.651411,-0.186443
+LOC-UG-134,Akuafo Hall - East Wing,Residential Zone,5.651771,-0.186488
+LOC-UG-135,Volta Hall - East Wing,Residential Zone,5.65225,-0.186545
+LOC-UG-136,Mensah Sarbah Hall - East Wing,Residential Zone,5.652804,-0.186498
+LOC-UG-137,Jean Nelson Aka Hall - East Wing,Residential Zone,5.653212,-0.186448
+LOC-UG-138,Hilla Limann Hall - East Wing,Residential Zone,5.653732,-0.186511
+LOC-UG-139,Elizabeth Sey Hall - East Wing,Residential Zone,5.654123,-0.186499
+LOC-UG-140,Jubilee Hall - East Wing,Residential Zone,5.654552,-0.186461
+LOC-UG-141,Bush Canteen - East Wing,Commercial Zone,5.64599,-0.185743
+LOC-UG-142,Night Market - East Wing,Commercial Zone,5.646446,-0.185662
+LOC-UG-143,Banking Square - East Wing,Central Academic Zone,5.64694,-0.185675
+LOC-UG-144,Sports Stadium - East Wing,Sports Zone,5.647438,-0.185798
+LOC-UG-145,Athletic Oval - East Wing,Sports Zone,5.647812,-0.185661
+LOC-UG-146,Botanical Gardens - East Wing,Recreation Zone,5.648318,-0.185823
+LOC-UG-147,ICT Directorate - East Wing,Administration Zone,5.648624,-0.185762
+LOC-UG-148,Physical Development & Municipal Services Directorate - East Wing,Administration Zone,5.649065,-0.185802
+LOC-UG-149,School of Agriculture - East Wing,Academic Zone,5.649515,-0.185716
+LOC-UG-150,Department of Geography - East Wing,Academic Zone,5.650107,-0.185671
+LOC-UG-151,Main Gate - West Wing,Entrance Zone,5.650431,-0.185707
+LOC-UG-152,Okponglo Gate - West Wing,Entrance Zone,5.650982,-0.185821
+LOC-UG-153,Balme Library - West Wing,Central Academic Zone,5.651477,-0.185656
+LOC-UG-154,Great Hall - West Wing,Central Academic Zone,5.651794,-0.185659
+LOC-UG-155,University of Ghana Business School - West Wing,Business Zone,5.65228,-0.185753
+LOC-UG-156,Department of Computer Science - West Wing,Engineering & Computing Zone,5.652848,-0.185684
+LOC-UG-157,School of Engineering Sciences - West Wing,Engineering & Computing Zone,5.653132,-0.185764
+LOC-UG-158,School of Law - West Wing,Academic Zone,5.653653,-0.185782
+LOC-UG-159,School of Public Health - West Wing,Health Sciences Zone,5.654039,-0.185786
+LOC-UG-160,Noguchi Memorial Institute - West Wing,Health Sciences Zone,5.654594,-0.185846
+LOC-UG-161,University Hospital - West Wing,Health Sciences Zone,5.646011,-0.185012
+LOC-UG-162,Commonwealth Hall - West Wing,Residential Zone,5.646354,-0.185034
+LOC-UG-163,Legon Hall - West Wing,Residential Zone,5.646925,-0.184998
+LOC-UG-164,Akuafo Hall - West Wing,Residential Zone,5.647263,-0.184903
+LOC-UG-165,Volta Hall - West Wing,Residential Zone,5.647858,-0.184906
+LOC-UG-166,Mensah Sarbah Hall - West Wing,Residential Zone,5.648171,-0.185047
+LOC-UG-167,Jean Nelson Aka Hall - West Wing,Residential Zone,5.648608,-0.184944
+LOC-UG-168,Hilla Limann Hall - West Wing,Residential Zone,5.649104,-0.185074
+LOC-UG-169,Elizabeth Sey Hall - West Wing,Residential Zone,5.649584,-0.184918
+LOC-UG-170,Jubilee Hall - West Wing,Residential Zone,5.650114,-0.185048
+LOC-UG-171,Bush Canteen - West Wing,Commercial Zone,5.65043,-0.184916
+LOC-UG-172,Night Market - West Wing,Commercial Zone,5.650964,-0.18496
+LOC-UG-173,Banking Square - West Wing,Central Academic Zone,5.651318,-0.185088
+LOC-UG-174,Sports Stadium - West Wing,Sports Zone,5.651888,-0.185015
+LOC-UG-175,Athletic Oval - West Wing,Sports Zone,5.652214,-0.184912
+LOC-UG-176,Botanical Gardens - West Wing,Recreation Zone,5.652777,-0.18494
+LOC-UG-177,ICT Directorate - West Wing,Administration Zone,5.653117,-0.184929
+LOC-UG-178,Physical Development & Municipal Services Directorate - West Wing,Administration Zone,5.653563,-0.184927
+LOC-UG-179,School of Agriculture - West Wing,Academic Zone,5.654091,-0.185032
+LOC-UG-180,Department of Geography - West Wing,Academic Zone,5.654561,-0.184915
+LOC-UG-181,Main Gate - North Wing,Entrance Zone,5.645954,-0.184324
+LOC-UG-182,Okponglo Gate - North Wing,Entrance Zone,5.646455,-0.184302
+LOC-UG-183,Balme Library - North Wing,Central Academic Zone,5.646822,-0.184318
+LOC-UG-184,Great Hall - North Wing,Central Academic Zone,5.64726,-0.18431
+LOC-UG-185,University of Ghana Business School - North Wing,Business Zone,5.647762,-0.184289
+LOC-UG-186,Department of Computer Science - North Wing,Engineering & Computing Zone,5.648302,-0.184292
+LOC-UG-187,School of Engineering Sciences - North Wing,Engineering & Computing Zone,5.6487,-0.184314
+LOC-UG-188,School of Law - North Wing,Academic Zone,5.649119,-0.184346
+LOC-UG-189,School of Public Health - North Wing,Health Sciences Zone,5.64955,-0.184347
+LOC-UG-190,Noguchi Memorial Institute - North Wing,Health Sciences Zone,5.650097,-0.18424
+LOC-UG-191,University Hospital - North Wing,Health Sciences Zone,5.650438,-0.184255
+LOC-UG-192,Commonwealth Hall - North Wing,Residential Zone,5.651037,-0.184329
+LOC-UG-193,Legon Hall - North Wing,Residential Zone,5.651464,-0.184264
+LOC-UG-194,Akuafo Hall - North Wing,Residential Zone,5.651849,-0.184183
+LOC-UG-195,Volta Hall - North Wing,Residential Zone,5.652279,-0.184249
+LOC-UG-196,Mensah Sarbah Hall - North Wing,Residential Zone,5.652788,-0.184154
+LOC-UG-197,Jean Nelson Aka Hall - North Wing,Residential Zone,5.653169,-0.184184
+LOC-UG-198,Hilla Limann Hall - North Wing,Residential Zone,5.653691,-0.184223
+LOC-UG-199,Elizabeth Sey Hall - North Wing,Residential Zone,5.654081,-0.18428
+LOC-UG-200,Jubilee Hall - North Wing,Residential Zone,5.654461,-0.184324

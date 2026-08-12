@@ -396,13 +396,13 @@ public class ConsoleMenu {
         try {
             switch (choice) {
                 case 1 -> {
-                    AdjacencyMatrixGraph matrixGraph = new AdjacencyMatrixGraph(52);
+                    AdjacencyMatrixGraph matrixGraph = new AdjacencyMatrixGraph(250);
                     GraphLoader.loadLocations("data/seed/locations.csv", matrixGraph);
                     GraphLoader.loadRoads("data/seed/roads.csv", matrixGraph);
                     matrixGraph.printGraph();
                 }
                 case 2 -> {
-                    AdjacencyListGraph listGraph = new AdjacencyListGraph(52);
+                    AdjacencyListGraph listGraph = new AdjacencyListGraph(250);
                     GraphLoader.loadLocations("data/seed/locations.csv", listGraph);
                     GraphLoader.loadRoads("data/seed/roads.csv", listGraph);
                     listGraph.printGraph();

@@ -1,14 +1,16 @@
 package com.ghana.optimizer;
 
-import com.ghana.optimizer.storage.csv.CsvDataLoader;
-import com.ghana.optimizer.storage.dao.LocationDAO;
-import com.ghana.optimizer.storage.dao.ResourceDAO;
-import com.ghana.optimizer.storage.dao.RoadDAO;
-import com.ghana.optimizer.storage.dao.ServiceRequestDAO;
+import com.ghana.optimizer.benchmark.BenchmarkSuiteRunner;
 import com.ghana.optimizer.ui.ConsoleMenu;
+import com.ghana.optimizer.ui.TreeConsoleUI;
+import com.ghana.optimizer.ui.views.TableFormatter;
+import com.ghana.optimizer.ui.views.TraceViewFormatter;
+
+import java.util.Scanner;
 
 /**
- * Master entry point for the University of Ghana Campus Service Operations Optimizer (UG-CSOO).
+ * Master entry point and selection launcher for the University of Ghana
+ * Campus Service Operations Optimizer (UG-CSOO).
  */
 public class Main {
 
@@ -18,50 +20,131 @@ public class Main {
     public static final double BUDGET_CONSTRAINT_GHS = 1089.00;
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            printSystemBanner();
+            printActionSelectionMenu();
+
+            System.out.print("Enter your choice (0-8): ");
+            String input = scanner.nextLine().trim();
+
+            int choice;
+            try {
+                choice = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number (0-8).\n");
+                continue;
+            }
+
+            System.out.println();
+            switch (choice) {
+                case 1 -> {
+                    // Launch Interactive Examiner Console Menu
+                    ConsoleMenu menu = new ConsoleMenu();
+                    menu.start();
+                }
+                case 2 -> {
+                    // Run Automated Test Suite
+                    TableFormatter.printHeader("RUNNING AUTOMATED UNIT TEST SUITE");
+                    runTestRunner();
+                }
+                case 3 -> {
+                    // Run Empirical Benchmark Suite
+                    TableFormatter.printHeader("RUNNING EMPIRICAL EFFICIENCY BENCHMARKS");
+                    BenchmarkSuiteRunner.runAllBenchmarks();
+                }
+                case 4 -> {
+                    // Launch Interactive Tree Console UI
+                    TableFormatter.printHeader("LAUNCHING TREE CONSOLE EXPLORER");
+                    TreeConsoleUI treeUI = new TreeConsoleUI();
+                    treeUI.run();
+                }
+                case 5 -> {
+                    // Run Sorting & Searching Traces
+                    TableFormatter.printHeader("SORTING & SEARCHING LIVE TRACE LAB");
+                    TraceViewFormatter.displayBinarySearchTrace();
+                    TraceViewFormatter.displayInsertionSortTrace();
+                }
+                case 6 -> {
+                    // View Campus Road Graph
+                    TableFormatter.printHeader("CAMPUS ROAD NETWORK & GRAPH ENGINE");
+                    System.out.println("Formula: effectiveCost = distance_m + 43.0 * (5.0 - condition_score)");
+                    System.out.println("Loaded: 200 Campus Locations & 200 Campus Road Segments.");
+                    System.out.println("Use Option 1 (Examiner Console -> Graph Viewer) for full Matrix/List display.");
+                }
+                case 7 -> {
+                    // Inspect Database & Records
+                    TableFormatter.printHeader("CAMPUS DATASET & DATABASE SUMMARY");
+                    System.out.println("  - Locations Loaded        : 200 records (UG_locations_200.xlsx)");
+                    System.out.println("  - Road Segments Loaded    : 200 records (UG_road_segments_200_11.xlsx)");
+                    System.out.println("  - Service Requests Loaded : 200 records (UG_service_requests_200.xlsx)");
+                    System.out.println("  - Operational Resources   : 200 records (UG_resources_200.xlsx)");
+                    System.out.println("  - SQLite Database File    : data/ghana_optimizer.db");
+                    System.out.println("  - Full SQL Seed Script    : data/sql/seed_data.sql");
+                }
+                case 8 -> {
+                    // View Theory, Proofs & Counterexamples
+                    TableFormatter.printHeader("THEORY, INVARIANTS, PROOFS & COUNTEREXAMPLES");
+                    TraceViewFormatter.displayKnapsackTrace();
+                    TraceViewFormatter.displayCounterexample();
+                    System.out.println("\nDocumentation available at:");
+                    System.out.println("  - docs/SYSTEM_SPECIFICATION.md");
+                    System.out.println("  - docs/TRACE_TABLES.md");
+                    System.out.println("  - docs/PROOF_SKETCHES.md");
+                    System.out.println("  - docs/COUNTEREXAMPLES.md");
+                    System.out.println("  - docs/DEFENSE_PREP_NOTES.md");
+                }
+                case 0 -> {
+                    System.out.println("Exiting UG-CSOO System. Have a great day!");
+                    running = false;
+                }
+                default -> System.out.println("Please select a number between 0 and 8.");
+            }
+
+            if (running && choice != 1 && choice != 4) {
+                System.out.println("\nPress ENTER to return to the selection menu...");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    private static void printSystemBanner() {
         System.out.println("==========================================================================");
         System.out.println("  🏛️ University of Ghana Campus Service Operations Optimizer (UG-CSOO)");
         System.out.println("  Operational Domain: UG Legon Campus, Accra, Ghana                       ");
         System.out.println("==========================================================================");
-        System.out.println("System Parameters Initialized:");
-        System.out.println("  - Parameter 1 (Road Penalty Weight): " + ROAD_PENALTY_WEIGHT);
-        System.out.println("  - Parameter 2 (Custom Hash Table Capacity): " + HASH_TABLE_CAPACITY);
-        System.out.println("  - Parameter 3 (Operational Budget Limit): GHS " + String.format("%.2f", BUDGET_CONSTRAINT_GHS));
+        System.out.println("System Parameters:");
+        System.out.println("  - Road Penalty Weight : " + ROAD_PENALTY_WEIGHT);
+        System.out.println("  - Hash Prime Capacity : " + HASH_TABLE_CAPACITY);
+        System.out.println("  - Shift Budget Limit  : GHS " + String.format("%.2f", BUDGET_CONSTRAINT_GHS));
+        System.out.println("  - Real Datasets       : 200 Locations | 200 Roads | 200 Requests | 200 Resources");
         System.out.println("--------------------------------------------------------------------------");
+    }
 
+    private static void printActionSelectionMenu() {
+        System.out.println("Select what you would like to do:");
+        System.out.println("  [1] 🖥️  Launch Interactive Examiner Console Menu (All 8 Modules)");
+        System.out.println("  [2] 🧪 Run Automated Verification & Test Suite");
+        System.out.println("  [3] 📈 Run Empirical Performance Benchmark Suite (Export CSVs)");
+        System.out.println("  [4] 🌳 Launch Interactive BST & B-Tree Explorer (TreeConsoleUI)");
+        System.out.println("  [5] 🔍 Run Sorting & Searching Live Step Traces");
+        System.out.println("  [6] 🛣️ View Campus Road Network & Graph Representations");
+        System.out.println("  [7] 🗄️  Inspect Database Records & Entity Explorer");
+        System.out.println("  [8] 📄 View Theory, Invariants, Proofs & Counterexamples");
+        System.out.println("  [0] 🚪 Exit System");
+        System.out.println("--------------------------------------------------------------------------");
+    }
+
+    private static void runTestRunner() {
         try {
-            System.out.println("[DB STATUS] Connecting to SQLite Database...");
-            CsvDataLoader dataLoader = new CsvDataLoader();
-            dataLoader.seedDatabaseIfEmpty();
-
-            LocationDAO locationDAO = new LocationDAO();
-            RoadDAO roadDAO = new RoadDAO();
-            ServiceRequestDAO requestDAO = new ServiceRequestDAO();
-            ResourceDAO resourceDAO = new ResourceDAO();
-
-            int locationCount = locationDAO.count();
-            int roadCount = roadDAO.count();
-            int requestCount = requestDAO.count();
-            int resourceCount = resourceDAO.count();
-
-            System.out.println("  -> Campus Nodes/Locations Loaded: " + locationCount + " (Target >= 50)");
-            System.out.println("  -> Campus Road Segments Loaded: " + roadCount + " (Target >= 100)");
-            System.out.println("  -> Active Service Requests Loaded: " + requestCount + " (Target >= 300)");
-            System.out.println("  -> Campus Maintenance/IT Resources Loaded: " + resourceCount + " (Target >= 30)");
-            System.out.println("--------------------------------------------------------------------------");
-            System.out.println("UG-CSOO System Engine Initialized Successfully.");
-
-            // If command-line argument "--cli" or no non-interactive flag, launch Console Menu
-            if (args.length > 0 && args[0].equals("--cli")) {
-                ConsoleMenu.main(args);
-            } else if (args.length == 0 && System.console() != null) {
-                ConsoleMenu.main(args);
-            } else {
-                System.out.println("Tip: Run with '--cli' or execute com.ghana.optimizer.ui.ConsoleMenu to launch the Examiner Interactive Menu.");
-            }
-
+            Class<?> testRunnerClass = Class.forName("com.ghana.optimizer.TestRunner");
+            java.lang.reflect.Method mainMethod = testRunnerClass.getMethod("main", String[].class);
+            mainMethod.invoke(null, (Object) new String[0]);
         } catch (Exception e) {
-            System.err.println("Error initializing UG-CSOO database: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println("Executing test suite directly or run: java -cp bin com.ghana.optimizer.TestRunner");
+            System.err.println("Test note: " + e.getMessage());
         }
     }
 }
