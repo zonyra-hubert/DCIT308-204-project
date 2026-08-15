@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tests for SelectionSort.selectionSort() — sorts ServiceRequests
  * descending by urgency (priority level).
  */
-class SelectionSortTest {
+public class SelectionSortTest {
 
     private ServiceRequest request(int id, int urgency) {
         return new ServiceRequest(id, 1, null, "maintenance", urgency, "t", null, "pending");
