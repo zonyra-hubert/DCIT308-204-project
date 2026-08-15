@@ -9,3 +9,5 @@ bin/
 .project
 
 data/*.db
+
+data/*.db
