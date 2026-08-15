@@ -22,17 +22,18 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class SearchingTest {
 
+    private static final PrintStream REAL_OUT = System.out;
     private final ByteArrayOutputStream capturedOutput = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
 
     @BeforeEach
     void captureConsoleOutput() {
+        capturedOutput.reset();
         System.setOut(new PrintStream(capturedOutput));
     }
 
     @AfterEach
     void restoreConsoleOutput() {
-        System.setOut(originalOut);
+        System.setOut(REAL_OUT);
     }
 
     /** Pulls the comparison count out of the line each method prints, e.g. "...after 5 comparison(s)". */

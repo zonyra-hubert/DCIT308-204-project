@@ -14,6 +14,7 @@ import com.ghana.optimizer.ds.heap.BinaryHeap;
 import com.ghana.optimizer.ds.list.DynamicArray;
 import com.ghana.optimizer.ds.list.MyLinkedList;
 import com.ghana.optimizer.ds.queue.CircularQueue;
+import com.ghana.optimizer.ds.queue.MyDeque;
 import com.ghana.optimizer.ds.queue.MyQueue;
 import com.ghana.optimizer.ds.stack.MyStack;
 import com.ghana.optimizer.ds.tree.BTree;
@@ -276,7 +277,7 @@ public class ConsoleMenu {
                 System.out.println("Is Empty? " + list.isEmpty() + ", Head removed: " + list.removeFirst());
             }
             case 3 -> {
-                System.out.println("\n--- Stack & Queue & CircularQueue Verification ---");
+                System.out.println("\n--- Stack & Queue & Deque & CircularQueue Verification ---");
                 MyStack<String> stack = new MyStack<>();
                 stack.push("Dispatch-1");
                 stack.push("Dispatch-2");
@@ -286,6 +287,14 @@ public class ConsoleMenu {
                 queue.enqueue("Req-1");
                 queue.enqueue("Req-2");
                 System.out.println("Queue Dequeue (FIFO): " + queue.dequeue());
+
+                MyDeque<String> deque = new MyDeque<>();
+                deque.addRear("Routine Ticket #101");
+                deque.addRear("Routine Ticket #102");
+                deque.addFront("🚨 EMERGENCY TICKET #999 (Life-Safety Override)");
+                System.out.println("Deque Peek Front (Emergency Override): " + deque.peekFront());
+                System.out.println("Deque Removed Front: " + deque.removeFront());
+                System.out.println("Deque Removed Rear: " + deque.removeRear());
 
                 CircularQueue<String> circQueue = new CircularQueue<>(3);
                 circQueue.enqueue("Shuttle-A");

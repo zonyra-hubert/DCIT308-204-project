@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class DatabaseConfig {
-    private static String dbUrl = "jdbc:sqlite:data/ghana_optimizer.db";
+    private static String dbUrl = "jdbc:sqlite:data/ghana_optimizer.db?busy_timeout=5000";
     private static String dbDriver = "org.sqlite.JDBC";
 
     static {

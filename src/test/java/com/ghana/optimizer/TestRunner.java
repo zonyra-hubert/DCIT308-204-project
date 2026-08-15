@@ -1,6 +1,8 @@
 package com.ghana.optimizer;
 
 import com.ghana.optimizer.algorithm.GenericSearchAlgorithmTest;
+import com.ghana.optimizer.algorithm.MergeSortTest;
+import com.ghana.optimizer.algorithm.PriorityDispatchSchedulerTest;
 import com.ghana.optimizer.algorithm.SearchingTest;
 import com.ghana.optimizer.algorithm.SelectionSortTest;
 import com.ghana.optimizer.algorithm.SortAlgorithmTest;
@@ -39,7 +41,9 @@ public class TestRunner {
                 GenericSearchAlgorithmTest.class,
                 SearchingTest.class,
                 SelectionSortTest.class,
-                SortAlgorithmTest.class
+                SortAlgorithmTest.class,
+                MergeSortTest.class,
+                PriorityDispatchSchedulerTest.class
         };
 
         for (int classIndex = 0; classIndex < testClassesToRun.length; classIndex++) {
@@ -67,9 +71,10 @@ public class TestRunner {
                             }
                         }
 
+                        boolean testPassed = false;
                         try {
                             currentMethod.invoke(testClassInstance);
-                            System.out.println(" [PASS] " + currentMethod.getName());
+                            testPassed = true;
                             totalTestsPassed++;
                         } finally {
                             for (int afterEachIndex = 0; afterEachIndex < declaredMethods.length; afterEachIndex++) {
@@ -78,6 +83,9 @@ public class TestRunner {
                                     afterEachCandidate.setAccessible(true);
                                     afterEachCandidate.invoke(testClassInstance);
                                 }
+                            }
+                            if (testPassed) {
+                                System.out.println(" [PASS] " + currentMethod.getName());
                             }
                         }
 
