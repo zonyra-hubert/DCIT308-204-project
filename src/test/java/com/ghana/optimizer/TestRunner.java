@@ -23,7 +23,7 @@ public class TestRunner {
 
     public static void main(String[] executionArguments) {
         System.out.println("==========================================================================");
-        System.out.println("  🏛️ UG-CSOO Verification & Complete Test Suite Runner                    ");
+        System.out.println("  UG-CSOO Verification & Complete Test Suite Runner                    ");
         System.out.println("  Author: Zonyra Hubert                                                   ");
         System.out.println("==========================================================================");
 

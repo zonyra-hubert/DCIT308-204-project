@@ -95,16 +95,16 @@ public class ConsoleMenu {
     }
 
     private void printMainMenu() {
-        TableFormatter.printHeader("🏛️ UG-CSOO MASTER EXAMINER INTERACTIVE CONSOLE MENU");
-        System.out.println("  1. 🗄️  Database Explorer & Entity Inspector (SQLite / DAOs)");
-        System.out.println("  2. 📦 Custom Data Structures Interactive Lab");
-        System.out.println("  3. 🔍 Sorting & Searching Engine Lab (with Live Step Traces)");
-        System.out.println("  4. 🛣️ Campus Road Network & Graph Viewer (Adjacency Matrix/List)");
-        System.out.println("  5. 💰 Operational Budget & Knapsack Optimization Explorer");
-        System.out.println("  6. 📈 Empirical Efficiency Benchmark Lab (Run Suites & Export CSV)");
-        System.out.println("  7. 🧪 Automated Unit Test Suite Runner");
-        System.out.println("  8. 📄 Theory, Correctness, Proofs & Trace Tables Viewer");
-        System.out.println("  0. 🚪 Exit Application");
+        TableFormatter.printHeader("UG-CSOO MASTER EXAMINER INTERACTIVE CONSOLE MENU");
+        System.out.println("  1. Database Explorer & Entity Inspector (SQLite / DAOs)");
+        System.out.println("  2. Custom Data Structures Interactive Lab");
+        System.out.println("  3. Sorting & Searching Engine Lab (with Live Step Traces)");
+        System.out.println("  4. Campus Road Network & Graph Viewer (Adjacency Matrix/List)");
+        System.out.println("  5. Operational Budget & Knapsack Optimization Explorer");
+        System.out.println("  6. Empirical Efficiency Benchmark Lab (Run Suites & Export CSV)");
+        System.out.println("  7. Automated Unit Test Suite Runner");
+        System.out.println("  8. Theory, Correctness, Proofs & Trace Tables Viewer");
+        System.out.println("  0. Exit Application");
         TableFormatter.printDivider();
     }
 
@@ -261,7 +261,7 @@ public class ConsoleMenu {
         System.out.println("  [5] BinaryHeap & PriorityQueue Demo");
         System.out.println("  [6] CustomHashTable (Prime Capacity: 547) Demo");
         System.out.println("  [7] DisjointSet (Union-Find with Path Compression) Demo");
-        System.out.println("  [8] 🚑 PriorityDispatchScheduler (PriorityQueue & Deque Emergency Dispatch)");
+        System.out.println("  [8] PriorityDispatchScheduler (PriorityQueue & Deque Emergency Dispatch)");
         System.out.println("  [0] Back to Main Menu");
 
         int choice = readIntInput("Choose structure demo (0-8): ", 0, 8);
@@ -300,7 +300,7 @@ public class ConsoleMenu {
                 MyDeque<String> deque = new MyDeque<>();
                 deque.addRear("Routine Ticket #101");
                 deque.addRear("Routine Ticket #102");
-                deque.addFront("🚨 EMERGENCY TICKET #999 (Life-Safety Override)");
+                deque.addFront("EMERGENCY TICKET #999 (Life-Safety Override)");
                 System.out.println("Deque Peek Front (Emergency Override): " + deque.peekFront());
                 System.out.println("Deque Removed Front: " + deque.removeFront());
                 System.out.println("Deque Removed Rear: " + deque.removeRear());
@@ -377,11 +377,11 @@ public class ConsoleMenu {
     // ==========================================
     private void exploreSortingAndSearching() {
         TableFormatter.printSubHeader("Sorting & Searching Engine Lab");
-        System.out.println("  [1] 📊 Run Selection Sort Trace on Campus Service Requests");
-        System.out.println("  [2] 📥 Run Insertion Sort Trace on Campus Service Requests");
-        System.out.println("  [3] 🔄 Run Merge Sort Multi-Attribute Trace (Urgency desc, Budget asc)");
-        System.out.println("  [4] ⚡ Run QuickSort Partition Trace (Pivot & Swaps Table)");
-        System.out.println("  [5] 🔍 Compare Linear Search vs Binary Search");
+        System.out.println("  [1] Run Selection Sort Trace on Campus Service Requests");
+        System.out.println("  [2] Run Insertion Sort Trace on Campus Service Requests");
+        System.out.println("  [3] Run Merge Sort Multi-Attribute Trace (Urgency desc, Budget asc)");
+        System.out.println("  [4] Run QuickSort Partition Trace (Pivot & Swaps Table)");
+        System.out.println("  [5] Compare Linear Search vs Binary Search");
         System.out.println("  [0] Back to Main Menu");
 
         int choice = readIntInput("Choose (0-5): ", 0, 5);
@@ -452,13 +452,13 @@ public class ConsoleMenu {
     // ==========================================
     private void exploreCampusGraphNetwork() {
         TableFormatter.printSubHeader("University of Ghana Campus Road Network & Graph Engine");
-        System.out.println("  [1] 🚗 Interactive Dijkstra Shortest Route Solver (Penalty lambda = 43.0)");
-        System.out.println("  [2] 🌲 Compute Kruskal's Minimum Spanning Tree (Campus Road Backbone)");
-        System.out.println("  [3] 🔍 Run BFS Reachability & Shortest Hops");
-        System.out.println("  [4] 🔄 Run DFS Cycle Detection & Connected Components");
-        System.out.println("  [5] 📊 View Campus Adjacency Matrix");
-        System.out.println("  [6] 📋 View Campus Adjacency List");
-        System.out.println("  [7] 🖥️ Launch Interactive Graph Console Explorer UI");
+        System.out.println("  [1] Interactive Dijkstra Shortest Route Solver (Penalty lambda = 43.0)");
+        System.out.println("  [2] Compute Kruskal's Minimum Spanning Tree (Campus Road Backbone)");
+        System.out.println("  [3] Run BFS Reachability & Shortest Hops");
+        System.out.println("  [4] Run DFS Cycle Detection & Connected Components");
+        System.out.println("  [5] View Campus Adjacency Matrix");
+        System.out.println("  [6] View Campus Adjacency List");
+        System.out.println("  [7] Launch Interactive Graph Console Explorer UI");
         System.out.println("  [0] Back to Main Menu");
 
         int choice = readIntInput("Choose (0-7): ", 0, 7);
@@ -539,10 +539,10 @@ public class ConsoleMenu {
     // ==========================================
     private void exploreBudgetAndOptimization() {
         TableFormatter.printSubHeader("Operational Budget & Knapsack Optimization Explorer");
-        System.out.println("  [1] 💰 Run 0/1 Knapsack Dynamic Programming Optimizer (Cap: GHS 1,089.00)");
-        System.out.println("  [2] ⚡ Run Greedy Ratio Heuristic Optimizer (Cap: GHS 1,089.00)");
-        System.out.println("  [3] ⚖️ Side-by-Side Comparative Evaluation (DP vs Greedy Gap)");
-        System.out.println("  [4] 🎯 Custom Shift Budget Constraint Simulation");
+        System.out.println("  [1] Run 0/1 Knapsack Dynamic Programming Optimizer (Cap: GHS 1,089.00)");
+        System.out.println("  [2] Run Greedy Ratio Heuristic Optimizer (Cap: GHS 1,089.00)");
+        System.out.println("  [3] Side-by-Side Comparative Evaluation (DP vs Greedy Gap)");
+        System.out.println("  [4] Custom Shift Budget Constraint Simulation");
         System.out.println("  [0] Back to Main Menu");
 
         int choice = readIntInput("Choose (0-4): ", 0, 4);
@@ -569,7 +569,7 @@ public class ConsoleMenu {
                     double suboptimality = greedyResult.computeSuboptimalityPenalty(dpResult);
 
                     System.out.println("================================================================================");
-                    System.out.println(" ⚖️ KNAPSACK ALGORITHM COMPARATIVE EVALUATION (W = GHS 1,089.00)");
+                    System.out.println("  KNAPSACK ALGORITHM COMPARATIVE EVALUATION (W = GHS 1,089.00)");
                     System.out.println("================================================================================");
                     System.out.printf(" Candidate Request Pool        : %d tickets\n", requests.size());
                     System.out.printf(" DP Optimal Priority Points    : %d points (Cost: GHS %.2f, %d tickets)\n",

@@ -104,7 +104,7 @@ public class KnapsackOptimizer {
         public String formatReport() {
             StringBuilder sb = new StringBuilder();
             sb.append("================================================================================\n");
-            sb.append(" 💰 0/1 KNAPSACK DYNAMIC PROGRAMMING OPTIMIZATION REPORT\n");
+            sb.append("  0/1 KNAPSACK DYNAMIC PROGRAMMING OPTIMIZATION REPORT\n");
             sb.append("================================================================================\n");
             sb.append(String.format(" Operational Budget Cap   : GHS %.2f\n", budgetLimit));
             sb.append(String.format(" Candidate Request Pool   : %d tickets\n", candidatePoolSize));

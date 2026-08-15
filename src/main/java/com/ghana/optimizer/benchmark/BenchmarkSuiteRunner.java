@@ -13,7 +13,7 @@ public class BenchmarkSuiteRunner {
 
     public static void runAllBenchmarks() {
         System.out.println("==========================================================================");
-        System.out.println("  🏛️ UG-CSOO EMPIRICAL EFFICIENCY & PERFORMANCE BENCHMARK SUITE");
+        System.out.println("  UG-CSOO EMPIRICAL EFFICIENCY & PERFORMANCE BENCHMARK SUITE");
         System.out.println("  Operational Domain: University of Ghana Legon Campus Operations");
         System.out.println("==========================================================================");
 

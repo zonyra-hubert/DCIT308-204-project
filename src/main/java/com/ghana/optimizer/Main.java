@@ -112,8 +112,8 @@ public class Main {
 
     private static void printSystemBanner() {
         System.out.println("==========================================================================");
-        System.out.println("   University of Ghana Campus Service Operations Optimizer (UG-CSOO)");
-        System.out.println("  Operational Domain: UG Legon Campus, Accra, Ghana                       ");
+        System.out.println("  University of Ghana Campus Service Operations Optimizer (UG-CSOO)");
+        System.out.println("  Operational Domain: UG Legon Campus, Accra, Ghana");
         System.out.println("==========================================================================");
         System.out.println("System Parameters:");
         System.out.println("  - Road Penalty Weight : " + ROAD_PENALTY_WEIGHT);
@@ -125,15 +125,15 @@ public class Main {
 
     private static void printActionSelectionMenu() {
         System.out.println("Select what you would like to do:");
-        System.out.println("  [1]   Launch Interactive Examiner Console Menu (All 8 Modules)");
-        System.out.println("  [2]  Run Automated Verification & Test Suite");
-        System.out.println("  [3]  Run Empirical Performance Benchmark Suite (Export CSVs)");
-        System.out.println("  [4]  Launch Interactive BST & B-Tree Explorer (TreeConsoleUI)");
-        System.out.println("  [5]  Run Sorting & Searching Live Step Traces");
-        System.out.println("  [6]  View Campus Road Network & Graph Representations");
-        System.out.println("  [7]   Inspect Database Records & Entity Explorer");
-        System.out.println("  [8]  View Theory, Invariants, Proofs & Counterexamples");
-        System.out.println("  [0]  Exit System");
+        System.out.println("  [1] Launch Interactive Examiner Console Menu (All 8 Modules)");
+        System.out.println("  [2] Run Automated Verification & Test Suite");
+        System.out.println("  [3] Run Empirical Performance Benchmark Suite (Export CSVs)");
+        System.out.println("  [4] Launch Interactive BST & B-Tree Explorer (TreeConsoleUI)");
+        System.out.println("  [5] Run Sorting & Searching Live Step Traces");
+        System.out.println("  [6] View Campus Road Network & Graph Representations");
+        System.out.println("  [7] Inspect Database Records & Entity Explorer");
+        System.out.println("  [8] View Theory, Invariants, Proofs & Counterexamples");
+        System.out.println("  [0] Exit System");
         System.out.println("--------------------------------------------------------------------------");
     }
 

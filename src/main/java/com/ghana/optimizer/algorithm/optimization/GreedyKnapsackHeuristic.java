@@ -84,7 +84,7 @@ public class GreedyKnapsackHeuristic {
         public String formatReport() {
             StringBuilder sb = new StringBuilder();
             sb.append("================================================================================\n");
-            sb.append(" ⚡ GREEDY RATIO-BASED KNAPSACK HEURISTIC REPORT\n");
+            sb.append("  GREEDY RATIO-BASED KNAPSACK HEURISTIC REPORT\n");
             sb.append("================================================================================\n");
             sb.append(String.format(" Operational Budget Cap   : GHS %.2f\n", budgetLimit));
             sb.append(String.format(" Candidate Request Pool   : %d tickets\n", candidatePoolSize));

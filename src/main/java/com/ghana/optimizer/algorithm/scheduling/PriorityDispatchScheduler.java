@@ -337,7 +337,7 @@ public class PriorityDispatchScheduler {
     public String generateDispatchReport() {
         StringBuilder sb = new StringBuilder();
         sb.append("========================================================================================\n");
-        sb.append("         🏛️ UNIVERSITY OF GHANA CAMPUS PRIORITY DISPATCH SCHEDULE REPORT         \n");
+        sb.append("         UNIVERSITY OF GHANA CAMPUS PRIORITY DISPATCH SCHEDULE REPORT         \n");
         sb.append("========================================================================================\n");
         sb.append(String.format("%-14s | %-4s | %-12s | %-32s | %-10s\n",
                 "Ticket ID", "Pri", "Location", "Assigned Resource", "Cost (GHS)"));
