@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * (distance + road-condition penalty), not raw distance, over an
  * AdjacencyListGraph.
  */
-class DijkstraTest {
+public class DijkstraTest {
 
     private static final double DELTA = 0.001; // floating-point comparison tolerance
 

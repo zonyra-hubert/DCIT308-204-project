@@ -42,7 +42,7 @@ public class CsvDataLoader {
             int requestCount = serviceRequestDAO.count();
             int resourceCount = resourceDAO.count();
 
-            boolean needsSeeding = (locationCount < 50 || roadCount < 100 || requestCount < 300 || resourceCount < 30);
+            boolean needsSeeding = (locationCount < 50 || roadCount < 100 || requestCount < 150 || resourceCount < 30);
             if (needsSeeding) {
                 System.out.println("[CSV LOADER] Seeding SQLite database from data/seed/ CSV datasets...");
                 loadAllSeedData("data/seed");

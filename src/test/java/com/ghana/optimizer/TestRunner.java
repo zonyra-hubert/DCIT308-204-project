@@ -43,7 +43,12 @@ public class TestRunner {
                 SelectionSortTest.class,
                 SortAlgorithmTest.class,
                 MergeSortTest.class,
-                PriorityDispatchSchedulerTest.class
+                PriorityDispatchSchedulerTest.class,
+                com.ghana.optimizer.algorithm.graph.BFSTest.class,
+                com.ghana.optimizer.algorithm.graph.DFSTest.class,
+                com.ghana.optimizer.algorithm.graph.DijkstraTest.class,
+                com.ghana.optimizer.algorithm.KruskalMSTTest.class,
+                com.ghana.optimizer.algorithm.KnapsackOptimizerTest.class
         };
 
         for (int classIndex = 0; classIndex < testClassesToRun.length; classIndex++) {

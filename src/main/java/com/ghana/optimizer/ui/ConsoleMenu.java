@@ -1,8 +1,16 @@
 package com.ghana.optimizer.ui;
 
+import com.ghana.optimizer.algorithm.graph.BFS;
+import com.ghana.optimizer.algorithm.graph.DFS;
+import com.ghana.optimizer.algorithm.graph.Dijkstra;
+import com.ghana.optimizer.algorithm.graph.KruskalMST;
+import com.ghana.optimizer.algorithm.optimization.GreedyKnapsackHeuristic;
+import com.ghana.optimizer.algorithm.optimization.KnapsackOptimizer;
+import com.ghana.optimizer.algorithm.scheduling.PriorityDispatchScheduler;
 import com.ghana.optimizer.algorithm.search.BinarySearch;
 import com.ghana.optimizer.algorithm.search.LinearSearch;
 import com.ghana.optimizer.algorithm.sort.InsertionSort;
+import com.ghana.optimizer.algorithm.sort.MergeSort;
 import com.ghana.optimizer.algorithm.sort.SelectionSort;
 import com.ghana.optimizer.benchmark.BenchmarkSuiteRunner;
 import com.ghana.optimizer.ds.disjoint.DisjointSet;
@@ -253,9 +261,10 @@ public class ConsoleMenu {
         System.out.println("  [5] BinaryHeap & PriorityQueue Demo");
         System.out.println("  [6] CustomHashTable (Prime Capacity: 547) Demo");
         System.out.println("  [7] DisjointSet (Union-Find with Path Compression) Demo");
+        System.out.println("  [8] 🚑 PriorityDispatchScheduler (PriorityQueue & Deque Emergency Dispatch)");
         System.out.println("  [0] Back to Main Menu");
 
-        int choice = readIntInput("Choose structure demo: ", 0, 7);
+        int choice = readIntInput("Choose structure demo (0-8): ", 0, 8);
         switch (choice) {
             case 1 -> {
                 System.out.println("\n--- DynamicArray Verification ---");
@@ -342,6 +351,24 @@ public class ConsoleMenu {
                 System.out.println("Connected(0, 3)? " + ds.connected(0, 3) + " (Expected false)");
                 System.out.println("Sets count after 2 unions: " + ds.countSets() + " (Expected 3)");
             }
+            case 8 -> {
+                System.out.println("\n--- PriorityDispatchScheduler Live Dispatch Simulation ---");
+                DynamicArray<ServiceRequest> reqs = getServiceRequests();
+                DynamicArray<Resource> resources = getResources();
+                PriorityDispatchScheduler scheduler = new PriorityDispatchScheduler(resources);
+                for (int i = 0; i < Math.min(10, reqs.size()); i++) {
+                    scheduler.submitRequest(reqs.get(i));
+                }
+                System.out.println("Submitted 10 campus requests to priority heap. Dispatching highest priority:");
+                PriorityDispatchScheduler.DispatchAssignment record = scheduler.dispatchNext();
+                if (record != null) {
+                    System.out.printf("Dispatched: [%s] Category: %s | Priority: %d | Assigned: %s (%s)\n",
+                            record.getServiceRequest().getId(), record.getServiceRequest().getCategory(),
+                            record.getServiceRequest().getPriorityLevel(),
+                            record.getAssignedResource() != null ? record.getAssignedResource().getName() : "General Queue",
+                            record.getAssignedResource() != null ? record.getAssignedResource().getType() : "N/A");
+                }
+            }
         }
     }
 
@@ -350,36 +377,65 @@ public class ConsoleMenu {
     // ==========================================
     private void exploreSortingAndSearching() {
         TableFormatter.printSubHeader("Sorting & Searching Engine Lab");
-        System.out.println("  [1] Run Selection Sort Trace on Campus Service Requests");
-        System.out.println("  [2] Run Insertion Sort Trace on Campus Service Requests");
-        System.out.println("  [3] Compare Linear Search vs Binary Search");
+        System.out.println("  [1] 📊 Run Selection Sort Trace on Campus Service Requests");
+        System.out.println("  [2] 📥 Run Insertion Sort Trace on Campus Service Requests");
+        System.out.println("  [3] 🔄 Run Merge Sort Multi-Attribute Trace (Urgency desc, Budget asc)");
+        System.out.println("  [4] ⚡ Run QuickSort Partition Trace (Pivot & Swaps Table)");
+        System.out.println("  [5] 🔍 Compare Linear Search vs Binary Search");
         System.out.println("  [0] Back to Main Menu");
 
-        int choice = readIntInput("Choose: ", 0, 3);
+        int choice = readIntInput("Choose (0-5): ", 0, 5);
         switch (choice) {
             case 1 -> {
                 DynamicArray<ServiceRequest> sample = new DynamicArray<>();
-                sample.add(new ServiceRequest(1, 10, null, "Plumbing", 2, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(2, 12, null, "Electrical", 5, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(3, 14, null, "ICT", 1, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(4, 16, null, "Shuttle", 4, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(5, 18, null, "Library", 3, "2026-08-11", null, "PENDING"));
+                sample.add(new ServiceRequest("REQ-01", "LOC-01", "Plumbing leak", 2, 100.0, 1.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-02", "LOC-02", "Electrical fault", 5, 250.0, 2.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-03", "LOC-03", "ICT maintenance", 1, 50.0, 0.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-04", "LOC-04", "Shuttle dispatch", 4, 300.0, 1.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-05", "LOC-05", "Library AC", 3, 180.0, 2.0, "PENDING"));
 
                 System.out.println("\nExecuting Selection Sort Trace:");
                 SelectionSort.selectionSort(sample);
             }
             case 2 -> {
                 DynamicArray<ServiceRequest> sample = new DynamicArray<>();
-                sample.add(new ServiceRequest(1, 10, null, "Plumbing", 2, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(2, 12, null, "Electrical", 5, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(3, 14, null, "ICT", 1, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(4, 16, null, "Shuttle", 4, "2026-08-11", null, "PENDING"));
-                sample.add(new ServiceRequest(5, 18, null, "Library", 3, "2026-08-11", null, "PENDING"));
+                sample.add(new ServiceRequest("REQ-01", "LOC-01", "Plumbing leak", 2, 100.0, 1.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-02", "LOC-02", "Electrical fault", 5, 250.0, 2.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-03", "LOC-03", "ICT maintenance", 1, 50.0, 0.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-04", "LOC-04", "Shuttle dispatch", 4, 300.0, 1.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-05", "LOC-05", "Library AC", 3, 180.0, 2.0, "PENDING"));
 
                 System.out.println("\nExecuting Insertion Sort Trace:");
                 InsertionSort.insertionSort(sample);
             }
             case 3 -> {
+                DynamicArray<ServiceRequest> sample = new DynamicArray<>();
+                sample.add(new ServiceRequest("REQ-01", "LOC-01", "Plumbing leak", 4, 200.0, 1.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-02", "LOC-02", "Electrical fault", 5, 450.0, 2.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-03", "LOC-03", "ICT server maintenance", 5, 120.0, 0.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-04", "LOC-04", "Shuttle dispatch", 4, 150.0, 1.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-05", "LOC-05", "Generator fuel", 2, 300.0, 2.0, "PENDING"));
+
+                System.out.println("\nExecuting Merge Sort (Primary: Priority desc, Secondary: Budget asc):");
+                MergeSort.sort(sample);
+                for (int i = 0; i < sample.size(); i++) {
+                    ServiceRequest r = sample.get(i);
+                    System.out.printf("  [%d] %-8s | Pri: %d | Budget: GHS %6.2f | %s\n",
+                            i + 1, r.getId(), r.getPriorityLevel(), r.getBudgetRequired(), r.getDescription());
+                }
+            }
+            case 4 -> {
+                DynamicArray<ServiceRequest> sample = new DynamicArray<>();
+                sample.add(new ServiceRequest("REQ-01", "LOC-01", "Plumbing leak", 2, 100.0, 1.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-02", "LOC-02", "Electrical fault", 5, 250.0, 2.0, "PENDING"));
+                sample.add(new ServiceRequest("REQ-03", "LOC-03", "ICT maintenance", 1, 50.0, 0.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-04", "LOC-04", "Shuttle dispatch", 4, 300.0, 1.5, "PENDING"));
+                sample.add(new ServiceRequest("REQ-05", "LOC-05", "Library AC", 3, 180.0, 2.0, "PENDING"));
+
+                System.out.println("\nExecuting QuickSort Partition Trace:");
+                com.ghana.optimizer.algorithm.sort.QuickSort.quickSort(sample);
+            }
+            case 5 -> {
                 Integer[] sortedArr = {10, 25, 43, 55, 78, 92, 105, 120, 150, 200};
                 int target = 92;
                 System.out.println("\nSearching for " + target + " in sorted array: [10, 25, 43, 55, 78, 92, 105, 120, 150, 200]");
@@ -395,36 +451,86 @@ public class ConsoleMenu {
     // 4. Campus Road Network & Graph Viewer
     // ==========================================
     private void exploreCampusGraphNetwork() {
-        TableFormatter.printSubHeader("University of Ghana Campus Road Network & Graph Viewer");
-        System.out.println("  [1] View Campus Adjacency Matrix Representation");
-        System.out.println("  [2] View Campus Adjacency List Representation");
-        System.out.println("  [3] Road Penalty Formula Verification (Weight 43.0)");
+        TableFormatter.printSubHeader("University of Ghana Campus Road Network & Graph Engine");
+        System.out.println("  [1] 🚗 Interactive Dijkstra Shortest Route Solver (Penalty lambda = 43.0)");
+        System.out.println("  [2] 🌲 Compute Kruskal's Minimum Spanning Tree (Campus Road Backbone)");
+        System.out.println("  [3] 🔍 Run BFS Reachability & Shortest Hops");
+        System.out.println("  [4] 🔄 Run DFS Cycle Detection & Connected Components");
+        System.out.println("  [5] 📊 View Campus Adjacency Matrix");
+        System.out.println("  [6] 📋 View Campus Adjacency List");
+        System.out.println("  [7] 🖥️ Launch Interactive Graph Console Explorer UI");
         System.out.println("  [0] Back to Main Menu");
 
-        int choice = readIntInput("Choose: ", 0, 3);
+        int choice = readIntInput("Choose (0-7): ", 0, 7);
         try {
+            AdjacencyListGraph listGraph = new AdjacencyListGraph(250);
+            GraphLoader.loadLocations("data/seed/locations.csv", listGraph);
+            GraphLoader.loadRoads("data/seed/roads.csv", listGraph);
+
             switch (choice) {
                 case 1 -> {
+                    System.out.print("Enter Origin Location ID (e.g. LOC-UG-01): ");
+                    String startId = scanner.nextLine().trim();
+                    System.out.print("Enter Target Destination ID (e.g. LOC-UG-23): ");
+                    String targetId = scanner.nextLine().trim();
+
+                    try {
+                        java.util.List<Dijkstra.DijkstraStep> steps = Dijkstra.dijkstra(listGraph, startId);
+                        java.util.List<String> path = Dijkstra.reconstructPath(steps, targetId);
+                        Dijkstra.printTrace(steps, startId);
+
+                        if (path.isEmpty()) {
+                            System.out.println("No reachable path found between " + startId + " and " + targetId);
+                        } else {
+                            System.out.println("\nOptimal Dijkstra Shortest Path: " + String.join(" -> ", path));
+                        }
+                    } catch (Exception ex) {
+                        System.err.println("Routing query error: " + ex.getMessage());
+                    }
+                }
+                case 2 -> {
+                    System.out.println("\nExecuting Kruskal's Minimum Spanning Tree Algorithm...");
+                    KruskalMST.MSTResult mstResult = KruskalMST.computeMST(listGraph);
+                    System.out.println(mstResult.formatMSTSummary());
+                }
+                case 3 -> {
+                    System.out.print("Enter Origin Location ID for BFS (e.g. LOC-UG-01): ");
+                    String startId = scanner.nextLine().trim();
+                    try {
+                        java.util.List<BFS.BFSStep> steps = BFS.bfs(listGraph, startId);
+                        BFS.printTrace(steps, startId);
+                    } catch (Exception ex) {
+                        System.err.println("BFS error: " + ex.getMessage());
+                    }
+                }
+                case 4 -> {
+                    System.out.print("Enter Origin Location ID for DFS (e.g. LOC-UG-01): ");
+                    String startId = scanner.nextLine().trim();
+                    try {
+                        java.util.List<DFS.DFSStep> steps = DFS.dfs(listGraph, startId);
+                        DFS.printTrace(steps, startId);
+                        boolean hasCycle = DFS.hasCycle(listGraph);
+                        System.out.println("Network Cycle Detection: " + (hasCycle ? "Cycles Present (Normal Road Network)" : "Acyclic"));
+                    } catch (Exception ex) {
+                        System.err.println("DFS error: " + ex.getMessage());
+                    }
+                }
+                case 5 -> {
                     AdjacencyMatrixGraph matrixGraph = new AdjacencyMatrixGraph(250);
                     GraphLoader.loadLocations("data/seed/locations.csv", matrixGraph);
                     GraphLoader.loadRoads("data/seed/roads.csv", matrixGraph);
                     matrixGraph.printGraph();
                 }
-                case 2 -> {
-                    AdjacencyListGraph listGraph = new AdjacencyListGraph(250);
-                    GraphLoader.loadLocations("data/seed/locations.csv", listGraph);
-                    GraphLoader.loadRoads("data/seed/roads.csv", listGraph);
+                case 6 -> {
                     listGraph.printGraph();
                 }
-                case 3 -> {
-                    System.out.println("\n--- Campus Road Penalty Formula ---");
-                    System.out.println("Formula: effectiveCost = distance_m + 43.0 * (5.0 - condition_score)");
-                    System.out.println("Example 1: Smooth Road (Condition 5.0, Distance 300m) -> Cost = 300 + 43 * 0.0 = 300.0");
-                    System.out.println("Example 2: Potholed Road (Condition 2.0, Distance 300m) -> Cost = 300 + 43 * 3.0 = 429.0");
+                case 7 -> {
+                    GraphConsoleUI ui = new GraphConsoleUI();
+                    ui.run();
                 }
             }
         } catch (Exception e) {
-            System.err.println("Graph Viewer Error: " + e.getMessage());
+            System.err.println("Graph Engine Error: " + e.getMessage());
         }
     }
 
@@ -432,26 +538,60 @@ public class ConsoleMenu {
     // 5. Budget & Optimization Explorer
     // ==========================================
     private void exploreBudgetAndOptimization() {
-        TableFormatter.printSubHeader("Operational Budget & Optimization Explorer");
-        System.out.println("System Parameter 3 (Budget Constraint): GHS 1,089.00");
-        System.out.println("Goal: Maximize service priority points within single shift budget limit.");
-        System.out.println("--------------------------------------------------------------------------");
+        TableFormatter.printSubHeader("Operational Budget & Knapsack Optimization Explorer");
+        System.out.println("  [1] 💰 Run 0/1 Knapsack Dynamic Programming Optimizer (Cap: GHS 1,089.00)");
+        System.out.println("  [2] ⚡ Run Greedy Ratio Heuristic Optimizer (Cap: GHS 1,089.00)");
+        System.out.println("  [3] ⚖️ Side-by-Side Comparative Evaluation (DP vs Greedy Gap)");
+        System.out.println("  [4] 🎯 Custom Shift Budget Constraint Simulation");
+        System.out.println("  [0] Back to Main Menu");
+
+        int choice = readIntInput("Choose (0-4): ", 0, 4);
         try {
             DynamicArray<ServiceRequest> requests = getServiceRequests();
-            System.out.println("Top Candidate Maintenance Tickets for Shift Allocation:");
-            double cumulativeCost = 0.0;
-            int totalPoints = 0;
-            for (int i = 0; i < Math.min(6, requests.size()); i++) {
-                ServiceRequest r = requests.get(i);
-                cumulativeCost += r.getBudgetRequired();
-                totalPoints += r.getPriorityLevel();
-                System.out.printf("  Item %d: [%s] Cost: GHS %-7.2f | Pri: %d | Ratio: %.4f | Loc: %s\n",
-                        i + 1, r.getId(), r.getBudgetRequired(), r.getPriorityLevel(),
-                        r.getPriorityToCostRatio(), r.getLocationId());
+            double defaultBudget = 1089.00;
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.println("\nExecuting 0/1 Knapsack Dynamic Programming Tabulation...");
+                    KnapsackOptimizer.KnapsackResult result = KnapsackOptimizer.optimize(requests, defaultBudget);
+                    System.out.println(result.formatReport());
+                }
+                case 2 -> {
+                    System.out.println("\nExecuting Ratio-Based Greedy Knapsack Heuristic...");
+                    GreedyKnapsackHeuristic.GreedyResult result = GreedyKnapsackHeuristic.solveGreedy(requests, defaultBudget);
+                    System.out.println(result.formatReport());
+                }
+                case 3 -> {
+                    System.out.println("\nRunning Comparative Evaluation: 0/1 Knapsack DP vs Greedy Ratio Heuristic");
+                    KnapsackOptimizer.KnapsackResult dpResult = KnapsackOptimizer.optimize(requests, defaultBudget);
+                    GreedyKnapsackHeuristic.GreedyResult greedyResult = GreedyKnapsackHeuristic.solveGreedy(requests, defaultBudget);
+
+                    double suboptimality = greedyResult.computeSuboptimalityPenalty(dpResult);
+
+                    System.out.println("================================================================================");
+                    System.out.println(" ⚖️ KNAPSACK ALGORITHM COMPARATIVE EVALUATION (W = GHS 1,089.00)");
+                    System.out.println("================================================================================");
+                    System.out.printf(" Candidate Request Pool        : %d tickets\n", requests.size());
+                    System.out.printf(" DP Optimal Priority Points    : %d points (Cost: GHS %.2f, %d tickets)\n",
+                            dpResult.getTotalPriorityPoints(), dpResult.getTotalCost(), dpResult.getSelectedCount());
+                    System.out.printf(" Greedy Heuristic Priority     : %d points (Cost: GHS %.2f, %d tickets)\n",
+                            greedyResult.getTotalPriorityPoints(), greedyResult.getTotalCost(), greedyResult.getSelectedCount());
+                    System.out.printf(" Priority Gap (DP vs Greedy)   : %d points\n",
+                            dpResult.getTotalPriorityPoints() - greedyResult.getTotalPriorityPoints());
+                    System.out.printf(" Suboptimality Penalty Gap     : %.2f%%\n", suboptimality);
+                    System.out.println(" Theoretical Note: 0/1 Knapsack lacks the greedy-choice property.");
+                    System.out.println(" Greedy selection leaves unfillable budget gaps, demonstrating suboptimality.");
+                    System.out.println("================================================================================");
+                }
+                case 4 -> {
+                    System.out.print("Enter Custom Shift Budget Limit in GHS (e.g. 500, 1500, 2500): ");
+                    double customBudget = Double.parseDouble(scanner.nextLine().trim());
+                    KnapsackOptimizer.KnapsackResult customResult = KnapsackOptimizer.optimize(requests, customBudget);
+                    System.out.println(customResult.formatReport());
+                }
             }
-            System.out.printf("Cumulative Cost for top items: GHS %.2f (Budget Limit: GHS 1,089.00)\n", cumulativeCost);
         } catch (Exception e) {
-            System.err.println("Budget Explorer Error: " + e.getMessage());
+            System.err.println("Optimization Explorer Error: " + e.getMessage());
         }
     }
 

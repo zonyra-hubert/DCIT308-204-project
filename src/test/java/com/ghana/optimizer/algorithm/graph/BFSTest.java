@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tests for BFS.bfs() — breadth-first traversal, hop-distance tracking,
  * and shortest-path reconstruction over an AdjacencyListGraph.
  */
-class BFSTest {
+public class BFSTest {
 
     // ---------------- fixture builders ----------------
 

@@ -12,7 +12,14 @@ public class DynamicArray<T> {
 
     
     public DynamicArray() {
-        data = new Object[4];
+        this(4);
+    }
+
+    public DynamicArray(int initialCapacity) {
+        if (initialCapacity < 0) {
+            throw new IllegalArgumentException("Initial capacity cannot be negative: " + initialCapacity);
+        }
+        data = new Object[Math.max(4, initialCapacity)];
         size = 0;
     }
 

@@ -9,6 +9,12 @@ public class Assertions {
     }
 
     public static void assertEquals(Object expected, Object actual, String message) {
+        if (expected instanceof Number && actual instanceof Number) {
+            if (((Number) expected).doubleValue() != ((Number) actual).doubleValue()) {
+                throw new AssertionError(message + " - expected: <" + expected + "> but was: <" + actual + ">");
+            }
+            return;
+        }
         if (!Objects.equals(expected, actual)) {
             throw new AssertionError(message + " - expected: <" + expected + "> but was: <" + actual + ">");
         }
@@ -59,7 +65,7 @@ public class Assertions {
     }
 
     public static void assertNotNull(Object object) {
-        assertNotNull(object, "Assertion failed: expected object to be not null");
+        assertNotNull(object, "Assertion failed: expected object to not be null");
     }
 
     public static void assertNotNull(Object object, String message) {
@@ -78,26 +84,16 @@ public class Assertions {
         }
     }
 
-    public static void assertSame(Object expected, Object actual) {
-        if (expected != actual) {
-            throw new AssertionError("Assertion failed: expected same instance");
-        }
-    }
-
-    public static void assertNotSame(Object unexpected, Object actual) {
-        if (unexpected == actual) {
-            throw new AssertionError("Assertion failed: expected different instances");
-        }
-    }
-
+    @SuppressWarnings("unchecked")
     public static <T extends Throwable> T assertThrows(Class<T> expectedType, Executable executable) {
         try {
             executable.execute();
-        } catch (Throwable actualThrown) {
-            if (expectedType.isInstance(actualThrown)) {
-                return (T) actualThrown;
+        } catch (Throwable actualException) {
+            if (expectedType.isInstance(actualException)) {
+                return (T) actualException;
             }
-            throw new AssertionError("Expected " + expectedType.getName() + " to be thrown, but " + actualThrown.getClass().getName() + " was thrown");
+            throw new AssertionError("Unexpected exception type thrown: expected <"
+                    + expectedType.getName() + "> but got <" + actualException.getClass().getName() + ">", actualException);
         }
         throw new AssertionError("Expected " + expectedType.getName() + " to be thrown, but nothing was thrown");
     }

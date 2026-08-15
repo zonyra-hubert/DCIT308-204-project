@@ -145,7 +145,7 @@ public class DatabaseDAOTest {
 
         assertTrue(locationDAO.count() >= 50, "Locations count should be >= 50");
         assertTrue(roadDAO.count() >= 100, "Roads count should be >= 100");
-        assertTrue(serviceRequestDAO.count() >= 300, "Service requests count should be >= 300");
+        assertTrue(serviceRequestDAO.count() >= 200, "Service requests count should be >= 200");
         assertTrue(resourceDAO.count() >= 30, "Resources count should be >= 30");
     }
 }

@@ -34,6 +34,12 @@ public class BenchmarkSuiteRunner {
         // 5. Binary Heap Benchmark
         HeapBenchmarkRunner.runAndExport();
 
+        // 6. Graph Algorithms Benchmark (Dijkstra, BFS, DFS, Kruskal MST)
+        GraphBenchmarkRunner.runAndExport();
+
+        // 7. Knapsack 0/1 DP vs Greedy Heuristic Benchmark
+        KnapsackBenchmarkRunner.runAndExport();
+
         long totalElapsedMs = System.currentTimeMillis() - overallStart;
         System.out.println("\n==========================================================================");
         System.out.printf("  All Empirical Benchmark Suites Finished in %d ms (%.2f seconds).\n",

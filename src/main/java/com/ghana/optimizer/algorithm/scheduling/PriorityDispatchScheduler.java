@@ -104,6 +104,15 @@ public class PriorityDispatchScheduler {
         this.cumulativePriorityPointsResolved = 0;
     }
 
+    public PriorityDispatchScheduler(DynamicArray<Resource> initialResources) {
+        this();
+        if (initialResources != null) {
+            for (int i = 0; i < initialResources.size(); i++) {
+                registerResource(initialResources.get(i));
+            }
+        }
+    }
+
     /**
      * Submits an emergency ticket directly to the FRONT of the dispatch pipeline
      * using MyDeque in O(1) time.

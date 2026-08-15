@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tests for DFS.dfs() / DFS.hasCycle() / DFS.findConnectedComponents()
  * over an AdjacencyListGraph.
  */
-class DFSTest {
+public class DFSTest {
 
     private Vertex vertex(String id) {
         return new Vertex(id, "Name-" + id, "Region", 0.0, 0.0);
