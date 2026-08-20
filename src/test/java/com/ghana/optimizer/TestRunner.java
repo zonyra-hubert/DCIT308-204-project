@@ -17,14 +17,12 @@ import java.lang.reflect.Method;
 
 /**
  * Custom Test Runner to execute unit tests and report results to console.
- * Author: Zonyra Hubert
  */
 public class TestRunner {
 
     public static void main(String[] executionArguments) {
         System.out.println("==========================================================================");
         System.out.println("  UG-CSOO Verification & Complete Test Suite Runner                    ");
-        System.out.println("  Author: Zonyra Hubert                                                   ");
         System.out.println("==========================================================================");
 
         int totalTestsExecuted = 0;

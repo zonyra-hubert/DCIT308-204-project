@@ -88,7 +88,7 @@ public class SearchBenchmarkRunner {
                                 n,
                                 avgLinearNanos,
                                 getUsedMemoryKb(),
-                                547,
+                                761,
                                 1089.0,
                                 "{\"targetPosition\":\"" + positionName + "\", \"trials\":" + TRIALS + "}",
                                 null
@@ -99,7 +99,7 @@ public class SearchBenchmarkRunner {
                                 n,
                                 avgBinaryNanos,
                                 getUsedMemoryKb(),
-                                547,
+                                761,
                                 1089.0,
                                 "{\"targetPosition\":\"" + positionName + "\", \"trials\":" + TRIALS + "}",
                                 null

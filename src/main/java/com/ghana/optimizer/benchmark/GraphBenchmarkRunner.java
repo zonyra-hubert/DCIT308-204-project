@@ -97,7 +97,7 @@ public class GraphBenchmarkRunner {
                             vCount,
                             System.nanoTime(),
                             getUsedMemoryKb(),
-                            547,
+                            761,
                             1089.0,
                             "{\"algorithm\":\"Dijkstra\", \"vertexCount\":" + vCount + "}",
                             new java.sql.Timestamp(System.currentTimeMillis()).toString()

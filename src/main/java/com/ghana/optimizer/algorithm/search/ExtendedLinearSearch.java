@@ -8,7 +8,6 @@ import java.util.function.Function;
  * Generic Extended Linear Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
  * Operates over generic arrays and domain objects.
  *
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public final class ExtendedLinearSearch {
 

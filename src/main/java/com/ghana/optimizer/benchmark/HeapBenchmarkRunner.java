@@ -74,7 +74,7 @@ public class HeapBenchmarkRunner {
                             n,
                             insertTotalNanos + extractTotalNanos,
                             memUsed,
-                            547,
+                            761,
                             1089.0,
                             "{\"insertPerOpNanos\":" + String.format("%.2f", insertPerOp)
                                     + ", \"extractMinPerOpNanos\":" + String.format("%.2f", extractPerOp) + "}",

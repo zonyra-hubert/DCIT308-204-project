@@ -11,10 +11,10 @@ public class Road {
     private double distanceM;          // Distance in meters
     private int travelTimeMins;        // Travel time in minutes
     private double conditionScore;     // 1.0 (very poor) to 5.0 (excellent)
-    private double penaltyWeight;      // Parameter 1: Road Condition Penalty (default 43.0)
+    private double penaltyWeight;      // Parameter 1: Road Condition Penalty (default 59.0)
 
     public Road() {
-        this.penaltyWeight = 43.0;
+        this.penaltyWeight = 59.0;
     }
 
     public Road(String id, String sourceLocationId, String targetLocationId, double distanceM,

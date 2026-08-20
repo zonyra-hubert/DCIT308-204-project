@@ -9,7 +9,6 @@ import java.util.function.Function;
  * Generic Linear Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
  * Implements linear search operations over generic DynamicArray datasets.
  *
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public class LinearSearch {
 

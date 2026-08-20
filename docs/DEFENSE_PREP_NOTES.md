@@ -6,10 +6,10 @@ This defense guide equips each team member to defend a specific custom data stru
 
 ### Member 1 Defense Topic: `CustomHashTable` & `BinarySearch`
 - **Data Structure**: `CustomHashTable<K, V>` with separate chaining.
-  - **Invariants**: Initial prime capacity of `547` (System Parameter 2), load factor threshold $\alpha \le 0.75$. Prime modulo hashing: $\text{index} = |\text{hashCode}| \bmod M$.
+  - **Invariants**: Initial prime capacity of `761` (System Parameter 2), load factor threshold $\alpha \le 0.75$. Prime modulo hashing: $\text{index} = |\text{hashCode}| \bmod M$.
   - **Complexity**: $O(1)$ expected time for `put`, `get`, and `remove`.
-  - **Defensive Question**: *Why did we choose 547 as the initial capacity?*
-    - *Answer*: 547 is a prime number that reduces clustering from common multiplier patterns in ticket IDs (e.g., `REQ-UG-001`), ensuring uniform hash bucket distribution across 300+ campus tickets without premature resizing.
+  - **Defensive Question**: *Why did we choose 761 as the initial capacity?*
+    - *Answer*: 761 is a prime number that reduces clustering from common multiplier patterns in ticket IDs (e.g., `REQ-UG-001`), ensuring uniform hash bucket distribution across 300+ campus tickets without premature resizing.
 - **Algorithm**: `BinarySearch`
   - **Complexity**: Time: $O(\log n)$, Space: $O(1)$.
   - **Invariant**: Array must satisfy strict ascending sorted order. Precondition checked using `SortedPreconditionValidator`.
@@ -29,10 +29,10 @@ This defense guide equips each team member to defend a specific custom data stru
 - **Data Structure**: Campus Road Graph representations.
   - **Matrix**: $V \times V$ matrix of `Edge` objects ($O(V^2)$ memory, $O(1)$ edge query).
   - **List**: Array of `ListNode` linked chains ($O(V + E)$ memory, $O(\text{deg}(v))$ traversal).
-- **Algorithm**: Dijkstra Shortest Path with Road Penalty Factor `43.0`.
-  - **Weight Function**: $w(u,v) = \text{distance\_m} + 43.0 \times (5.0 - \text{condition\_score})$.
+- **Algorithm**: Dijkstra Shortest Path with Road Penalty Factor `59.0`.
+  - **Weight Function**: $w(u,v) = \text{distance\_m} + 59.0 \times (5.0 - \text{condition\_score})$.
   - **Complexity**: $O((V + E) \log V)$ using custom min-heap.
-  - **Defensive Question**: *Why is road condition penalized by 43.0?*
+  - **Defensive Question**: *Why is road condition penalized by 59.0?*
     - *Answer*: UG Legon campus roads have uneven conditions and speed humps (e.g. Annie Jiagge Rd vs University Ave). Deteriorated segments (condition 1.0) add $43 \times 4.0 = 172\text{ meters}$ equivalent delay, rerouting repair trucks onto smoother roads.
 
 ---

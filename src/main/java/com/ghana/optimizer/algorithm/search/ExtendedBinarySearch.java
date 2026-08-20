@@ -8,7 +8,6 @@ import java.util.Comparator;
  * Generic Extended Binary Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
  * Validates preconditions via SortedPreconditionValidator and performs O(log n) binary search over generic arrays.
  *
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public final class ExtendedBinarySearch {
 

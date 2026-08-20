@@ -6,7 +6,6 @@ import java.util.Comparator;
  * Generic Jump Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
  * Jump search on a sorted array using a fixed block step of floor(sqrt(n)).
  *
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public class JumpSearch {
 

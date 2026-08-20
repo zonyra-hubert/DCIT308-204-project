@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for PriorityQueue implementation.
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public class PriorityQueueTest {
 

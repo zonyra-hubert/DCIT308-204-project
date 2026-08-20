@@ -9,7 +9,6 @@ import java.util.Comparator;
  * Campus Service Operations Optimizer (UG-CSOO).
  *
  * Utilizes a custom BinaryHeap from com.ghana.optimizer.ds.heap as its underlying storage engine.
- * All variable names are written in full as required by Zonyra Hubert.
  *
  * @param <T> Element type contained in the priority queue.
  */

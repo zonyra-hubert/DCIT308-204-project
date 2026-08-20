@@ -111,7 +111,7 @@ public class DatabaseDAOTest {
                 100,
                 1500000L,
                 1024L,
-                547,
+                761,
                 1089.0,
                 "{\"test\":true}",
                 null

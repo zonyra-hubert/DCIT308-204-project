@@ -6,7 +6,6 @@ import java.util.Comparator;
  * Generic Precondition Validator for Binary Search algorithms in UG-CSOO.
  * Validates that arrays are sorted according to a given Comparator before executing binary search.
  *
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public final class SortedPreconditionValidator {
 

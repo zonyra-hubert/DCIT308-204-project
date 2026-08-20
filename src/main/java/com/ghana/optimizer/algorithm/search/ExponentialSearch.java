@@ -7,7 +7,6 @@ import java.util.Comparator;
  * Generic Exponential Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
  * Finds range by doubling index boundaries, then narrows down using generic BinarySearch.
  *
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public final class ExponentialSearch {
 

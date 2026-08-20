@@ -18,7 +18,7 @@ The **UG-CSOO** system provides automated, algorithmic decision support for camp
 | Parameter Name | Value | Description & Technical Application |
 | :--- | :--- | :--- |
 | **Parameter 1: Road Penalty Weight** | `43` | Weight factor applied to deteriorated campus road segments (e.g., speed bumps, pothole delays, pedestrian-heavy zones on Annie Jiagge & Guggisberg Ave). Used in Dijkstra/BFS routing cost calculations (`edge_weight = distance_m + 43 * (5.0 - condition_score)`). |
-| **Parameter 2: Custom Hash Table Capacity** | `547` | Initial prime capacity for the custom hash map index (`CustomHashTable`) used for $O(1)$ lookups of active campus service tickets by ticket ID. |
+| **Parameter 2: Custom Hash Table Capacity** | `761` | Initial prime capacity for the custom hash map index (`CustomHashTable`) used for $O(1)$ lookups of active campus service tickets by ticket ID. |
 | **Parameter 3: Operational Budget Constraint** | `GHS 1,089.00` | Budget limit applied to the 0/1 Knapsack optimization solver for batch maintenance allocation per shift/crew. |
 
 ---
@@ -67,10 +67,10 @@ DCIT308-204-project/
 
 ### Table Definitions (`data/sql/schema.sql`)
 1. `locations`: `(id, name, region, latitude, longitude)`
-2. `roads`: `(id, source_location_id, target_location_id, distance_m, travel_time_mins, condition_score, penalty_weight DEFAULT 43.0)`
+2. `roads`: `(id, source_location_id, target_location_id, distance_m, travel_time_mins, condition_score, penalty_weight DEFAULT 59.0)`
 3. `service_requests`: `(id, location_id, description, priority_level, budget_required, estimated_duration_hrs, status)`
 4. `resources`: `(id, name, type, capacity, cost_per_hour, current_location_id, is_available)`
-5. `algorithm_runs`: `(id, algorithm_name, dataset_size, execution_time_ns, memory_used_kb, hash_capacity DEFAULT 547, budget_limit DEFAULT 1089.0, parameters_json, executed_at)`
+5. `algorithm_runs`: `(id, algorithm_name, dataset_size, execution_time_ns, memory_used_kb, hash_capacity DEFAULT 761, budget_limit DEFAULT 1089.0, parameters_json, executed_at)`
 6. `audit_events`: `(id, action_type, entity_name, entity_id, details, timestamp)`
 
 ---
@@ -85,7 +85,7 @@ DCIT308-204-project/
 public double calculateCampusRouteCost(Road edge) {
     double baseDistanceMeters = edge.getDistanceMeters();
     double conditionScore = edge.getConditionScore(); // Scale 1.0 to 5.0
-    double penaltyWeight = 43.0; // System Parameter 1
+    double penaltyWeight = 59.0; // System Parameter 1
     
     // Deteriorated paths add penalty weight of 43 * (5.0 - condition)
     double effectiveWeight = baseDistanceMeters + penaltyWeight * (5.0 - conditionScore);
@@ -94,12 +94,12 @@ public double calculateCampusRouteCost(Road edge) {
 ```
 
 ### B. Custom Hash Table Indexing (`CustomHashTable`)
-*Scenario:* Storing and querying 300+ campus service tickets in $O(1)$ expected time using an initial prime capacity of $547$.
+*Scenario:* Storing and querying 300+ campus service tickets in $O(1)$ expected time using an initial prime capacity of $761$.
 
 ```java
 // Pseudocode: Custom Hash Table Indexing for UG Service Tickets
 public class CustomHashTable<K, V> {
-    private static final int INITIAL_CAPACITY = 547; // System Parameter 2 (Prime Capacity)
+    private static final int INITIAL_CAPACITY = 761; // System Parameter 2 (Prime Capacity)
     private HashNode<K, V>[] buckets;
 
     public CustomHashTable() {
@@ -152,8 +152,8 @@ Running the application (`java -cp ... com.ghana.optimizer.Main`):
   Operational Domain: UG Legon Campus, Accra, Ghana                       
 ==========================================================================
 System Parameters Initialized:
-  - Parameter 1 (Road Penalty Weight): 43.0
-  - Parameter 2 (Custom Hash Table Capacity): 547
+  - Parameter 1 (Road Penalty Weight): 59.0
+  - Parameter 2 (Custom Hash Table Capacity): 761
   - Parameter 3 (Budget Constraint): GHS 1089.0
 --------------------------------------------------------------------------
 [DB STATUS] Connecting to SQLite Database...
@@ -178,10 +178,10 @@ sqlite3 data/ghana_optimizer.db < data/sql/seed_data.sql
 ### 2. Compile Java Source Code
 ```bash
 mkdir -p bin
-javac -cp "/home/hubert/.m2/repository/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar:/home/hubert/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar" -d bin src/main/java/com/ghana/optimizer/config/DatabaseConfig.java src/main/java/com/ghana/optimizer/storage/db/ConnectionManager.java src/main/java/com/ghana/optimizer/Main.java
+javac -cp "~/.m2/repository/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar:~/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar" -d bin src/main/java/com/ghana/optimizer/config/DatabaseConfig.java src/main/java/com/ghana/optimizer/storage/db/ConnectionManager.java src/main/java/com/ghana/optimizer/Main.java
 ```
 
 ### 3. Run System Launcher
 ```bash
-java -cp "bin:src/main/resources:/home/hubert/.m2/repository/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar:/home/hubert/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar" com.ghana.optimizer.Main
+java -cp "bin:src/main/resources:~/.m2/repository/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar:~/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar" com.ghana.optimizer.Main
 ```

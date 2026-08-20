@@ -121,7 +121,7 @@ public class ConsoleMenu {
 
             System.out.println("System Storage Status: READY");
             System.out.printf("  - Locations Loaded        : %d records (Target >= 50)\n", locs.size());
-            System.out.printf("  - Road Segments Loaded    : %d records (Penalty Weight: 43.0)\n", roads.size());
+            System.out.printf("  - Road Segments Loaded    : %d records (Penalty Weight: 59.0)\n", roads.size());
             System.out.printf("  - Service Requests Loaded : %d records (Target >= 300)\n", reqs.size());
             System.out.printf("  - Campus Resources Loaded : %d records (Target >= 30)\n", res.size());
             System.out.println("--------------------------------------------------------------------------");
@@ -259,7 +259,7 @@ public class ConsoleMenu {
         System.out.println("  [3] MyStack & MyQueue & CircularQueue Demo");
         System.out.println("  [4] BinarySearchTree vs B-Tree Explorer");
         System.out.println("  [5] BinaryHeap & PriorityQueue Demo");
-        System.out.println("  [6] CustomHashTable (Prime Capacity: 547) Demo");
+        System.out.println("  [6] CustomHashTable (Prime Capacity: 761) Demo");
         System.out.println("  [7] DisjointSet (Union-Find with Path Compression) Demo");
         System.out.println("  [8] PriorityDispatchScheduler (PriorityQueue & Deque Emergency Dispatch)");
         System.out.println("  [0] Back to Main Menu");
@@ -334,8 +334,8 @@ public class ConsoleMenu {
                 System.out.printf("Next Min Element     : %d (Expected 10)\n", heap.extractMin());
             }
             case 6 -> {
-                System.out.println("\n--- CustomHashTable (Capacity: 547) Verification ---");
-                CustomHashTable<String, String> table = new CustomHashTable<>(547);
+                System.out.println("\n--- CustomHashTable (Capacity: 761) Verification ---");
+                CustomHashTable<String, String> table = new CustomHashTable<>(761);
                 table.put("REQ-UG-001", "Water Tank Repair");
                 table.put("REQ-UG-002", "AC Servicing");
                 System.out.println("Table Size: " + table.size() + ", Current Load Factor: " + String.format("%.4f", table.getLoadFactor()));
@@ -452,7 +452,7 @@ public class ConsoleMenu {
     // ==========================================
     private void exploreCampusGraphNetwork() {
         TableFormatter.printSubHeader("University of Ghana Campus Road Network & Graph Engine");
-        System.out.println("  [1] Interactive Dijkstra Shortest Route Solver (Penalty lambda = 43.0)");
+        System.out.println("  [1] Interactive Dijkstra Shortest Route Solver (Penalty lambda = 59.0)");
         System.out.println("  [2] Compute Kruskal's Minimum Spanning Tree (Campus Road Backbone)");
         System.out.println("  [3] Run BFS Reachability & Shortest Hops");
         System.out.println("  [4] Run DFS Cycle Detection & Connected Components");

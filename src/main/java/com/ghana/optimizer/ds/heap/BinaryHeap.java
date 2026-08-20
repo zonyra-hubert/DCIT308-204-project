@@ -3,10 +3,8 @@ package com.ghana.optimizer.ds.heap;
 import java.util.Comparator;
 
 /**
- * Custom Binary Heap implementation for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
- * Serves as the underlying array-based binary heap structure for priority operations and graph algorithms.
+
  *
- * All variable names are written in full as required by Zonyra Hubert.
  *
  * @param <T> Element type contained in the binary heap.
  */

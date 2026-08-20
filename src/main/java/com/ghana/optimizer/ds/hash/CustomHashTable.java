@@ -5,7 +5,7 @@ import com.ghana.optimizer.ds.list.DynamicArray;
 /**
  * Custom Hash Table implementation for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
  * Uses separate chaining with custom nodes for collision resolution.
- * Initial capacity defaults to System Parameter 2 (547).
+ * Initial capacity defaults to System Parameter 2 (761).
  *
  *
  * @param <K> Key type
@@ -13,7 +13,7 @@ import com.ghana.optimizer.ds.list.DynamicArray;
  */
 public class CustomHashTable<K, V> {
 
-    private static final int DEFAULT_INITIAL_CAPACITY = 547;
+    private static final int DEFAULT_INITIAL_CAPACITY = 761;
     private static final double DEFAULT_LOAD_FACTOR_THRESHOLD = 0.75;
 
     private CustomHashNode<K, V>[] bucketArray;

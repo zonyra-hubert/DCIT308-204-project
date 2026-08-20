@@ -92,7 +92,7 @@ public class SortBenchmarkRunner {
                                 n,
                                 avgSelectionNanos,
                                 getUsedMemoryKb(),
-                                547,
+                                761,
                                 1089.0,
                                 "{\"inputType\":\"" + inputType + "\", \"trials\":" + TRIALS_PER_CONFIG + "}",
                                 null
@@ -103,7 +103,7 @@ public class SortBenchmarkRunner {
                                 n,
                                 avgInsertionNanos,
                                 getUsedMemoryKb(),
-                                547,
+                                761,
                                 1089.0,
                                 "{\"inputType\":\"" + inputType + "\", \"trials\":" + TRIALS_PER_CONFIG + "}",
                                 null

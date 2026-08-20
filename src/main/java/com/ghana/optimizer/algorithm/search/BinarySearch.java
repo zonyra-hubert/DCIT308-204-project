@@ -6,7 +6,6 @@ import java.util.Comparator;
  * Generic Binary Search algorithm for University of Ghana Campus Service Operations Optimizer (UG-CSOO).
  * Operates over sorted arrays using generic types (T extends Comparable<T> or custom Comparator<T>).
  *
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public final class BinarySearch {
 

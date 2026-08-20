@@ -17,8 +17,8 @@ To ensure deterministic, high-efficiency execution, **UG-CSOO** models the entir
 
 | Parameter Identifier | Metric / Constraint | Exact Value | Domain Rationale & Technical Application |
 | :--- | :--- | :--- | :--- |
-| **System Parameter 1** | Road Condition Penalty ($\lambda$) | **`43.0`** | Penalty factor applied to deteriorated or speed-bumped campus roads (e.g. Annie Jiagge Rd, Guggisberg Ave). Effective edge weight: $w(e) = \text{distance\_m} + 43.0 \times (5.0 - \text{condition\_score})$. |
-| **System Parameter 2** | Custom Hash Table Initial Prime Capacity ($M$) | **`547`** | Prime number bucket capacity for `CustomHashTable` ensuring low collision frequency ($\alpha < 0.60$) when indexing 300+ active campus service requests in $O(1)$ expected time. |
+| **System Parameter 1** | Road Condition Penalty ($\lambda$) | **`59.0`** | Penalty factor applied to deteriorated or speed-bumped campus roads (e.g. Annie Jiagge Rd, Guggisberg Ave). Effective edge weight: $w(e) = \text{distance\_m} + 59.0 \times (5.0 - \text{condition\_score})$. |
+| **System Parameter 2** | Custom Hash Table Initial Prime Capacity ($M$) | **`761`** | Prime number bucket capacity for `CustomHashTable` ensuring low collision frequency ($\alpha < 0.60$) when indexing 300+ active campus service requests in $O(1)$ expected time. |
 | **System Parameter 3** | Operational Shift Budget Limit ($W$) | **`GHS 1,089.00`** | Hard financial cap per crew shift for batch maintenance optimization via the 0/1 Knapsack Dynamic Programming solver. |
 
 ---
@@ -32,7 +32,7 @@ To ensure deterministic, high-efficiency execution, **UG-CSOO** models the entir
   - Target vertex $t \in V$ (e.g., Commonwealth Hall `LOC-UG-09`).
 - **Pre-conditions**:
   - $s, t \in V$ are valid existing nodes.
-  - All effective edge weights $w(u, v) = d(u,v) + 43.0 \times (5.0 - c(u,v)) \ge 0$ (non-negative costs).
+  - All effective edge weights $w(u, v) = d(u,v) + 59.0 \times (5.0 - c(u,v)) \ge 0$ (non-negative costs).
 - **Post-conditions**:
   - Returns the minimum effective cost $D[t]$.
   - Returns the optimal sequence of vertices $\langle s, v_1, v_2, \dots, t \rangle$.

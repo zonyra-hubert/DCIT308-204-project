@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS roads (
     distance_m DOUBLE NOT NULL, -- Campus distance in meters
     travel_time_mins INT NOT NULL,
     condition_score DOUBLE NOT NULL, -- Road condition (1.0 - 5.0)
-    penalty_weight DOUBLE DEFAULT 43.0, -- Parameter 1: Road Condition / Penalty Weight (43)
+    penalty_weight DOUBLE DEFAULT 59.0, -- Parameter 1: Road Condition / Penalty Weight (43)
     FOREIGN KEY (source_location_id) REFERENCES locations(id),
     FOREIGN KEY (target_location_id) REFERENCES locations(id)
 );
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS algorithm_runs (
     dataset_size INT NOT NULL,
     execution_time_ns BIGINT NOT NULL,
     memory_used_kb BIGINT NOT NULL,
-    hash_capacity INT DEFAULT 547, -- Parameter 2: Custom Hash Table Capacity (547)
+    hash_capacity INT DEFAULT 761, -- Parameter 2: Custom Hash Table Capacity (547)
     budget_limit DOUBLE DEFAULT 1089.0, -- Parameter 3: Budget Constraint (1089)
     parameters_json TEXT,
     executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

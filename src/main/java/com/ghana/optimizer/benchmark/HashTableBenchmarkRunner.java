@@ -37,7 +37,7 @@ public class HashTableBenchmarkRunner {
 
             for (double loadFactor : LOAD_FACTORS) {
                 for (int count : ELEMENT_COUNTS) {
-                    CustomHashTable<String, String> table = new CustomHashTable<>(547, loadFactor);
+                    CustomHashTable<String, String> table = new CustomHashTable<>(761, loadFactor);
 
                     long startMem = getUsedMemoryKb();
 
@@ -60,7 +60,7 @@ public class HashTableBenchmarkRunner {
                     long memUsed = Math.max(0, getUsedMemoryKb() - startMem);
 
                     csvWriter.write(String.format("%.2f,%d,%d,%d,%.4f,%d,%d,%d\n",
-                            loadFactor, count, 547, table.getCapacity(),
+                            loadFactor, count, 761, table.getCapacity(),
                             table.getLoadFactor(), insertTimeNanos, lookupTimeNanos, memUsed));
 
                     // Persist to DB
@@ -71,7 +71,7 @@ public class HashTableBenchmarkRunner {
                                 count,
                                 insertTimeNanos + lookupTimeNanos,
                                 memUsed,
-                                547,
+                                761,
                                 1089.0,
                                 "{\"loadFactorThreshold\":" + loadFactor + ", \"finalCapacity\":" + table.getCapacity() + "}",
                                 null

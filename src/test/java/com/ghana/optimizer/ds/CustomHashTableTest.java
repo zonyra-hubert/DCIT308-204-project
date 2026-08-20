@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for CustomHashTable implementation.
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public class CustomHashTableTest {
 
@@ -22,7 +21,7 @@ public class CustomHashTableTest {
 
     @Test
     void defaultConstructor_initializesWithParameterTwoCapacity() {
-        assertEquals(547, campusLocationTable.getCapacity(), "Default initial capacity should equal System Parameter 2 (547)");
+        assertEquals(761, campusLocationTable.getCapacity(), "Default initial capacity should equal System Parameter 2 (761)");
         assertEquals(0, campusLocationTable.size());
         assertTrue(campusLocationTable.isEmpty());
     }

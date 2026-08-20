@@ -59,9 +59,9 @@ This document provides complete, rigorous execution trace tables across 6 fundam
 
 ---
 
-### Trace Table 4: Dijkstra Shortest Path (with Road Penalty Weight 43.0)
+### Trace Table 4: Dijkstra Shortest Path (with Road Penalty Weight 59.0)
 - **Source**: Physical Development (`LOC-UG-43`) $\to$ **Target**: Commonwealth Hall (`LOC-UG-09`)
-- **Formula**: $w(u,v) = \text{distance\_m} + 43.0 \times (5.0 - \text{condition\_score})$
+- **Formula**: $w(u,v) = \text{distance\_m} + 59.0 \times (5.0 - \text{condition\_score})$
 
 | Step | Extracted Node $u$ | $D[u]$ | Adjacent Neighbor $v$ | Edge Distance ($m$) / Cond | Effective Cost $w(u,v)$ | Relaxed $D[v]$ | Predecessor $P[v]$ |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |

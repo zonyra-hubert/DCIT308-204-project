@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests verifying generic functionality across all search algorithms.
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public class GenericSearchAlgorithmTest {
 

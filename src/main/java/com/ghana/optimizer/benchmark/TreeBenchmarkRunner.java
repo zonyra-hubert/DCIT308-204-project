@@ -91,7 +91,7 @@ public class TreeBenchmarkRunner {
                                 n,
                                 bstInsertNanos + bstSearchNanos,
                                 bstMem,
-                                547,
+                                761,
                                 1089.0,
                                 "{\"height\":" + bstHeight + ", \"pattern\":\"" + pattern + "\"}",
                                 null
@@ -102,7 +102,7 @@ public class TreeBenchmarkRunner {
                                 n,
                                 btreeInsertNanos + btreeSearchNanos,
                                 btreeMem,
-                                547,
+                                761,
                                 1089.0,
                                 "{\"height\":" + btreeHeight + ", \"pattern\":\"" + pattern + "\"}",
                                 null

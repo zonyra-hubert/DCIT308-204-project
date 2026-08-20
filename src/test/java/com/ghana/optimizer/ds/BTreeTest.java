@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for BTree implementation.
- * All variable names are written in full as required by Zonyra Hubert.
  */
 public class BTreeTest {
 
