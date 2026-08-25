@@ -95,7 +95,7 @@ public class ConsoleMenu {
     }
 
     private void printMainMenu() {
-        TableFormatter.printHeader("UG-CSOO MASTER EXAMINER INTERACTIVE CONSOLE MENU");
+        TableFormatter.printHeader("UG-CSOO  CONSOLE MENU");
         System.out.println("  1. Database Explorer & Entity Inspector (SQLite / DAOs)");
         System.out.println("  2. Custom Data Structures Interactive Lab");
         System.out.println("  3. Sorting & Searching Engine Lab (with Live Step Traces)");

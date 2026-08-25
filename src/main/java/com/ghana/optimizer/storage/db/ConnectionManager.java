@@ -8,15 +8,25 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
+    private static boolean driverAvailable = false;
+
     static {
         try {
             Class.forName(DatabaseConfig.getDbDriver());
+            driverAvailable = true;
         } catch (ClassNotFoundException e) {
-            System.err.println("Failed to load SQLite JDBC Driver: " + e.getMessage());
+            driverAvailable = false;
         }
     }
 
+    public static boolean isDriverAvailable() {
+        return driverAvailable;
+    }
+
     public static Connection getConnection() throws SQLException {
+        if (!driverAvailable) {
+            throw new SQLException("SQLite JDBC Driver not loaded on classpath (CSV Fallback Mode Active)");
+        }
         return DriverManager.getConnection(DatabaseConfig.getDbUrl());
     }
 }

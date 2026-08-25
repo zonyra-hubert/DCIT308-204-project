@@ -8,6 +8,7 @@ import com.ghana.optimizer.storage.dao.LocationDAO;
 import com.ghana.optimizer.storage.dao.ResourceDAO;
 import com.ghana.optimizer.storage.dao.RoadDAO;
 import com.ghana.optimizer.storage.dao.ServiceRequestDAO;
+import com.ghana.optimizer.storage.db.ConnectionManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,6 +37,9 @@ public class CsvDataLoader {
      * Seeds the database from CSV files if any of the primary tables are empty.
      */
     public boolean seedDatabaseIfEmpty() {
+        if (!ConnectionManager.isDriverAvailable()) {
+            return false;
+        }
         try {
             int locationCount = locationDAO.count();
             int roadCount = roadDAO.count();
@@ -50,7 +54,7 @@ public class CsvDataLoader {
                 return true;
             }
         } catch (Exception e) {
-            System.err.println("[CSV LOADER ERROR] Error checking or seeding database: " + e.getMessage());
+            // Silently fall back to CSV file reading
         }
         return false;
     }
