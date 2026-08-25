@@ -8,6 +8,7 @@ public class ServiceRequest {
 
     private String id;
     private int requestId;
+    private String title;
     private String locationId;
     private int sourceId;
     private Integer destinationId;
@@ -79,6 +80,11 @@ public class ServiceRequest {
     }
 
     // Getters and Setters
+    public String getTitle() {
+        return title != null ? title : description;
+    }
+    public void setTitle(String title) { this.title = title; }
+
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 

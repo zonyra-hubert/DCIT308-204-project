@@ -76,7 +76,7 @@ public class ConsoleMenu {
         boolean running = true;
         while (running) {
             printMainMenu();
-            int choice = readIntInput("Select an option (0-8): ", 0, 8);
+            int choice = readIntInput("Select an option (0-9): ", 0, 9);
             switch (choice) {
                 case 1 -> exploreDatabase();
                 case 2 -> exploreDataStructures();
@@ -86,6 +86,7 @@ public class ConsoleMenu {
                 case 6 -> runEmpiricalBenchmarks();
                 case 7 -> runUnitTests();
                 case 8 -> viewTheoryAndTraces();
+                case 9 -> handleInteractiveServiceRequest();
                 case 0 -> {
                     System.out.println("\nExiting UG-CSOO Examiner Console. Goodbye!");
                     running = false;
@@ -95,7 +96,7 @@ public class ConsoleMenu {
     }
 
     private void printMainMenu() {
-        TableFormatter.printHeader("UG-CSOO  CONSOLE MENU");
+        TableFormatter.printHeader("UG-CSOO MASTER EXAMINER CONSOLE MENU");
         System.out.println("  1. Database Explorer & Entity Inspector (SQLite / DAOs)");
         System.out.println("  2. Custom Data Structures Interactive Lab");
         System.out.println("  3. Sorting & Searching Engine Lab (with Live Step Traces)");
@@ -104,6 +105,7 @@ public class ConsoleMenu {
         System.out.println("  6. Empirical Efficiency Benchmark Lab (Run Suites & Export CSV)");
         System.out.println("  7. Automated Unit Test Suite Runner");
         System.out.println("  8. Theory, Correctness, Proofs & Trace Tables Viewer");
+        System.out.println("  9. Submit Custom Service Request & Run Live Performance Analyzer");
         System.out.println("  0. Exit Application");
         TableFormatter.printDivider();
     }
@@ -636,6 +638,167 @@ public class ConsoleMenu {
             case 2 -> TraceViewFormatter.displayInsertionSortTrace();
             case 3 -> TraceViewFormatter.displayKnapsackTrace();
             case 4 -> TraceViewFormatter.displayCounterexample();
+        }
+    }
+
+    // ==========================================
+    // 9. Interactive Service Request Intake & Performance Analyzer
+    // ==========================================
+    public void handleInteractiveServiceRequest() {
+        TableFormatter.printHeader("INTERACTIVE CAMPUS SERVICE REQUEST INTAKE & DISPATCH");
+        System.out.println("Submit a custom maintenance service request for the system to process.\n");
+
+        String title = readStringInput("  Title of the request       : ");
+        String description = readStringInput("  Description                : ");
+        String locationInput = readStringInput("  Location (ID or Name, e.g. LOC-UG-01 or Balme Library) : ");
+        String category = readStringInput("  Category (Plumbing/Electrical/IT/HVAC/Civil/Transit) : ");
+        int priorityLevel = readIntInput("  Priority Level (1-5, 5=Emergency) : ", 1, 5);
+        double budgetRequired = readDoubleInput("  Estimated Budget (GHS)     : ", 1.0, 10000.0);
+
+        String locationId = resolveLocationInput(locationInput);
+        String requestId = "REQ-USER-" + (System.currentTimeMillis() % 10000);
+
+        ServiceRequest userRequest = new ServiceRequest(
+                requestId,
+                locationId,
+                description,
+                priorityLevel,
+                budgetRequired,
+                1.5,
+                "PENDING"
+        );
+        userRequest.setTitle(title);
+        userRequest.setCategory(category);
+
+        System.out.println("\n--------------------------------------------------------------------------");
+        System.out.println("  SUBMITTED SERVICE TICKET CONFIRMATION");
+        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("  Ticket ID        : " + userRequest.getId());
+        System.out.println("  Title            : " + userRequest.getTitle());
+        System.out.println("  Description      : " + userRequest.getDescription());
+        System.out.println("  Location ID      : " + userRequest.getLocationId());
+        System.out.println("  Category         : " + userRequest.getCategory());
+        System.out.println("  Priority Level   : " + userRequest.getPriorityLevel() + (priorityLevel == 5 ? " (EMERGENCY OVERRIDE)" : ""));
+        System.out.println("  Budget Required  : GHS " + String.format("%.2f", userRequest.getBudgetRequired()));
+
+        System.out.println("\n--------------------------------------------------------------------------");
+        System.out.println("  SYSTEM ATTENDING TO USER SERVICE REQUEST...");
+        System.out.println("--------------------------------------------------------------------------");
+
+        DynamicArray<Resource> resources = getResources();
+        PriorityDispatchScheduler scheduler = new PriorityDispatchScheduler();
+        for (int i = 0; i < resources.size(); i++) {
+            scheduler.registerResource(resources.get(i));
+        }
+
+        long startTimeNs = System.nanoTime();
+        if (priorityLevel == 5) {
+            scheduler.submitEmergencyRequest(userRequest);
+            System.out.println("  [DISPATCH OVERRIDE] Priority Level 5 Emergency detected! Injected into MyDeque front head in O(1) time.");
+        } else {
+            scheduler.submitRequest(userRequest);
+            System.out.println("  [DISPATCH HEAP] Enqueued into Priority Queue BinaryHeap (Urgency Level " + priorityLevel + ").");
+        }
+
+        PriorityDispatchScheduler.DispatchAssignment assignment = scheduler.dispatchNext();
+        long durationNs = System.nanoTime() - startTimeNs;
+
+        System.out.println("\n==========================================================================");
+        System.out.println("             LIVE DISPATCH RESOLUTION & ATTENDANCE RECORD");
+        System.out.println("==========================================================================");
+        if (assignment != null) {
+            Resource res = assignment.getAssignedResource();
+            System.out.println("  Status           : DISPATCHED & ATTENDED SUCCESSFULLY");
+            System.out.println("  Assigned Unit    : " + (res != null ? res.getName() + " (" + res.getType() + ")" : "General Crew Dispatch"));
+            System.out.println("  Estimated Cost   : GHS " + String.format("%.2f", assignment.getEstimatedCostGHS()));
+            System.out.println("  Dispatch Notes   : " + assignment.getNotes());
+            System.out.println("  Attendance Speed : " + String.format("%.3f ms (%d ns)", durationNs / 1_000_000.0, durationNs));
+        }
+
+        System.out.println("\n==========================================================================");
+        System.out.println("  SYSTEM PERFORMANCE BENCHMARK ON EXISTING 200 CAMPUS REQUESTS");
+        System.out.println("==========================================================================");
+        runPerformanceEvaluationOnExistingDataset(userRequest);
+    }
+
+    private String resolveLocationInput(String input) {
+        if (input == null || input.trim().isEmpty()) return "LOC-UG-01";
+        String trimmed = input.trim();
+        if (trimmed.toUpperCase().startsWith("LOC-")) return trimmed.toUpperCase();
+
+        DynamicArray<Location> locations = getLocations();
+        for (int i = 0; i < locations.size(); i++) {
+            Location loc = locations.get(i);
+            if (loc.getName().toLowerCase().contains(trimmed.toLowerCase())) {
+                return loc.getId();
+            }
+        }
+        return "LOC-UG-01";
+    }
+
+    private void runPerformanceEvaluationOnExistingDataset(ServiceRequest userTicket) {
+        DynamicArray<ServiceRequest> existingRequests = getServiceRequests();
+        DynamicArray<Resource> resources = getResources();
+
+        System.out.printf("  - Dataset Loaded          : %d existing campus service requests\n", existingRequests.size());
+        System.out.printf("  - Operational Resources   : %d available maintenance units\n", resources.size());
+
+        // Benchmark 1: Priority Queue Batch Dispatch Time
+        PriorityDispatchScheduler batchScheduler = new PriorityDispatchScheduler();
+        for (int i = 0; i < resources.size(); i++) {
+            batchScheduler.registerResource(resources.get(i));
+        }
+
+        long startHeapNs = System.nanoTime();
+        for (int i = 0; i < existingRequests.size(); i++) {
+            batchScheduler.submitRequest(existingRequests.get(i));
+        }
+        DynamicArray<PriorityDispatchScheduler.DispatchAssignment> batchDispatches = batchScheduler.dispatchAllAvailable();
+        long heapDurationNs = System.nanoTime() - startHeapNs;
+
+        // Benchmark 2: Knapsack 0/1 Dynamic Programming Optimization under GHS 1089.00
+        long startDpNs = System.nanoTime();
+        KnapsackOptimizer.KnapsackResult knapsackResult = KnapsackOptimizer.optimize(existingRequests, 1089);
+        long dpDurationNs = System.nanoTime() - startDpNs;
+
+        System.out.println("\n--------------------------------------------------------------------------");
+        System.out.println("  PERFORMANCE METRICS SUMMARY TABLE");
+        System.out.println("--------------------------------------------------------------------------");
+        System.out.printf("  %-35s : %s\n", "User Submitted Ticket ID", userTicket.getId());
+        System.out.printf("  %-35s : %s (Priority Level %d)\n", "User Ticket Title", userTicket.getTitle(), userTicket.getPriorityLevel());
+        System.out.printf("  %-35s : %d tickets processed\n", "Total Batch Size Processed", existingRequests.size());
+        System.out.printf("  %-35s : %.3f ms (%d ns)\n", "Priority Heap Dispatch Time", heapDurationNs / 1_000_000.0, heapDurationNs);
+        System.out.printf("  %-35s : %.3f ms (%d ns)\n", "0/1 Knapsack DP Execution Time", dpDurationNs / 1_000_000.0, dpDurationNs);
+        System.out.printf("  %-35s : %d points\n", "Optimal Priority Points Maximized", knapsackResult.getTotalPriorityPoints());
+        System.out.printf("  %-35s : GHS %.2f / GHS 1089.00\n", "Budget Spent / Limit Ceiling", knapsackResult.getTotalCost());
+        System.out.printf("  %-35s : %d tickets selected\n", "Optimal Tickets Selected by DP", knapsackResult.getSelectedRequests().size());
+        System.out.println("--------------------------------------------------------------------------");
+    }
+
+    private String readStringInput(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String line = scanner.nextLine().trim();
+            if (!line.isEmpty()) {
+                return line;
+            }
+            System.out.println("Input cannot be empty. Please enter text.");
+        }
+    }
+
+    private double readDoubleInput(String prompt, double min, double max) {
+        while (true) {
+            System.out.print(prompt);
+            String line = scanner.nextLine().trim();
+            try {
+                double val = Double.parseDouble(line);
+                if (val >= min && val <= max) {
+                    return val;
+                }
+                System.out.printf("Please enter an amount between %.2f and %.2f.\n", min, max);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
         }
     }
 

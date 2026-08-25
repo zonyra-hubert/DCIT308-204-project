@@ -27,14 +27,14 @@ public class Main {
             printSystemBanner();
             printActionSelectionMenu();
 
-            System.out.print("Enter your choice (0-8): ");
+            System.out.print("Enter your choice (0-9): ");
             String input = scanner.nextLine().trim();
 
             int choice;
             try {
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number (0-8).\n");
+                System.out.println("Invalid input. Please enter a valid number (0-9).\n");
                 continue;
             }
 
@@ -70,7 +70,7 @@ public class Main {
                 case 6 -> {
                     // View Campus Road Graph
                     TableFormatter.printHeader("CAMPUS ROAD NETWORK & GRAPH ENGINE");
-                    System.out.println("Formula: effectiveCost = distance_m + 43.0 * (5.0 - condition_score)");
+                    System.out.println("Formula: effectiveCost = distance_m + 59.0 * (5.0 - condition_score)");
                     System.out.println("Loaded: 200 Campus Locations & 200 Campus Road Segments.");
                     System.out.println("Use Option 1 (Examiner Console -> Graph Viewer) for full Matrix/List display.");
                 }
@@ -96,11 +96,16 @@ public class Main {
                     System.out.println("  - docs/COUNTEREXAMPLES.md");
                     System.out.println("  - docs/DEFENSE_PREP_NOTES.md");
                 }
+                case 9 -> {
+                    // Submit Custom Service Request & Run Performance Analyzer
+                    ConsoleMenu menu = new ConsoleMenu();
+                    menu.handleInteractiveServiceRequest();
+                }
                 case 0 -> {
                     System.out.println("Exiting UG-CSOO System. Have a great day!");
                     running = false;
                 }
-                default -> System.out.println("Please select a number between 0 and 8.");
+                default -> System.out.println("Please select a number between 0 and 9.");
             }
 
             if (running && choice != 1 && choice != 4) {
@@ -133,6 +138,7 @@ public class Main {
         System.out.println("  [6] View Campus Road Network & Graph Representations");
         System.out.println("  [7] Inspect Database Records & Entity Explorer");
         System.out.println("  [8] View Theory, Invariants, Proofs & Counterexamples");
+        System.out.println("  [9] Submit Custom Service Request & Run Live Performance Analyzer");
         System.out.println("  [0] Exit System");
         System.out.println("--------------------------------------------------------------------------");
     }
