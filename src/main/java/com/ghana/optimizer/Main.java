@@ -27,14 +27,14 @@ public class Main {
             printSystemBanner();
             printActionSelectionMenu();
 
-            System.out.print("Enter your choice (0-9): ");
+            System.out.print("Enter your choice (0-8): ");
             String input = scanner.nextLine().trim();
 
             int choice;
             try {
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number (0-9).\n");
+                System.out.println("Invalid input. Please enter a valid number (0-8).\n");
                 continue;
             }
 
@@ -75,16 +75,6 @@ public class Main {
                     System.out.println("Use Option 1 (Examiner Console -> Graph Viewer) for full Matrix/List display.");
                 }
                 case 7 -> {
-                    // Inspect Database & Records
-                    TableFormatter.printHeader("CAMPUS DATASET & DATABASE SUMMARY");
-                    System.out.println("  - Locations Loaded        : 200 records (UG_locations_200.xlsx)");
-                    System.out.println("  - Road Segments Loaded    : 200 records (UG_road_segments_200_11.xlsx)");
-                    System.out.println("  - Service Requests Loaded : 200 records (UG_service_requests_200.xlsx)");
-                    System.out.println("  - Operational Resources   : 200 records (UG_resources_200.xlsx)");
-                    System.out.println("  - SQLite Database File    : data/ghana_optimizer.db");
-                    System.out.println("  - Full SQL Seed Script    : data/sql/seed_data.sql");
-                }
-                case 8 -> {
                     // View Theory, Proofs & Counterexamples
                     TableFormatter.printHeader("THEORY, INVARIANTS, PROOFS & COUNTEREXAMPLES");
                     TraceViewFormatter.displayKnapsackTrace();
@@ -96,7 +86,7 @@ public class Main {
                     System.out.println("  - docs/COUNTEREXAMPLES.md");
                     System.out.println("  - docs/DEFENSE_PREP_NOTES.md");
                 }
-                case 9 -> {
+                case 8 -> {
                     // Submit Custom Service Request & Run Performance Analyzer
                     ConsoleMenu menu = new ConsoleMenu();
                     menu.handleInteractiveServiceRequest();
@@ -105,7 +95,7 @@ public class Main {
                     System.out.println("Exiting UG-CSOO System. Have a great day!");
                     running = false;
                 }
-                default -> System.out.println("Please select a number between 0 and 9.");
+                default -> System.out.println("Please select a number between 0 and 8.");
             }
 
             if (running && choice != 1 && choice != 4) {
@@ -136,9 +126,8 @@ public class Main {
         System.out.println("  [4] Launch Interactive BST & B-Tree Explorer (TreeConsoleUI)");
         System.out.println("  [5] Run Sorting & Searching Live Step Traces");
         System.out.println("  [6] View Campus Road Network & Graph Representations");
-        System.out.println("  [7] Inspect Database Records & Entity Explorer");
-        System.out.println("  [8] View Theory, Invariants, Proofs & Counterexamples");
-        System.out.println("  [9] Submit Custom Service Request & Run Live Performance Analyzer");
+        System.out.println("  [7] View Theory, Invariants, Proofs & Counterexamples");
+        System.out.println("  [8] Submit Custom Service Request & Run Live Performance Analyzer");
         System.out.println("  [0] Exit System");
         System.out.println("--------------------------------------------------------------------------");
     }

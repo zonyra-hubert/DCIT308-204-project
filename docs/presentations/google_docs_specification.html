@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UG-CSOO Technical Guide & Google Docs Export</title>
+  <style>
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: #1E293B;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    h1 { color: #0F172A; border-bottom: 2px solid #38BDF8; padding-bottom: 0.5rem; font-size: 2rem; }
+    h2 { color: #1E3A8A; margin-top: 1.5rem; font-size: 1.5rem; }
+    h3 { color: #D97706; margin-top: 1.2rem; font-size: 1.2rem; }
+    .badge {
+      display: inline-block;
+      background-color: #E0F2FE;
+      color: #0369A1;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .formula-box {
+      background-color: #F8FAFC;
+      border-left: 4px solid #38BDF8;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #CBD5E1;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #F1F5F9;
+      color: #0F172A;
+      font-weight: bold;
+    }
+    tr:nth-child(even) { background-color: #F8FAFC; }
+  </style>
+</head>
+<body>
+
+<h1>University of Ghana Campus Service Operations Optimizer (UG-CSOO)</h1>
+<h2>Technical Specification: Constants, Data Structures & Algorithms</h2>
+
+<hr>
+
+<h2>🔢 Section 1: Group Derived System Constants (15-Member Group)</h2>
+<p>Our project group consists of <strong>15 members</strong>. Summing all 15 student ID numbers yields the index sum:</p>
+
+<div class="formula-box">
+  <strong>Group Index Sum = 333,907,258</strong><br>
+  Min Student ID = 10948210 | Max Student ID = 22404243
+</div>
+
+<h3>1. Parameter 1 — Road Degradation Penalty Multiplier (&lambda; = 59.0)</h3>
+<ul>
+  <li><strong>Formula:</strong> <code>(Group Index Sum % 100) + 1</code></li>
+  <li><strong>Calculation:</strong> <code>(333,907,258 % 100) + 1 = 58 + 1 = <strong>59.0</strong></code></li>
+  <li><strong>Usage:</strong> Used in <code>Dijkstra.java</code> to weight road degradation: <code>effectiveCost = distance_m + 59.0 * (5.0 - condition_score)</code>. Severe potholes (1.0) add a 236.0m virtual penalty.</li>
+</ul>
+
+<h3>2. Parameter 2 — Prime Hash Table Capacity (M = 761)</h3>
+<ul>
+  <li><strong>Formula:</strong> <code>First Prime &ge; (Group Index Sum % 500) + 501</code></li>
+  <li><strong>Calculation:</strong> <code>(333,907,258 % 500) + 501 = 258 + 501 = 759</code>. The first prime &ge; 759 is <strong>761</strong>.</li>
+  <li><strong>Usage:</strong> Initial capacity in <code>CustomHashTable.java</code> with modulo hash function <code>hash(k) = (|hashCode| % 761)</code> for zero-clustering O(1) lookups.</li>
+</ul>
+
+<h3>3. Parameter 3 — Operational Shift Budget Limit (W = GHS 1,089.00)</h3>
+<ul>
+  <li><strong>Formula:</strong> <code>((Max Student ID - Min Student ID) % 1000) + 100</code></li>
+  <li><strong>Calculation:</strong> <code>((22404243 - 10948210) % 1000) + 100 = (11,456,033 % 1000) + 100 = 989 + 100 = <strong>1089.00</strong></code></li>
+  <li><strong>Usage:</strong> Budget ceiling constraint in 0/1 Knapsack DP (<code>KnapsackOptimizer.java</code>) maximizing priority points under GHS 1,089.00.</li>
+</ul>
+
+<hr>
+
+<h2>📦 Section 2: Custom Data Structures (DS) Reference</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Data Structure</th>
+      <th>Package Location</th>
+      <th>Operations & Complexity</th>
+      <th>Operational Role in UG-CSOO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>DynamicArray&lt;T&gt;</strong></td>
+      <td><code>ds.list</code></td>
+      <td>add O(1) amortized, get O(1)</td>
+      <td>Resizable array container used across all DAOs, graph adjacency lists, and sorting input buffers.</td>
+    </tr>
+    <tr>
+      <td><strong>MyLinkedList&lt;T&gt;</strong></td>
+      <td><code>ds.list</code></td>
+      <td>addFirst/addLast O(1)</td>
+      <td>Doubly-linked list ADT serving as storage for deques and sequential ticket lists.</td>
+    </tr>
+    <tr>
+      <td><strong>MyStack&lt;T&gt;</strong></td>
+      <td><code>ds.stack</code></td>
+      <td>push/pop O(1)</td>
+      <td>LIFO stack used for DFS traversal, call-stack logging, and 2D Knapsack DP decision backtracking.</td>
+    </tr>
+    <tr>
+      <td><strong>MyQueue&lt;E&gt;</strong></td>
+      <td><code>ds.queue</code></td>
+      <td>enqueue/dequeue O(1)</td>
+      <td>FIFO queue used for BFS graph traversal and chronological service ticket dispatches.</td>
+    </tr>
+    <tr>
+      <td><strong>MyDeque&lt;T&gt;</strong></td>
+      <td><code>ds.queue</code></td>
+      <td>addFront/addRear O(1)</td>
+      <td>Double-ended queue serving as the <strong>Life-Safety Emergency Override Queue</strong> (Level 5 tickets).</td>
+    </tr>
+    <tr>
+      <td><strong>CircularQueue&lt;E&gt;</strong></td>
+      <td><code>ds.queue</code></td>
+      <td>enqueue/dequeue O(1) (Ring Buffer)</td>
+      <td>Array-based ring buffer for equitable <strong>Round-Robin shuttle bus & crew dispatches</strong> with zero shifting.</td>
+    </tr>
+    <tr>
+      <td><strong>CustomHashTable&lt;K,V&gt;</strong></td>
+      <td><code>ds.hash</code></td>
+      <td>put/get O(1) avg (Cap: 761)</td>
+      <td>Separate chaining hash table providing fast lookup for locations, roads, resources, and tickets by ID.</td>
+    </tr>
+    <tr>
+      <td><strong>BinaryHeap&lt;T&gt;</strong></td>
+      <td><code>ds.heap</code></td>
+      <td>insert/extractMin O(log N)</td>
+      <td>Complete binary min-heap used inside <strong>Dijkstra's Algorithm</strong> and <strong>PriorityDispatchScheduler</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>BinarySearchTree&lt;K,V&gt;</strong></td>
+      <td><code>ds.tree</code></td>
+      <td>insert/search O(log N)</td>
+      <td>Ordered binary search tree used for range queries and location hierarchy lookups.</td>
+    </tr>
+    <tr>
+      <td><strong>BTree&lt;K,V&gt;</strong></td>
+      <td><code>ds.tree</code></td>
+      <td>insert/search O(log N)</td>
+      <td>Multi-way 2-3-4 balanced tree (t=2) guaranteeing O(log N) height even under strictly sorted inputs.</td>
+    </tr>
+    <tr>
+      <td><strong>DisjointSet</strong></td>
+      <td><code>ds.disjoint</code></td>
+      <td>find/union O(&alpha;(N))</td>
+      <td>Path compression & union-by-rank structure used in <strong>Kruskal's MST</strong> for cycle detection.</td>
+    </tr>
+    <tr>
+      <td><strong>AdjacencyMatrixGraph</strong></td>
+      <td><code>ds.graph.matrix</code></td>
+      <td>addEdge/getWeight O(1)</td>
+      <td>200x200 2D weighted matrix representing campus road network for O(1) distance queries.</td>
+    </tr>
+    <tr>
+      <td><strong>AdjacencyListGraph</strong></td>
+      <td><code>ds.graph.list</code></td>
+      <td>addVertex/addEdge O(1)</td>
+      <td>Linked list graph model providing space-efficient storage for sparse road graph traversals.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>⚙️ Section 3: Custom Algorithms Reference</h2>
+<h3>🗺️ Graph & Routing Algorithms</h3>
+<ul>
+  <li><strong>Dijkstra's Shortest Path:</strong> Min-cost routing using <code>effectiveCost = distance + 59.0 * (5.0 - condition)</code> ($O((V+E)\log V)$).</li>
+  <li><strong>Kruskal's MST:</strong> Sorts road edges and uses <code>DisjointSet</code> to build minimum-distance campus utility backbone ($O(E \log E)$).</li>
+  <li><strong>Prim's MST:</strong> Grows utility network outward from central campus landmarks ($O((V+E)\log V)$).</li>
+  <li><strong>BFS:</strong> Level-order traversal for unweighted hop distances ($O(V+E)$).</li>
+  <li><strong>DFS:</strong> Recursive/stack-based traversal for cycle detection and connected components ($O(V+E)$).</li>
+</ul>
+
+<h3>💰 Optimization & Scheduling Algorithms</h3>
+<ul>
+  <li><strong>0/1 Knapsack Dynamic Programming:</strong> $DP[i][w] = \max(DP[i-1][w], DP[i-1][w-c_i] + p_i)$ under GHS 1,089.00 ceiling ($O(N \cdot W)$).</li>
+  <li><strong>Greedy Knapsack Ratio Heuristic:</strong> Sorts tickets by priority-to-cost ratio ($p_i / c_i$) to demonstrate greedy failure vs DP ($O(N \log N)$).</li>
+  <li><strong>PriorityDispatchScheduler:</strong> Multi-strategy dispatcher supporting FIFO, Round-Robin, Priority Heap, and Deque Emergency Override.</li>
+</ul>
+
+<h3>🔎 Search & Sorting Algorithms</h3>
+<ul>
+  <li><strong>Binary Search:</strong> $O(\log N)$ search on sorted arrays ($\le 3$ steps for 8 items, $\le 10$ steps for 1,000 locations).</li>
+  <li><strong>Linear Search:</strong> $O(N)$ sequential scan for unordered queries.</li>
+  <li><strong>Merge Sort:</strong> $O(N \log N)$ stable multi-attribute sorting (Urgency desc, Budget asc).</li>
+  <li><strong>QuickSort:</strong> $O(N \log N)$ in-place 2-way element partitioning sort.</li>
+  <li><strong>Selection Sort:</strong> $O(N^2)$ sort minimizing physical swaps ($O(N)$ swaps).</li>
+  <li><strong>Insertion Sort:</strong> $O(N^2)$ sort with $O(N)$ best-case for nearly-sorted queues.</li>
+</ul>
+
+</body>
+</html>

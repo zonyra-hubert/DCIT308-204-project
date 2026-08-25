@@ -76,16 +76,15 @@ public class ConsoleMenu {
         boolean running = true;
         while (running) {
             printMainMenu();
-            int choice = readIntInput("Select an option (0-8): ", 0, 8);
+            int choice = readIntInput("Select an option (0-7): ", 0, 7);
             switch (choice) {
-                case 1 -> exploreDatabase();
-                case 2 -> exploreSortingAndSearching();
-                case 3 -> exploreCampusGraphNetwork();
-                case 4 -> exploreBudgetAndOptimization();
-                case 5 -> runEmpiricalBenchmarks();
-                case 6 -> runUnitTests();
-                case 7 -> viewTheoryAndTraces();
-                case 8 -> handleInteractiveServiceRequest();
+                case 1 -> exploreSortingAndSearching();
+                case 2 -> exploreCampusGraphNetwork();
+                case 3 -> exploreBudgetAndOptimization();
+                case 4 -> runEmpiricalBenchmarks();
+                case 5 -> runUnitTests();
+                case 6 -> viewTheoryAndTraces();
+                case 7 -> handleInteractiveServiceRequest();
                 case 0 -> {
                     System.out.println("\nExiting UG-CSOO Examiner Console. Goodbye!");
                     running = false;
@@ -96,14 +95,13 @@ public class ConsoleMenu {
 
     private void printMainMenu() {
         TableFormatter.printHeader("UG-CSOO MASTER EXAMINER CONSOLE MENU");
-        System.out.println("  1. Database Explorer & Entity Inspector (SQLite / DAOs)");
-        System.out.println("  2. Sorting & Searching Engine Lab (with Live Step Traces)");
-        System.out.println("  3. Campus Road Network & Graph Viewer (Adjacency Matrix/List)");
-        System.out.println("  4. Operational Budget & Knapsack Optimization Explorer");
-        System.out.println("  5. Empirical Efficiency Benchmark Lab (Run Suites & Export CSV)");
-        System.out.println("  6. Automated Unit Test Suite Runner");
-        System.out.println("  7. Theory, Correctness, Proofs & Trace Tables Viewer");
-        System.out.println("  8. Submit Custom Service Request & Run Live Performance Analyzer");
+        System.out.println("  1. Sorting & Searching Engine Lab (with Live Step Traces)");
+        System.out.println("  2. Campus Road Network & Graph Viewer (Adjacency Matrix/List)");
+        System.out.println("  3. Operational Budget & Knapsack Optimization Explorer");
+        System.out.println("  4. Empirical Efficiency Benchmark Lab (Run Suites & Export CSV)");
+        System.out.println("  5. Automated Unit Test Suite Runner");
+        System.out.println("  6. Theory, Correctness, Proofs & Trace Tables Viewer");
+        System.out.println("  7. Submit Custom Service Request & Run Live Performance Analyzer");
         System.out.println("  0. Exit Application");
         TableFormatter.printDivider();
     }

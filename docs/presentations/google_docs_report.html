@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UG-CSOO Master Final Engineering Report (12 Sections)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+      line-height: 1.6;
+      color: #0F172A;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      background-color: #FFFFFF;
+    }
+    .header-box {
+      border-bottom: 3px solid #1E3A8A;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    h1 { color: #1E3A8A; font-size: 2.2rem; margin-bottom: 0.3rem; }
+    h2 { color: #0369A1; border-bottom: 1.5px solid #CBD5E1; padding-bottom: 0.4rem; margin-top: 2rem; }
+    h3 { color: #D97706; margin-top: 1.5rem; font-size: 1.2rem; }
+    .meta-table { width: 100%; margin-bottom: 1.5rem; }
+    .meta-table td { padding: 0.4rem 0; font-weight: bold; }
+    .code-block {
+      background-color: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid #0284C7;
+      padding: 1rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.92rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    table.data-table th, table.data-table td {
+      border: 1px solid #CBD5E1;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    table.data-table th { background-color: #F1F5F9; color: #0F172A; }
+    table.data-table tr:nth-child(even) { background-color: #F8FAFC; }
+    .card {
+      background-color: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-left: 4px solid #16A34A;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-box">
+  <h1>University of Ghana • Department of Computer Science</h1>
+  <p style="font-size: 1.2rem; font-weight: 600; color: #475569;">DCIT 204 / DCIT 308 — Data Structures and Algorithms</p>
+  <h2 style="border:none; margin-top: 0.5rem; color: #1E3A8A;">Final Project Technical Engineering Report</h2>
+</div>
+
+<h2>1. Cover Page</h2>
+<table class="meta-table">
+  <tr><td>Project Title:</td><td>Campus Service Operations Optimizer (UG-CSOO)</td></tr>
+  <tr><td>Local Ghana Context:</td><td>Physical Development & Municipal Services Directorate (PDMSD), UG Legon Campus (1,200 Hectares)</td></tr>
+  <tr><td>Project Team:</td><td>15-Member Project Team</td></tr>
+  <tr><td>Group Index Sum:</td><td>333,907,258</td></tr>
+  <tr><td>Derived Constants:</td><td>Parameter 1 = 59.0 | Parameter 2 = 761 | Parameter 3 = GHS 1,089.00</td></tr>
+</table>
+
+<h2>2. Problem Statement, Assumptions, Input-Output & System Boundaries</h2>
+<p>The Physical Development Directorate manages hundreds of daily facilities maintenance tickets across 200 physical locations and 200 road segments. Key challenges include road pavement degradation, shift budget constraints, and life-safety emergency overrides.</p>
+
+<h2>3. Dataset Description, Data Dictionary & Database Schema</h2>
+<p>Incorporates 800 authentic campus records across 4 seed CSV datasets (200 Locations, 200 Roads, 200 Requests, 200 Resources) backed by SQLite (<code>data/ghana_optimizer.db</code>).</p>
+
+<h2>4. System Architecture and Module Design</h2>
+<p>Layered architecture separating Console UI, Test Runner, Algorithm Engine, Custom Data Structures (0 <code>java.util</code> dependencies), and SQLite/CSV Data Persistence Layer.</p>
+
+<h2>5. Data-Structure Implementation Section with Diagrams</h2>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Data Structure Class</th>
+      <th>Package</th>
+      <th>Complexity</th>
+      <th>Operational Role in UG-CSOO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>DynamicArray&lt;T&gt;</strong></td><td>ds.list</td><td>add O(1) amortized</td><td>Resizable 1D array container used across all DAOs, graph adjacency lists, and sorting buffers.</td></tr>
+    <tr><td><strong>MyLinkedList&lt;T&gt;</strong></td><td>ds.list</td><td>addFirst/addLast O(1)</td><td>Doubly-linked node list serving as storage for deques and sequential ticket lists.</td></tr>
+    <tr><td><strong>MyStack&lt;T&gt;</strong></td><td>ds.stack</td><td>push/pop O(1)</td><td>LIFO stack used for DFS traversal, call-stack logging, and 2D Knapsack DP decision backtracking.</td></tr>
+    <tr><td><strong>MyQueue&lt;E&gt;</strong></td><td>ds.queue</td><td>enqueue/dequeue O(1)</td><td>FIFO queue used for BFS graph traversal and chronological service ticket dispatches.</td></tr>
+    <tr><td><strong>MyDeque&lt;T&gt;</strong></td><td>ds.queue</td><td>addFront/addRear O(1)</td><td>Double-ended queue serving as the <strong>Life-Safety Emergency Override Queue</strong> (Level 5 tickets).</td></tr>
+    <tr><td><strong>CircularQueue&lt;E&gt;</strong></td><td>ds.queue</td><td>enqueue/dequeue O(1)</td><td>Array-based ring buffer for equitable <strong>Round-Robin shuttle bus & crew dispatches</strong> with zero shifting.</td></tr>
+    <tr><td><strong>CustomHashTable&lt;K,V&gt;</strong></td><td>ds.hash</td><td>put/get O(1) avg (Cap: 761)</td><td>Separate chaining hash table providing fast lookup for locations, roads, resources, and tickets by ID.</td></tr>
+    <tr><td><strong>BinaryHeap&lt;T&gt;</strong></td><td>ds.heap</td><td>insert/extractMin O(log N)</td><td>Complete binary min-heap used inside <strong>Dijkstra's Algorithm</strong> and <strong>PriorityDispatchScheduler</strong>.</td></tr>
+    <tr><td><strong>BinarySearchTree&lt;K,V&gt;</strong></td><td>ds.tree</td><td>insert/search O(log N)</td><td>Ordered binary search tree used for range queries and location hierarchy lookups.</td></tr>
+    <tr><td><strong>BTree&lt;K,V&gt;</strong></td><td>ds.tree</td><td>insert/search O(log N)</td><td>Multi-way 2-3-4 balanced tree (t=2) guaranteeing O(log N) height even under strictly sorted inputs.</td></tr>
+    <tr><td><strong>DisjointSet</strong></td><td>ds.disjoint</td><td>find/union O(&alpha;(N))</td><td>Path compression & union-by-rank structure used in <strong>Kruskal's MST</strong> for cycle detection.</td></tr>
+    <tr><td><strong>AdjacencyMatrixGraph</strong></td><td>ds.graph.matrix</td><td>addEdge/getWeight O(1)</td><td>200x200 2D weighted matrix representing campus road network for O(1) distance queries.</td></tr>
+    <tr><td><strong>AdjacencyListGraph</strong></td><td>ds.graph.list</td><td>addVertex/addEdge O(1)</td><td>Linked list graph model providing space-efficient storage for sparse road graph traversals.</td></tr>
+  </tbody>
+</table>
+
+<h2>6. Algorithm Implementation Section with Pseudocode and Snippets</h2>
+<div class="code-block">
+// Dijkstra Effective Road Weight Formula<br>
+double effectiveCost = e.getDistanceM() + 59.0 * (5.0 - e.getConditionScore());<br><br>
+// 0/1 Knapsack DP Recurrence<br>
+DP[i][w] = Math.max(DP[i-1][w], DP[i-1][w - cost[i]] + priority[i]);
+</div>
+
+<h2>7. Correctness Evidence: Trace Tables, Invariants & Proof Sketches</h2>
+<p>Includes Insertion Sort Loop Invariant Proof, Merge Sort Monotonicity Induction, Knapsack Optimal Substructure Proof, and Binary Search Trace Table ($O(\log N)$).</p>
+
+<h2>8. Performance Analysis: Results Tables & Interpretation</h2>
+<div class="card">
+  <strong>Empirical Benchmark Highlight (N=5,000 Sorted Input):</strong><br>
+  Standard BST Height: 4,999 (73.0 ms) vs B-Tree (t=2) Height: 11 (0.72 ms) &rarr; <strong>101.4x Speedup!</strong>
+</div>
+
+<h2>9. Database Integration Evidence & Run Logs</h2>
+<div class="code-block">
+==========================================================================<br>
+ Test Summary Result:<br>
+   Total Tests Executed : 122<br>
+   Total Tests Passed   : 122<br>
+   Total Tests Failed   : 0<br>
+==========================================================================
+</div>
+
+<h2>10. Responsible Algorithm Selection Matrix</h2>
+<p>Evaluates conditions under which chosen algorithms are appropriate vs when they are not (e.g. 0/1 Knapsack DP vs Greedy heuristic failure).</p>
+
+<h2>11. Individual Contribution Statement & Oral-Defense Preparation Notes</h2>
+<p>15-member team division of work matrix and flashcard Q&A notes for oral defense.</p>
+
+<h2>12. References and Appendices</h2>
+<p>Cormen et al. (2009) <i>Introduction to Algorithms</i>, Sedgewick & Wayne (2011) <i>Algorithms</i>, SQLite Documentation (2024).</p>
+
+</body>
+</html>
