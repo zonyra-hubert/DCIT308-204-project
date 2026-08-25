@@ -314,16 +314,14 @@ public class ConsoleMenu {
                 System.out.println("CircularQueue successfully wrapped around buffer.");
             }
             case 4 -> {
-                System.out.println("\n--- BinarySearchTree vs B-Tree Verification ---");
+                System.out.println("\nLaunching Tree Console UI...");
+                TreeConsoleUI treeUI = new TreeConsoleUI();
+                // Interactive tree operations
                 BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
                 bst.insert(50, "Balme Library");
                 bst.insert(30, "Akuafo Hall");
                 bst.insert(70, "Great Hall");
-                System.out.println("Sample BST Loaded: Root=50 (Balme Library), Left=30 (Akuafo Hall), Right=70 (Great Hall)");
-                System.out.println("BST Height: " + bst.height() + " (1 edge from root to leaves)");
-                System.out.println("In-order Sorted Keys: " + bst.inorderKeys().size() + " items -> [30, 50, 70]");
-                System.out.println("\nLaunching Full Interactive Tree Explorer UI...");
-                new TreeConsoleUI().run();
+                System.out.println("BST Height: " + bst.height() + ", In-order Keys: " + bst.inorderKeys().size() + " items");
             }
             case 5 -> {
                 System.out.println("\n--- BinaryHeap & PriorityQueue Verification ---");
