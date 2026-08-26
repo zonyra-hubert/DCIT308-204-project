@@ -120,7 +120,7 @@ public class Main {
 
     private static void printActionSelectionMenu() {
         System.out.println("Select what you would like to do:");
-        System.out.println("  [1] Launch Interactive Examiner Console Menu");
+        System.out.println("  [1] Launch Interactive  Console Menu");
         System.out.println("  [2] Run Automated Verification & Test Suite");
         System.out.println("  [3] Run Empirical Performance Benchmark Suite (Export CSVs)");
         System.out.println("  [4] Launch Interactive BST & B-Tree Explorer (TreeConsoleUI)");
